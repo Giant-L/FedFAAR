@@ -47,8 +47,8 @@ dataset_classes = {
 algorithms = [
     #'FedGen',         
     #'FedMut',          
-    'FedPhoenix', # 启用
-    # 'FedFAAR',    # 启用
+    # 'FedPhoenix', # 启用
+    'FedFAAR',    # 启用
     # 'FedAvg',     # 启用
     #'FedProx',
     #'ClusteredSampling',   
@@ -73,6 +73,7 @@ epochs = [100]         # 修改：CelebA 较大，演示可设为 100
 data_betas = [0.3]     #If you need to set it as IID, please use 0.5. (注意：这里0.5会被处理为IID)
 weight_decays = [0.0000] 
 local_bs_list = [64] 
+num_workers_list = [2]
 
 #----------------------------------------
 # 5. Federated Learning Related Parameters
@@ -90,9 +91,9 @@ fp_fcs = [0]
 
 # === FAAR-FL params ===
 # 您可以在这里进行网格搜索
-faar_tau_s_list = [1.0] # 顽固度阈值 (保留占位)
-faar_tau_delta_list = [0.1] # 群体偏差阈值 (保留占位)
-faar_reset_periods = [20]
+faar_tau_list = [0.1]       # 温度系数 (对应 args.faar_tau)
+faar_warmups = [20]         # 预热轮数 (对应 args.faar_warmup)
+faar_reset_periods = [10]   # 重置周期 (对应 args.faar_reset_period)
 # ======================
 
 
@@ -178,10 +179,14 @@ variable_combinations = list(itertools.product(
     datasets, algorithms, lrs, epochs, models, 
     data_betas, fp_convs, fp_fcs, resets, 
     num_users, frac, weight_decays,
-    # === FAAR ===
-    faar_tau_s_list, faar_tau_delta_list, faar_reset_periods,
+    
+    # === FAAR 新参数 (这里改了！) ===
+    faar_tau_list,      # 对应 faar_tau
+    faar_warmups,       # 对应 faar_warmup
+    faar_reset_periods, # 对应 faar_reset_period
 
-    local_bs_list  # <--- 加在这里！注意逗号
+    local_bs_list,      # Batch Size
+    num_workers_list    # Worker 数量
 ))
 
 # Dynamically generate fixed_params
@@ -233,33 +238,19 @@ class GPUManager:
         return min(gpu_loads.items(), key=lambda x: x[1])[0] if gpu_loads else None
 
 def run_training(params, gpu_id, iid, noniid_case):
-    """
-    启动训练任务
-    """
-    
-    # 1. 解包参数 (顺序必须与 variable_combinations 一致)
     (
-        dataset,            # 0
-        algorithm,          # 1
-        lr,                 # 2
-        epoch,              # 3
-        model,              # 4
-        data_beta,          # 5
-        fp_conv,            # 6
-        fp_fc,              # 7
-        reset,              # 8
-        num_user,           # 9
-        frac_val,           # 10
-        weight_decay,       # 11
-        # === FAAR Params ===
-        faar_tau_s,         # 12
-        faar_tau_delta,     # 13
-        faar_period,        # 14
-        
-        local_bs            # 15 <--- Batch Size
+        dataset, algorithm, lr, epoch, model, data_beta, 
+        fp_conv, fp_fc, reset, num_user, frac_val, weight_decay,
+        faar_tau, faar_warmup, faar_period, 
+        local_bs, num_workers
     ) = params
 
     num_classes = dataset_classes[dataset]
+
+    # [新增] 强制设置环境变量，确保物理隔离
+    # 这样即使 main_fed.py 默认用 cuda:0，它实际上用的也是我们分配的 gpu_id
+    env = os.environ.copy()
+    env["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
     
     # 2. 构造命令
     cmd_list = [
@@ -273,7 +264,11 @@ def run_training(params, gpu_id, iid, noniid_case):
         '--noniid_case', str(noniid_case),
         '--data_beta', str(data_beta),
         '--generate_data', '1',
-        '--gpu', str(gpu_id),
+        
+        # [修改] 欺骗子进程，告诉它用 0 号卡
+        # 因为我们已经用 env 隔离了显卡，子进程看到的 0 号卡就是物理上的 gpu_id
+        '--gpu', '0', 
+        
         '--num_classes', str(num_classes),
         '--FP_conv', str(fp_conv),
         '--FP_fc', str(fp_fc),
@@ -283,35 +278,47 @@ def run_training(params, gpu_id, iid, noniid_case):
         '--weight_decay', str(weight_decay),
 
         # === 核心优化参数 ===
-        '--local_bs', str(local_bs),   # 您的 256
-        '--num_workers', '4',         # <--- 【必须加上这句！】强制使用多线程读图
+        '--local_bs', str(local_bs),
+        '--num_workers', str(num_workers),
+        '--use_wandb',           # <--- [FIX] 开启 WandB
+        '--wandb_project', 'FedFairness_CelebA', 
         
         # === FAAR 参数 ===
-        '--faar_tau_s', str(faar_tau_s),
-        '--faar_tau_delta', str(faar_tau_delta),
-        '--faar_reset_period', str(faar_period)
+        '--reset', str(reset),
+        '--faar_tau', str(faar_tau),
+        '--faar_warmup', str(faar_warmup),
+        '--faar_reset_period', str(faar_period),
+
+        # === 【核心修改：指定新名字】 ===
+        '--suffix', '_PhoenixStart', 
+
+        # ==========================================
+        # ★★★ 核心：断点续训参数 ★★★
+        # ==========================================
+        '--resume',             
+        '--start_epoch', '21',  # <--- [FIX] 必须是 21！才能读到 model_round_20.pth
     ]
     
     full_cmd_str = " ".join(cmd_list)
     
-    # 日志配置
+    # 日志文件
     timestamp = time.strftime("%Y%m%d-%H%M%S")
     log_dir = "logs"
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
     
-    run_info = f"{algorithm}_{dataset}"
+    run_info = f"{algorithm}{'_PhoenixStart'}_{dataset}"
     log_file = os.path.join(log_dir, f"{run_info}_gpu{gpu_id}_{timestamp}.log")
 
-    # Shell 重定向
     shell_cmd = f"{full_cmd_str} > {log_file} 2>&1"
 
-    print(f"🚀 Starting task on GPU {gpu_id}")
-    print(f"   Params: Alg={algorithm}, BS={local_bs}") # 打印 BS 确认
+    print(f"🚀 Starting task on GPU {gpu_id} (Physical ID)")
+    print(f"   Params: Alg={algorithm}, Suffix=_PhoenixStart, Resume=True, Start=21")
     print(f"   Logs -> {log_file}")
     
     try:
-        process = subprocess.Popen(shell_cmd, shell=True, executable='/bin/bash', preexec_fn=os.setsid)
+        # [修改] 传入 env 参数
+        process = subprocess.Popen(shell_cmd, shell=True, executable='/bin/bash', preexec_fn=os.setsid, env=env)
         return process
     except Exception as e:
         print(f"❌ Failed to start process: {e}")

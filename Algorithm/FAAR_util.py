@@ -1,155 +1,199 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import numpy as np
-import scipy.stats
+from scipy.stats import wasserstein_distance
 import copy
 
-def get_target_layers(model):
-    """获取所有卷积层和全连接层"""
-    layers = []
-    for name, module in model.named_modules():
-        if isinstance(module, (nn.Conv2d, nn.Linear)):
-            layers.append((name, module))
-    return layers
+# =============================================================================
+# 1. 诊断模块：提取分布 & 计算 Bias
+# =============================================================================
 
-def _get_wasserstein_distance(dist1, dist2):
+def extract_activation_distributions(model, probe_loader, sensitive_attr_idx=1, device='cuda'):
     """
-    计算两个一维分布的 Wasserstein 距离 (Earth Mover's Distance)
-    """
-    if len(dist1) == 0 or len(dist2) == 0:
-        return 0.0
-    return scipy.stats.wasserstein_distance(dist1, dist2)
-
-def extract_activation_distributions(model, data_loader, sensitive_attr_idx, device, max_samples=200):
-    """
-    提取模型在给定数据集上，针对敏感属性（如男/女）的神经元激活分布。
+    运行探针数据，提取每一层、每一个卷积核对 Male/Female 的激活分布。
     """
     model.eval()
-    activations = {} 
-    handles = []
+    activations = {}
+    
+    # 自动寻找卷积层
+    target_layers = []
+    for name, module in model.named_modules():
+        if isinstance(module, nn.Conv2d):
+            target_layers.append((name, module))
 
-    # 1. Register Hooks
+    # Hook 函数：截获中间输出
     def get_hook(name):
         def hook(model, input, output):
-            # output shape: [Batch, Neurons, H, W] for Conv, [Batch, Neurons] for Linear
-            if output.dim() == 4:
-                # Global Average Pooling 
-                act = output.mean(dim=[2, 3]) 
-            else:
-                act = output
-            
+            # Global Average Pooling: [B, C, H, W] -> [B, C]
+            avg_act = output.mean(dim=[2, 3]).detach().cpu()
             if name not in activations:
-                activations[name] = act.detach().cpu()
-            else:
-                activations[name] = torch.cat([activations[name], act.detach().cpu()], dim=0)
+                activations[name] = {'raw': []}
+            activations[name]['raw'].append(avg_act)
         return hook
 
-    target_layers = get_target_layers(model)
-    for name, layer in target_layers:
-        handles.append(layer.register_forward_hook(get_hook(name)))
+    # 注册 Hooks
+    hooks = [m.register_forward_hook(get_hook(n)) for n, m in target_layers]
 
-    # 2. Forward Pass
-    collected_samples = 0
-    sensitive_labels = [] 
-    
+    # 运行探针
+    sensitive_labels = []
     with torch.no_grad():
-        for batch_idx, (imgs, labels) in enumerate(data_loader):
-            if collected_samples >= max_samples: break
-            
+        for imgs, labels in probe_loader:
             imgs = imgs.to(device)
-            model(imgs)
-            
-            # 处理标签，提取敏感属性
-            # 假设 labels 已经是处理好的 Tensor，或者是 tuple
-            if isinstance(labels, list):
-                sens = labels  # 简化处理
-            elif isinstance(labels, torch.Tensor):
-                # 如果是二维 [Batch, 2]，取第二列
-                if labels.dim() > 1 and labels.size(1) > sensitive_attr_idx:
-                    sens = labels[:, sensitive_attr_idx]
-                else:
-                    sens = labels # 兜底
+            # 兼容 CelebA 格式
+            if labels.dim() > 1:
+                s_targets = labels[:, sensitive_attr_idx].cpu()
             else:
-                sens = labels
-                
-            sensitive_labels.extend(sens.cpu().numpy().tolist())
-            collected_samples += imgs.size(0)
+                s_targets = torch.zeros_like(labels).cpu()
+            sensitive_labels.append(s_targets)
+            _ = model(imgs)
 
-    # 3. Clean Hooks
-    for h in handles: h.remove()
-
-    # 4. Organize Data by Neuron and Group
-    distributions = {}
-    sensitive_labels = np.array(sensitive_labels)
+    # 移除 Hooks
+    for h in hooks: h.remove()
     
-    for name, acts in activations.items():
-        n_neurons = acts.shape[1]
-        distributions[name] = {}
+    # 整理数据
+    all_sensitive = torch.cat(sensitive_labels)
+    mask_male = (all_sensitive == 1)
+    mask_female = (all_sensitive == 0)
+    
+    results = {}
+    
+    for layer_name, data in activations.items():
+        full_act = torch.cat(data['raw'], dim=0)
         
-        group0_mask = (sensitive_labels == 0)
-        group1_mask = (sensitive_labels == 1)
-        
-        act_np = acts.numpy()
-        
-        for i in range(n_neurons):
-            distributions[name][i] = {
-                '0': act_np[group0_mask, i], 
-                '1': act_np[group1_mask, i]  
-            }
+        # 安全检查：防止某类样本为0
+        if mask_male.sum() == 0 or mask_female.sum() == 0:
+            continue
             
-    return distributions
-
-def apply_faar_distribution_reset(model, distributions, reset_ratio=0.05, logger=None):
-    """
-    FedFAAR 核心逻辑：基于 Wasserstein 距离的 Reset
-    """
-    bias_scores = [] 
-    
-    # 1. 计算 Bias Score
-    for layer_name, neurons in distributions.items():
-        for neuron_idx, groups in neurons.items():
-            dist0 = groups['0']
-            dist1 = groups['1']
-            score = _get_wasserstein_distance(dist0, dist1)
-            bias_scores.append((layer_name, neuron_idx, score))
-            
-    # 2. 排序并确定 Reset 阈值
-    bias_scores.sort(key=lambda x: x[2], reverse=True)
-    
-    total_neurons = len(bias_scores)
-    num_reset = int(total_neurons * reset_ratio)
-    
-    # 选出 Top-K 偏见神经元
-    targets_to_reset = bias_scores[:num_reset]
-    
-    # 3. 执行 Reset
-    reset_stats = {} 
-    layer_indices = {}
-    for lname, nidx, score in targets_to_reset:
-        if lname not in layer_indices: layer_indices[lname] = []
-        layer_indices[lname].append(nidx)
+        act_male = full_act[mask_male].numpy()
+        act_female = full_act[mask_female].numpy()
         
+        num_channels = full_act.shape[1]
+        results[layer_name] = []
+        for c in range(num_channels):
+            # 存储每个 Channel 的分布数据
+            results[layer_name].append({
+                'male': act_male[:, c],
+                'female': act_female[:, c]
+            })
+            
+    return results
+
+
+def calculate_reset_probs_softmax(dists, tau=0.1):
+    """
+    【你的创新点】Soft-Hard Guided Reset
+    输入：激活分布差异
+    输出：每一层每个卷积核的重置概率 P = Softmax(Bias / tau)
+    """
+    layer_probs = {}
+    
+    for layer_name, channels in dists.items():
+        scores = []
+        # 计算每个 Channel 的 Wasserstein 距离
+        for c_data in channels:
+            m_dist = c_data['male']
+            f_dist = c_data['female']
+            if len(m_dist) < 2 or len(f_dist) < 2:
+                score = 0.0
+            else:
+                score = wasserstein_distance(m_dist, f_dist)
+            scores.append(score)
+        
+        scores = np.array(scores)
+        
+        # Softmax 计算
+        # 1. 归一化 Score (防止数值不稳定)
+        if scores.max() > 0:
+            scores_norm = scores / (scores.max() + 1e-6)
+        else:
+            scores_norm = scores
+            
+        # 2. 计算概率：Bias 越大，P 越大
+        logits = torch.tensor(scores_norm / tau)
+        probs = F.softmax(logits, dim=0).numpy()
+        
+        layer_probs[layer_name] = {
+            'scores': scores,
+            'probs': probs
+        }
+        
+    return layer_probs
+
+# =============================================================================
+# 2. 干预模块：层级衰减 & 重置
+# =============================================================================
+
+def get_layer_decay_ratio(layer_name, base_ratio):
+    """
+    【复刻 FedPhoenix】层级衰减机制 (Layer-wise Decay)
+    浅层 (Layer1) 重置力度大，深层 (Layer4) 保护起来。
+    """
+    # 简单的层深判断逻辑 (适配 ResNet18)
+    if 'conv1' in layer_name or 'layer1' in layer_name:
+        factor = 1.0  # 100% 力度
+    elif 'layer2' in layer_name:
+        factor = 0.8  # 80% 力度
+    elif 'layer3' in layer_name:
+        factor = 0.5  # 50% 力度
+    elif 'layer4' in layer_name:
+        factor = 0.1  # 10% 力度 (深层几乎不重置)
+    else:
+        factor = 0.1
+        
+    real_ratio = base_ratio * factor
+    return real_ratio
+
+def apply_faar_reset(model, dists, args, logger=None):
+    """
+    主入口函数：执行 FAAR 干预
+    参数：
+      model: 全局模型
+      dists: 提取出的分布数据
+      args: 包含 args.reset (基础比例) 和 args.faar_tau (温度)
+    """
+    # 1. 计算 Softmax 概率
+    layer_probs = calculate_reset_probs_softmax(dists, tau=args.faar_tau)
+    
+    total_reset = 0
+    stats = {} # 用于保存统计信息
+    
     for name, module in model.named_modules():
-        if name in layer_indices:
-            indices = layer_indices[name]
-            w = module.weight.data
-            mean = w.mean().item()
-            std = w.std().item()
+        if name in layer_probs and isinstance(module, nn.Conv2d):
+            probs = layer_probs[name]['probs']
+            scores = layer_probs[name]['scores']
+            num_filters = len(probs)
             
-            for idx in indices:
-                # 使用 Phoenix 风格的高斯重置
-                if isinstance(module, nn.Conv2d):
-                    new_kernel = torch.randn_like(w[idx]) * std + mean
-                    module.weight.data[idx] = new_kernel
-                elif isinstance(module, nn.Linear):
-                    new_neuron = torch.randn_like(w[idx]) * std + mean
-                    module.weight.data[idx] = new_neuron
+            # 2. 【复刻 FedPhoenix】获取当前层的衰减比例
+            current_ratio = get_layer_decay_ratio(name, args.reset)
             
-            reset_stats[name] = len(indices)
-
-    if logger:
-        top_bias = bias_scores[0][2] if bias_scores else 0
-        avg_bias = np.mean([x[2] for x in bias_scores]) if bias_scores else 0
-        print(f"[FAAR] Max Wasserstein: {top_bias:.4f}, Avg: {avg_bias:.4f}, Reset: {num_reset}")
-        
-    return reset_stats
+            # 计算需要重置的数量 K
+            k = int(num_filters * current_ratio)
+            
+            if k > 0:
+                # 3. 【Soft 采样】根据 Bias 概率选择 K 个倒霉蛋
+                reset_indices = np.random.choice(
+                    np.arange(num_filters), 
+                    size=k, 
+                    replace=False, 
+                    p=probs
+                )
+                
+                # 4. 执行 Kaiming 初始化重置
+                with torch.no_grad():
+                    for idx in reset_indices:
+                        nn.init.kaiming_uniform_(module.weight[idx].unsqueeze(0), a=np.sqrt(5))
+                        if module.bias is not None:
+                            module.bias[idx].fill_(0)
+                
+                total_reset += k
+                stats[name] = {
+                    'count': k,
+                    'max_bias': float(scores.max()),
+                    'indices': reset_indices.tolist()
+                }
+            else:
+                stats[name] = {'count': 0}
+                
+    print(f"   [FAAR] Reset Completed. Total Filters Reset: {total_reset}")
+    return stats

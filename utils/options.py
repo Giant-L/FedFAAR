@@ -78,14 +78,19 @@ def args_parser():
     parser.add_argument("--remethod", type=str, default='ori_normal',help='Convolution kernel sampling method')
 
     # ============================================================
-    # 6. FAAR 相关参数 (新增)
+    # 6. FAAR 相关参数 (FedFAAR 2.0 - Softmax & Layer-Decay)
     # ============================================================
-    parser.add_argument('--faar_mode', type=str, default='v42', help="FAAR mode: v40, v41, v42")
-    parser.add_argument('--faar_reset_period', type=int, default=20, help="Reset period for FAAR")
-    # 为了兼容 AutoRun 的传参，保留这两个参数定义
-    parser.add_argument('--faar_tau_s', type=float, default=1.0, help="[Legacy] FAAR tau s")
-    parser.add_argument('--faar_tau_delta', type=float, default=0.1, help="[Legacy] FAAR tau delta")
-
+    # 诊断周期：每多少轮做一次“手术”
+    parser.add_argument('--faar_reset_period', type=int, default=20, help="Frequency of FAAR diagnosis and reset")
+    
+    # Softmax 温度系数：越小越接近 Top-K，越大越随机 (建议 0.1 - 0.5)
+    parser.add_argument('--faar_tau', type=float, default=0.1, help="Softmax temperature (lower=harder selection, higher=softer)")
+    
+    # 预热轮数：前多少轮不干预，让模型先学一学
+    parser.add_argument('--faar_warmup', type=int, default=20, help="Warmup rounds before first intervention")
+    
+    # 注意：Base Reset Ratio (基础重置比例) 复用现有的 --reset 参数
+    # parser.add_argument('--reset', ...)  <-- 确认 options.py 前面有这个参数即可
     # ============================================================
     # 7. Wandb 参数 (新增)
     # ============================================================
@@ -93,5 +98,13 @@ def args_parser():
     parser.add_argument('--wandb_project', type=str, default='FedFAAR_Project', help='wandb project name')
     parser.add_argument('--wandb_run_name', type=str, default=None, help='wandb run name')
 
+    # ============================================================
+    # 8. Resume Training (Missing part fixed here!)
+    # ============================================================
+    parser.add_argument('--resume', action='store_true', help="Resume training from checkpoint")
+    parser.add_argument('--start_epoch', type=int, default=0, help="Start epoch for resuming (e.g., 41)")
+
+    parser.add_argument('--suffix', type=str, default='', help="Suffix for save directory (e.g. '_v2')")
+    
     args = parser.parse_args()
     return args

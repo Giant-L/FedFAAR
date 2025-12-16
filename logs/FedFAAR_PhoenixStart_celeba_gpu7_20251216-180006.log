@@ -1,0 +1,150 @@
+=== Loading CelebA (Binary .pt Mode) ===
+ -> [Fast Loader] 正在从 ./data/celeba/celeba_fast.pt 加载数据...
+✅ 加载完成！耗时: 1.36 秒
+ -> [train] 分配图片: 162770 张
+ -> [test] 分配图片: 19962 张
+18:00:14 Model initialized: resnet18 (Classes: 2)
+wandb: Currently logged in as: 1553122091 (1553122091-a) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: creating run
+wandb: Tracking run with wandb version 0.19.11
+wandb: Run data is saved locally in /home/ubuntu/ljy/AAAFAAR/wandb/run-20251216_180016-1y0g11dq
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run FedFAAR_celeba_Beta0.3
+wandb: ⭐️ View project at https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: 🚀 View run at https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/1y0g11dq
+🚀 Wandb 初始化成功！Run: FedFAAR_celeba_Beta0.3
+wandb: WARNING The get_url method is deprecated and will be removed in a future release. Please use `run.url` instead.
+🔗 链接: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/1y0g11dq
+18:00:18 🔄 Resuming training from Round 21 (Loading: ./save/FedFAAR_PhoenixStart_celeba_Beta0.3/model_round_20.pth)...
+18:00:18 ✅ Checkpoint loaded successfully!
+18:00:18 🔥 开始训练: FedFAAR | Rounds: 21 -> 100
+18:00:18 === Round  21 ===
+18:01:26 [TEST] Acc: 90.59% | Loss: 0.3169 | Gap: 2.77% (F:91.66 vs M:88.89)
+18:01:26 === Round  22 ===
+18:02:31 [TEST] Acc: 90.38% | Loss: 0.3110 | Gap: 2.99% (F:91.53 vs M:88.54)
+18:02:31 === Round  23 ===
+18:03:38 [TEST] Acc: 90.89% | Loss: 0.2975 | Gap: 2.87% (F:92.00 vs M:89.13)
+18:03:38 === Round  24 ===
+18:04:45 [TEST] Acc: 91.13% | Loss: 0.2992 | Gap: 2.22% (F:91.99 vs M:89.77)
+18:04:45 === Round  25 ===
+18:05:51 [TEST] Acc: 90.98% | Loss: 0.2980 | Gap: 2.49% (F:91.94 vs M:89.45)
+18:05:51 === Round  26 ===
+18:06:59 [TEST] Acc: 91.15% | Loss: 0.2988 | Gap: 2.77% (F:92.22 vs M:89.45)
+18:06:59 === Round  27 ===
+18:08:06 [TEST] Acc: 91.19% | Loss: 0.2954 | Gap: 2.94% (F:92.32 vs M:89.38)
+18:08:06 === Round  28 ===
+18:09:14 [TEST] Acc: 91.20% | Loss: 0.2911 | Gap: 2.83% (F:92.29 vs M:89.46)
+18:09:14 === Round  29 ===
+18:10:20 [TEST] Acc: 91.27% | Loss: 0.2959 | Gap: 2.49% (F:92.23 vs M:89.75)
+18:10:20 === Round  30 ===
+18:11:23 [FAAR] Diagnosing Bias (Round 30)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+18:11:30 [TEST] Acc: 78.63% | Loss: 0.5921 | Gap: 1.81% (F:77.93 vs M:79.74)
+18:11:30 === Round  31 ===
+18:12:36 [TEST] Acc: 91.25% | Loss: 0.2795 | Gap: 2.32% (F:92.15 vs M:89.83)
+18:12:36 === Round  32 ===
+18:13:42 [TEST] Acc: 91.09% | Loss: 0.2921 | Gap: 2.60% (F:92.10 vs M:89.50)
+18:13:42 === Round  33 ===
+18:14:51 [TEST] Acc: 91.07% | Loss: 0.2980 | Gap: 2.41% (F:92.01 vs M:89.59)
+18:14:51 === Round  34 ===
+18:15:59 [TEST] Acc: 91.59% | Loss: 0.2933 | Gap: 2.44% (F:92.54 vs M:90.10)
+18:15:59 === Round  35 ===
+18:17:06 [TEST] Acc: 91.25% | Loss: 0.3049 | Gap: 2.52% (F:92.23 vs M:89.71)
+18:17:06 === Round  36 ===
+18:18:13 [TEST] Acc: 90.67% | Loss: 0.3228 | Gap: 2.71% (F:91.72 vs M:89.01)
+18:18:13 === Round  37 ===
+18:19:21 [TEST] Acc: 91.08% | Loss: 0.3096 | Gap: 2.75% (F:92.15 vs M:89.40)
+18:19:21 === Round  38 ===
+18:20:28 [TEST] Acc: 91.31% | Loss: 0.2981 | Gap: 2.47% (F:92.27 vs M:89.80)
+18:20:28 === Round  39 ===
+18:21:36 [TEST] Acc: 90.89% | Loss: 0.3169 | Gap: 2.48% (F:91.85 vs M:89.37)
+18:21:36 === Round  40 ===
+18:22:37 [FAAR] Diagnosing Bias (Round 40)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+18:22:42 [TEST] Acc: 91.22% | Loss: 0.2242 | Gap: 2.25% (F:92.09 vs M:89.84)
+18:22:43 === Round  41 ===
+18:23:49 [TEST] Acc: 91.40% | Loss: 0.2809 | Gap: 2.46% (F:92.35 vs M:89.89)
+18:23:49 === Round  42 ===
+18:24:57 [TEST] Acc: 91.46% | Loss: 0.2864 | Gap: 2.27% (F:92.34 vs M:90.07)
+18:24:57 === Round  43 ===
+18:26:03 [TEST] Acc: 91.44% | Loss: 0.2965 | Gap: 2.51% (F:92.41 vs M:89.90)
+18:26:03 === Round  44 ===
+18:27:12 [TEST] Acc: 91.22% | Loss: 0.3101 | Gap: 2.38% (F:92.15 vs M:89.76)
+18:27:12 === Round  45 ===
+18:28:18 [TEST] Acc: 91.49% | Loss: 0.3000 | Gap: 2.38% (F:92.41 vs M:90.03)
+18:28:18 === Round  46 ===
+18:29:24 [TEST] Acc: 91.39% | Loss: 0.2973 | Gap: 2.37% (F:92.31 vs M:89.94)
+18:29:24 === Round  47 ===
+18:30:31 [TEST] Acc: 91.28% | Loss: 0.3108 | Gap: 2.20% (F:92.13 vs M:89.93)
+18:30:31 === Round  48 ===
+18:31:40 [TEST] Acc: 91.65% | Loss: 0.3021 | Gap: 2.34% (F:92.55 vs M:90.21)
+18:31:40 === Round  49 ===
+18:32:47 [TEST] Acc: 91.41% | Loss: 0.3085 | Gap: 2.20% (F:92.26 vs M:90.06)
+18:32:47 === Round  50 ===
+18:33:51 [FAAR] Diagnosing Bias (Round 50)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+18:33:56 [TEST] Acc: 87.69% | Loss: 0.3226 | Gap: 0.47% (F:87.87 vs M:87.40)
+18:33:56 === Round  51 ===
+18:35:00 [TEST] Acc: 91.34% | Loss: 0.2906 | Gap: 2.22% (F:92.20 vs M:89.98)
+18:35:00 === Round  52 ===
+18:35:57 [TEST] Acc: 91.55% | Loss: 0.2967 | Gap: 2.13% (F:92.37 vs M:90.24)
+18:35:57 === Round  53 ===
+18:36:54 [TEST] Acc: 91.62% | Loss: 0.3050 | Gap: 2.14% (F:92.45 vs M:90.30)
+18:36:54 === Round  54 ===
+18:37:52 [TEST] Acc: 91.74% | Loss: 0.2765 | Gap: 2.04% (F:92.53 vs M:90.49)
+18:37:52 === Round  55 ===
+18:38:49 [TEST] Acc: 91.47% | Loss: 0.3094 | Gap: 2.03% (F:92.26 vs M:90.23)
+18:38:49 === Round  56 ===
+18:39:45 [TEST] Acc: 91.96% | Loss: 0.2706 | Gap: 2.30% (F:92.85 vs M:90.55)
+18:39:45 === Round  57 ===
+18:40:42 [TEST] Acc: 90.94% | Loss: 0.3421 | Gap: 2.74% (F:92.00 vs M:89.25)
+18:40:42 === Round  58 ===
+18:41:39 [TEST] Acc: 90.99% | Loss: 0.3401 | Gap: 2.64% (F:92.01 vs M:89.37)
+18:41:39 === Round  59 ===
+18:42:36 [TEST] Acc: 91.39% | Loss: 0.3150 | Gap: 2.17% (F:92.23 vs M:90.06)
+18:42:36 === Round  60 ===
+18:43:30 [FAAR] Diagnosing Bias (Round 60)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+18:43:34 [TEST] Acc: 84.25% | Loss: 0.5554 | Gap: 0.53% (F:84.45 vs M:83.93)
+18:43:34 === Round  61 ===
+18:44:31 [TEST] Acc: 91.66% | Loss: 0.2863 | Gap: 2.23% (F:92.52 vs M:90.29)
+18:44:31 === Round  62 ===
+18:45:29 [TEST] Acc: 91.24% | Loss: 0.3080 | Gap: 1.82% (F:91.94 vs M:90.12)
+18:45:29 === Round  63 ===
+18:46:26 [TEST] Acc: 91.57% | Loss: 0.2850 | Gap: 1.98% (F:92.33 vs M:90.36)
+18:46:26 === Round  64 ===
+18:47:23 [TEST] Acc: 91.50% | Loss: 0.3047 | Gap: 2.12% (F:92.32 vs M:90.20)
+18:47:23 === Round  65 ===
+18:48:19 [TEST] Acc: 91.82% | Loss: 0.2917 | Gap: 1.99% (F:92.59 vs M:90.60)
+18:48:19 === Round  66 ===
+18:49:16 [TEST] Acc: 91.42% | Loss: 0.3257 | Gap: 2.32% (F:92.32 vs M:89.99)
+18:49:16 === Round  67 ===
+18:50:13 [TEST] Acc: 91.42% | Loss: 0.3059 | Gap: 2.18% (F:92.27 vs M:90.08)
+18:50:13 === Round  68 ===
+18:51:11 [TEST] Acc: 91.54% | Loss: 0.3080 | Gap: 1.82% (F:92.24 vs M:90.42)
+18:51:11 === Round  69 ===
+18:52:07 [TEST] Acc: 91.44% | Loss: 0.3137 | Gap: 2.12% (F:92.26 vs M:90.14)
+18:52:07 === Round  70 ===
+18:53:02 [FAAR] Diagnosing Bias (Round 70)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+18:53:06 [TEST] Acc: 86.96% | Loss: 0.4160 | Gap: 1.94% (F:87.71 vs M:85.77)
+18:53:06 === Round  71 ===
+18:54:03 [TEST] Acc: 91.86% | Loss: 0.2646 | Gap: 2.04% (F:92.65 vs M:90.62)
+18:54:03 === Round  72 ===
+18:55:01 [TEST] Acc: 91.18% | Loss: 0.3057 | Gap: 2.09% (F:91.99 vs M:89.90)
+18:55:01 === Round  73 ===
+18:55:59 [TEST] Acc: 91.28% | Loss: 0.3246 | Gap: 2.55% (F:92.27 vs M:89.72)
+18:55:59 === Round  74 ===
+18:56:57 [TEST] Acc: 91.77% | Loss: 0.2860 | Gap: 1.86% (F:92.49 vs M:90.63)
+18:56:57 === Round  75 ===
+18:57:54 [TEST] Acc: 91.47% | Loss: 0.3354 | Gap: 2.29% (F:92.36 vs M:90.07)
+18:57:54 === Round  76 ===
+18:58:53 [TEST] Acc: 91.29% | Loss: 0.3230 | Gap: 1.87% (F:92.01 vs M:90.15)
+18:58:53 === Round  77 ===
+18:59:50 [TEST] Acc: 91.56% | Loss: 0.3148 | Gap: 2.07% (F:92.36 vs M:90.29)
+18:59:50 === Round  78 ===
+19:00:48 [TEST] Acc: 91.28% | Loss: 0.3122 | Gap: 2.33% (F:92.18 vs M:89.85)
+19:00:48 === Round  79 ===
+19:01:46 [TEST] Acc: 91.15% | Loss: 0.3318 | Gap: 2.49% (F:92.11 vs M:89.62)
+19:01:46 === Round  80 ===

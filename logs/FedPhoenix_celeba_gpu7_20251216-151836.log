@@ -1,0 +1,120 @@
+=== Loading CelebA (Binary .pt Mode) ===
+ -> [Fast Loader] 正在从 ./data/celeba/celeba_fast.pt 加载数据...
+✅ 加载完成！耗时: 1.61 秒
+ -> [train] 分配图片: 162770 张
+ -> [test] 分配图片: 19962 张
+15:18:44 Model initialized: resnet18 (Classes: 2)
+wandb: Currently logged in as: 1553122091 (1553122091-a) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: creating run
+wandb: Tracking run with wandb version 0.19.11
+wandb: Run data is saved locally in /home/ubuntu/ljy/AAAFAAR/wandb/run-20251216_151845-glqsu7dq
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run FedPhoenix_celeba_Beta0.3
+wandb: ⭐️ View project at https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: 🚀 View run at https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/glqsu7dq
+🚀 Wandb 初始化成功！Run: FedPhoenix_celeba_Beta0.3
+wandb: WARNING The get_url method is deprecated and will be removed in a future release. Please use `run.url` instead.
+🔗 链接: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/glqsu7dq
+15:18:47 🔥 开始训练: FedPhoenix | Epochs: 100 | Clients: 100
+15:18:47 === Round   0 ===
+15:20:36 [TEST] Acc: 50.62% | Gap: 15.44% (F:44.65 vs M:60.09)
+15:20:37 [SAVE] Extracting & Saving distributions...
+15:20:37 === Round   1 ===
+15:22:19 === Round   2 ===
+15:24:02 === Round   3 ===
+15:25:50 === Round   4 ===
+15:27:38 === Round   5 ===
+15:29:38 [TEST] Acc: 86.88% | Gap: 3.18% (F:88.10 vs M:84.93)
+15:29:38 === Round   6 ===
+15:31:28 === Round   7 ===
+15:33:18 === Round   8 ===
+15:35:07 === Round   9 ===
+15:36:56 === Round  10 ===
+15:38:55 [TEST] Acc: 89.19% | Gap: 2.71% (F:90.24 vs M:87.53)
+15:38:55 === Round  11 ===
+15:40:45 === Round  12 ===
+15:42:36 === Round  13 ===
+15:44:25 === Round  14 ===
+15:46:16 === Round  15 ===
+15:48:14 [TEST] Acc: 89.99% | Gap: 2.28% (F:90.87 vs M:88.59)
+15:48:14 === Round  16 ===
+15:50:03 === Round  17 ===
+15:51:52 === Round  18 ===
+15:53:44 === Round  19 ===
+15:55:33 === Round  20 ===
+15:57:31 [TEST] Acc: 90.76% | Gap: 2.52% (F:91.74 vs M:89.22)
+15:57:31 [SAVE] Extracting & Saving distributions...
+15:57:32 === Round  21 ===
+15:59:21 === Round  22 ===
+16:01:11 === Round  23 ===
+16:03:00 === Round  24 ===
+16:05:22 === Round  25 ===
+16:08:01 [TEST] Acc: 90.87% | Gap: 2.55% (F:91.86 vs M:89.31)
+16:08:01 === Round  26 ===
+16:10:29 === Round  27 ===
+16:12:53 === Round  28 ===
+16:15:15 === Round  29 ===
+16:17:39 === Round  30 ===
+16:20:14 [TEST] Acc: 91.18% | Gap: 2.49% (F:92.15 vs M:89.66)
+16:20:14 === Round  31 ===
+16:22:40 === Round  32 ===
+16:25:07 === Round  33 ===
+16:27:30 === Round  34 ===
+16:29:54 === Round  35 ===
+16:32:25 [TEST] Acc: 91.50% | Gap: 2.29% (F:92.39 vs M:90.10)
+16:32:25 === Round  36 ===
+16:34:52 === Round  37 ===
+16:37:20 === Round  38 ===
+16:39:48 === Round  39 ===
+16:42:16 === Round  40 ===
+16:44:49 [TEST] Acc: 90.95% | Gap: 2.59% (F:91.95 vs M:89.36)
+16:44:49 [SAVE] Extracting & Saving distributions...
+16:44:50 === Round  41 ===
+16:47:24 === Round  42 ===
+16:49:49 === Round  43 ===
+16:52:08 === Round  44 ===
+16:55:06 === Round  45 ===
+16:58:38 [TEST] Acc: 91.37% | Gap: 2.12% (F:92.19 vs M:90.07)
+16:58:38 === Round  46 ===
+17:01:41 === Round  47 ===
+17:04:46 === Round  48 ===
+17:07:49 === Round  49 ===
+17:10:57 === Round  50 ===
+17:14:28 [TEST] Acc: 91.23% | Gap: 1.95% (F:91.98 vs M:90.03)
+17:14:28 === Round  51 ===
+17:17:21 === Round  52 ===
+17:19:51 === Round  53 ===
+17:22:42 === Round  54 ===
+17:25:46 === Round  55 ===
+17:29:08 [TEST] Acc: 91.64% | Gap: 2.37% (F:92.56 vs M:90.19)
+17:29:08 === Round  56 ===
+17:32:11 === Round  57 ===
+17:35:01 === Round  58 ===
+17:37:57 === Round  59 ===
+17:41:24 === Round  60 ===
+17:44:42 [TEST] Acc: 91.41% | Gap: 1.91% (F:92.15 vs M:90.24)
+17:44:43 [SAVE] Extracting & Saving distributions...
+17:44:43 === Round  61 ===
+17:47:39 === Round  62 ===
+17:50:29 === Round  63 ===
+17:53:42 === Round  64 ===
+17:57:47 === Round  65 ===
+18:02:22 [TEST] Acc: 91.54% | Gap: 1.97% (F:92.30 vs M:90.33)
+18:02:22 === Round  66 ===
+18:06:28 === Round  67 ===
+18:10:32 === Round  68 ===
+18:14:41 === Round  69 ===
+18:18:44 === Round  70 ===
+18:23:23 [TEST] Acc: 91.70% | Gap: 2.02% (F:92.48 vs M:90.46)
+18:23:23 === Round  71 ===
+18:27:32 === Round  72 ===
+18:31:39 === Round  73 ===
+18:35:39 === Round  74 ===
+18:39:22 === Round  75 ===
+18:43:40 [TEST] Acc: 91.44% | Gap: 2.10% (F:92.25 vs M:90.15)
+18:43:40 === Round  76 ===
+18:47:30 === Round  77 ===
+18:51:45 === Round  78 ===
+18:55:35 === Round  79 ===
+18:59:22 === Round  80 ===
