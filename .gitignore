@@ -1,0 +1,47 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.ipynb_checkpoints/
+
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===== Virtual envs =====
+.venv/
+venv/
+env/
+
+# ===== Experiment outputs / logs =====
+logs/
+save/
+wandb/
+runs/
+outputs/
+results/
+checkpoints/
+tmp/
+temp/
+
+# ===== Data (usually large / private) =====
+data/
+*.bin
+*.npz
+*.npy
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.pkl
+*.pickle
+
+# ===== Credentials / secrets =====
+.env
+*.key
+*.pem
