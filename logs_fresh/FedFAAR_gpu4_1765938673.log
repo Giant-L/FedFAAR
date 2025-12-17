@@ -688,3 +688,22 @@ wandb: WARNING The get_url method is deprecated and will be removed in a future 
 14:27:23    [FAAR] Soft-Reset Applied. 30 Filters neutralized.
 14:27:23 === Round 228 ===
 14:27:23    [Scheduler] Round 228: Dynamic Reset Ratio = 0.00678
+14:28:17 === Round 229 ===
+14:28:17    [Scheduler] Round 229: Dynamic Reset Ratio = 0.00660
+14:29:30 === Round 230 ===
+14:29:30    [Scheduler] Round 230: Dynamic Reset Ratio = 0.00642
+14:31:04 [TEST] Acc: 92.18% | Loss: 0.3500 | Gap: 1.73% (F:92.85 vs M:91.12)
+14:31:04 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_230.pth
+14:31:04 === Round 231 ===
+14:31:04    [Scheduler] Round 231: Dynamic Reset Ratio = 0.00625
+14:32:52 === Round 232 ===
+14:32:52    [Scheduler] Round 232: Dynamic Reset Ratio = 0.00608
+14:33:55 [FAAR] Diagnosing Bias (Wasserstein) Round 232...
+14:33:56    [FAAR] Identified 30 neurons (Ratio: 0.0061)
+14:33:56    [FAAR] Soft-Reset Applied. 30 Filters neutralized.
+14:33:56 === Round 233 ===
+14:33:56    [Scheduler] Round 233: Dynamic Reset Ratio = 0.00591
+14:35:40 === Round 234 ===
+14:35:40    [Scheduler] Round 234: Dynamic Reset Ratio = 0.00574
+14:37:20 === Round 235 ===
+14:37:20    [Scheduler] Round 235: Dynamic Reset Ratio = 0.00557

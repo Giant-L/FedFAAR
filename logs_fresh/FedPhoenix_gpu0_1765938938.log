@@ -576,3 +576,22 @@ wandb: WARNING The get_url method is deprecated and will be removed in a future 
 14:26:21    [Scheduler] Round 233: Dynamic Reset Ratio = 0.00591
 14:27:50 === Round 234 ===
 14:27:50    [Scheduler] Round 234: Dynamic Reset Ratio = 0.00574
+14:29:17 === Round 235 ===
+14:29:17    [Scheduler] Round 235: Dynamic Reset Ratio = 0.00557
+14:31:02 [TEST] Acc: 91.89% | Loss: 0.4001 | Gap: 1.93% (F:92.63 vs M:90.71)
+14:31:02 === Round 236 ===
+14:31:02    [Scheduler] Round 236: Dynamic Reset Ratio = 0.00541
+14:32:33 === Round 237 ===
+14:32:33    [Scheduler] Round 237: Dynamic Reset Ratio = 0.00525
+14:33:38 === Round 238 ===
+14:33:38    [Scheduler] Round 238: Dynamic Reset Ratio = 0.00509
+14:34:56 === Round 239 ===
+14:34:56    [Scheduler] Round 239: Dynamic Reset Ratio = 0.00493
+14:35:50 === Round 240 ===
+14:35:50    [Scheduler] Round 240: Dynamic Reset Ratio = 0.00477
+14:37:06 [TEST] Acc: 91.84% | Loss: 0.3686 | Gap: 2.12% (F:92.66 vs M:90.54)
+14:37:06 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_240.pth
+14:37:06 === Round 241 ===
+14:37:06    [Scheduler] Round 241: Dynamic Reset Ratio = 0.00462
+14:38:06 === Round 242 ===
+14:38:06    [Scheduler] Round 242: Dynamic Reset Ratio = 0.00447
