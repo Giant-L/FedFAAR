@@ -707,3 +707,117 @@ wandb: WARNING The get_url method is deprecated and will be removed in a future 
 14:35:40    [Scheduler] Round 234: Dynamic Reset Ratio = 0.00574
 14:37:20 === Round 235 ===
 14:37:20    [Scheduler] Round 235: Dynamic Reset Ratio = 0.00557
+14:39:22 [TEST] Acc: 92.07% | Loss: 0.3828 | Gap: 1.70% (F:92.73 vs M:91.03)
+14:39:22 === Round 236 ===
+14:39:22    [Scheduler] Round 236: Dynamic Reset Ratio = 0.00541
+14:41:11 === Round 237 ===
+14:41:11    [Scheduler] Round 237: Dynamic Reset Ratio = 0.00525
+14:42:26 [FAAR] Diagnosing Bias (Wasserstein) Round 237...
+14:42:27    [FAAR] Identified 25 neurons (Ratio: 0.0052)
+14:42:27    [FAAR] Soft-Reset Applied. 25 Filters neutralized.
+14:42:27 === Round 238 ===
+14:42:27    [Scheduler] Round 238: Dynamic Reset Ratio = 0.00509
+14:43:58 === Round 239 ===
+14:43:58    [Scheduler] Round 239: Dynamic Reset Ratio = 0.00493
+14:44:59 === Round 240 ===
+14:44:59    [Scheduler] Round 240: Dynamic Reset Ratio = 0.00477
+14:46:25 [TEST] Acc: 91.82% | Loss: 0.3646 | Gap: 1.84% (F:92.53 vs M:90.69)
+14:46:25 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_240.pth
+14:46:25 === Round 241 ===
+14:46:25    [Scheduler] Round 241: Dynamic Reset Ratio = 0.00462
+14:47:32 === Round 242 ===
+14:47:32    [Scheduler] Round 242: Dynamic Reset Ratio = 0.00447
+14:49:02 [FAAR] Diagnosing Bias (Wasserstein) Round 242...
+14:49:02    [FAAR] Identified 25 neurons (Ratio: 0.0045)
+14:49:02    [FAAR] Soft-Reset Applied. 25 Filters neutralized.
+14:49:02 === Round 243 ===
+14:49:02    [Scheduler] Round 243: Dynamic Reset Ratio = 0.00432
+14:50:21 === Round 244 ===
+14:50:21    [Scheduler] Round 244: Dynamic Reset Ratio = 0.00418
+14:51:22 === Round 245 ===
+14:51:22    [Scheduler] Round 245: Dynamic Reset Ratio = 0.00403
+14:52:58 [TEST] Acc: 91.94% | Loss: 0.4077 | Gap: 1.74% (F:92.61 vs M:90.87)
+14:52:58 === Round 246 ===
+14:52:58    [Scheduler] Round 246: Dynamic Reset Ratio = 0.00389
+14:54:15 === Round 247 ===
+14:54:15    [Scheduler] Round 247: Dynamic Reset Ratio = 0.00375
+14:55:33 [FAAR] Diagnosing Bias (Wasserstein) Round 247...
+14:55:34    [FAAR] Identified 20 neurons (Ratio: 0.0038)
+14:55:34    [FAAR] Soft-Reset Applied. 20 Filters neutralized.
+14:55:34 === Round 248 ===
+14:55:34    [Scheduler] Round 248: Dynamic Reset Ratio = 0.00362
+14:56:48 === Round 249 ===
+14:56:48    [Scheduler] Round 249: Dynamic Reset Ratio = 0.00348
+14:57:50 === Round 250 ===
+14:57:50    [Scheduler] Round 250: Dynamic Reset Ratio = 0.00335
+14:59:31 [TEST] Acc: 91.79% | Loss: 0.3977 | Gap: 1.88% (F:92.52 vs M:90.64)
+14:59:31 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_250.pth
+14:59:31 === Round 251 ===
+14:59:31    [Scheduler] Round 251: Dynamic Reset Ratio = 0.00322
+15:00:55 === Round 252 ===
+15:00:55    [Scheduler] Round 252: Dynamic Reset Ratio = 0.00309
+15:02:18 [FAAR] Diagnosing Bias (Wasserstein) Round 252...
+15:02:18    [FAAR] Identified 20 neurons (Ratio: 0.0031)
+15:02:18    [FAAR] Soft-Reset Applied. 20 Filters neutralized.
+15:02:18 === Round 253 ===
+15:02:18    [Scheduler] Round 253: Dynamic Reset Ratio = 0.00297
+15:03:35 === Round 254 ===
+15:03:35    [Scheduler] Round 254: Dynamic Reset Ratio = 0.00284
+15:04:58 === Round 255 ===
+15:04:58    [Scheduler] Round 255: Dynamic Reset Ratio = 0.00272
+15:06:33 [TEST] Acc: 91.91% | Loss: 0.3659 | Gap: 2.13% (F:92.73 vs M:90.60)
+15:06:33 === Round 256 ===
+15:06:33    [Scheduler] Round 256: Dynamic Reset Ratio = 0.00261
+15:07:50 === Round 257 ===
+15:07:50    [Scheduler] Round 257: Dynamic Reset Ratio = 0.00249
+15:08:42 [FAAR] Diagnosing Bias (Wasserstein) Round 257...
+15:08:42    [FAAR] Identified 20 neurons (Ratio: 0.0025)
+15:08:42    [FAAR] Soft-Reset Applied. 20 Filters neutralized.
+15:08:42 === Round 258 ===
+15:08:42    [Scheduler] Round 258: Dynamic Reset Ratio = 0.00238
+15:10:18 === Round 259 ===
+15:10:18    [Scheduler] Round 259: Dynamic Reset Ratio = 0.00227
+15:11:27 === Round 260 ===
+15:11:27    [Scheduler] Round 260: Dynamic Reset Ratio = 0.00216
+15:12:39 [TEST] Acc: 92.01% | Loss: 0.3630 | Gap: 1.82% (F:92.72 vs M:90.90)
+15:12:39 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_260.pth
+15:12:39 === Round 261 ===
+15:12:39    [Scheduler] Round 261: Dynamic Reset Ratio = 0.00206
+15:13:27 === Round 262 ===
+15:13:27    [Scheduler] Round 262: Dynamic Reset Ratio = 0.00195
+15:14:37 [FAAR] Diagnosing Bias (Wasserstein) Round 262...
+15:14:37    [FAAR] Identified 20 neurons (Ratio: 0.0020)
+15:14:37    [FAAR] Soft-Reset Applied. 20 Filters neutralized.
+15:14:37 === Round 263 ===
+15:14:37    [Scheduler] Round 263: Dynamic Reset Ratio = 0.00185
+15:15:47 === Round 264 ===
+15:15:47    [Scheduler] Round 264: Dynamic Reset Ratio = 0.00176
+15:16:39 === Round 265 ===
+15:16:39    [Scheduler] Round 265: Dynamic Reset Ratio = 0.00166
+15:17:43 [TEST] Acc: 91.85% | Loss: 0.3480 | Gap: 2.33% (F:92.75 vs M:90.42)
+15:17:43 === Round 266 ===
+15:17:43    [Scheduler] Round 266: Dynamic Reset Ratio = 0.00157
+15:19:02 === Round 267 ===
+15:19:02    [Scheduler] Round 267: Dynamic Reset Ratio = 0.00148
+15:20:07 [FAAR] Diagnosing Bias (Wasserstein) Round 267...
+15:20:08    [FAAR] Identified 20 neurons (Ratio: 0.0015)
+15:20:08    [FAAR] Soft-Reset Applied. 20 Filters neutralized.
+15:20:08 === Round 268 ===
+15:20:08    [Scheduler] Round 268: Dynamic Reset Ratio = 0.00139
+15:21:28 === Round 269 ===
+15:21:28    [Scheduler] Round 269: Dynamic Reset Ratio = 0.00131
+15:23:04 === Round 270 ===
+15:23:04    [Scheduler] Round 270: Dynamic Reset Ratio = 0.00122
+15:24:27 [TEST] Acc: 92.10% | Loss: 0.3706 | Gap: 1.81% (F:92.80 vs M:90.99)
+15:24:27 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_270.pth
+15:24:27 === Round 271 ===
+15:24:27    [Scheduler] Round 271: Dynamic Reset Ratio = 0.00114
+15:25:36 === Round 272 ===
+15:25:36    [Scheduler] Round 272: Dynamic Reset Ratio = 0.00107
+15:26:46 [FAAR] Diagnosing Bias (Wasserstein) Round 272...
+15:26:47    [FAAR] Identified 20 neurons (Ratio: 0.0011)
+15:26:47    [FAAR] Soft-Reset Applied. 20 Filters neutralized.
+15:26:47 === Round 273 ===
+15:26:47    [Scheduler] Round 273: Dynamic Reset Ratio = 0.00000
+15:27:48 === Round 274 ===
+15:27:48    [Scheduler] Round 274: Dynamic Reset Ratio = 0.00000
