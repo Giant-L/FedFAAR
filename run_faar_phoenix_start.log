@@ -1,1 +1,6 @@
 nohup: 忽略输入
+A total of 1 parameter combinations were generated
+🚀 Starting task on GPU 7
+   Params: Alg=FedPhoenix, Resume=True, Start=41
+   Logs -> logs/FedPhoenix_celeba_gpu7_20251216-175115.log
+✅ Task on GPU 7 finished (Exit code: 0)

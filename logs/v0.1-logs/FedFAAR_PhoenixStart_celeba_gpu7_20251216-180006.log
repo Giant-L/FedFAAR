@@ -148,3 +148,81 @@ wandb: WARNING The get_url method is deprecated and will be removed in a future 
 19:00:48 === Round  79 ===
 19:01:46 [TEST] Acc: 91.15% | Loss: 0.3318 | Gap: 2.49% (F:92.11 vs M:89.62)
 19:01:46 === Round  80 ===
+19:02:40 [FAAR] Diagnosing Bias (Round 80)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+19:02:45 [TEST] Acc: 86.27% | Loss: 0.4517 | Gap: 0.39% (F:86.42 vs M:86.03)
+19:02:45 === Round  81 ===
+19:03:42 [TEST] Acc: 91.29% | Loss: 0.3120 | Gap: 2.43% (F:92.23 vs M:89.80)
+19:03:42 === Round  82 ===
+19:04:40 [TEST] Acc: 91.78% | Loss: 0.2897 | Gap: 2.04% (F:92.57 vs M:90.52)
+19:04:40 === Round  83 ===
+19:05:38 [TEST] Acc: 91.22% | Loss: 0.3340 | Gap: 2.17% (F:92.06 vs M:89.89)
+19:05:38 === Round  84 ===
+19:06:36 [TEST] Acc: 91.32% | Loss: 0.3376 | Gap: 1.82% (F:92.02 vs M:90.20)
+19:06:36 === Round  85 ===
+19:07:34 [TEST] Acc: 91.41% | Loss: 0.3146 | Gap: 1.91% (F:92.15 vs M:90.24)
+19:07:34 === Round  86 ===
+19:08:31 [TEST] Acc: 91.64% | Loss: 0.3135 | Gap: 2.22% (F:92.50 vs M:90.28)
+19:08:31 === Round  87 ===
+19:09:29 [TEST] Acc: 91.93% | Loss: 0.3038 | Gap: 2.23% (F:92.80 vs M:90.56)
+19:09:29 === Round  88 ===
+19:10:28 [TEST] Acc: 91.90% | Loss: 0.3074 | Gap: 2.19% (F:92.75 vs M:90.56)
+19:10:28 === Round  89 ===
+19:11:25 [TEST] Acc: 91.72% | Loss: 0.3090 | Gap: 2.35% (F:92.63 vs M:90.28)
+19:11:25 === Round  90 ===
+19:12:20 [FAAR] Diagnosing Bias (Round 90)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+19:12:25 [TEST] Acc: 91.59% | Loss: 0.2337 | Gap: 1.59% (F:92.21 vs M:90.62)
+19:12:25 === Round  91 ===
+19:13:24 [TEST] Acc: 91.91% | Loss: 0.2756 | Gap: 2.30% (F:92.80 vs M:90.50)
+19:13:24 === Round  92 ===
+19:14:24 [TEST] Acc: 91.08% | Loss: 0.3358 | Gap: 2.26% (F:91.96 vs M:89.70)
+19:14:24 === Round  93 ===
+19:15:24 [TEST] Acc: 92.12% | Loss: 0.2819 | Gap: 1.78% (F:92.81 vs M:91.03)
+19:15:24 === Round  94 ===
+19:16:23 [TEST] Acc: 91.56% | Loss: 0.3493 | Gap: 2.15% (F:92.39 vs M:90.24)
+19:16:23 === Round  95 ===
+19:17:22 [TEST] Acc: 92.00% | Loss: 0.3060 | Gap: 1.94% (F:92.75 vs M:90.81)
+19:17:22 === Round  96 ===
+19:18:19 [TEST] Acc: 91.78% | Loss: 0.3060 | Gap: 2.11% (F:92.59 vs M:90.49)
+19:18:19 === Round  97 ===
+19:19:17 [TEST] Acc: 91.52% | Loss: 0.3244 | Gap: 1.64% (F:92.15 vs M:90.51)
+19:19:17 === Round  98 ===
+19:20:15 [TEST] Acc: 91.53% | Loss: 0.3174 | Gap: 2.21% (F:92.38 vs M:90.17)
+19:20:15 === Round  99 ===
+19:21:13 [TEST] Acc: 91.19% | Loss: 0.3519 | Gap: 2.31% (F:92.08 vs M:89.77)
+19:21:13 ✅ Training Finished.
+wandb: uploading output.log; uploading wandb-summary.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading history steps 78-78, summary, console lines 177-178
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading data
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▂▂▂▃▃▃▃▃▃▃▃▄▄▄▅▅▆▆▆▆▆▆▇▇▇▇▇████
+wandb: fairness/acc_female ▇▇▇██▇██▇▇▇█████▇███▁▇███▄█▇█▇▇▃█▇██▇██▇
+wandb:   fairness/acc_male ▆▆▇▇▇▇▇▆▇▇▇▇▇▇▇▇▇▇▇█▇▁▇▇██▇█▇█▇▇▃▇█▇▇██▇
+wandb:        fairness/gap █▆▇▅▆▆▆▇▇▇▇▆▇▆▆▆▁▆▅▇▅▅▆▆▆▆▅▆▅▅▆▅▅▆▆▆▅▆▄▆
+wandb:               round ▁▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇████
+wandb:       runtime_hours ▁▁▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▆▆▇▇▇▇▇███
+wandb:            test/acc ▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇█▇█▇▁▇▇▇▇▃█▇█▇▇▃▇▇█████▇
+wandb:           test/loss ▃▂▂▂█▃▁▂▂▂▂▂▃▃▃▂▃▂▃▃▂▃▂▃▅▂▃▃▃▃▂▃▃▃▁▂▃▃▃▃
+wandb: 
+wandb: Run summary:
+wandb:               epoch 99
+wandb: fairness/acc_female 92.07969
+wandb:   fairness/acc_male 89.77317
+wandb:        fairness/gap 2.30652
+wandb:               round 99
+wandb:       runtime_hours 1.3486
+wandb:            test/acc 91.18826
+wandb:           test/loss 0.35191
+wandb: 
+wandb: 🚀 View run FedFAAR_celeba_Beta0.3 at: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/1y0g11dq
+wandb: ⭐️ View project at: https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251216_180016-1y0g11dq/logs
+[WandbLogger] 运行结束。

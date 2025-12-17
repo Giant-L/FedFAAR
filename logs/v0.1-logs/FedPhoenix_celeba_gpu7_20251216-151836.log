@@ -118,3 +118,53 @@ wandb: WARNING The get_url method is deprecated and will be removed in a future 
 18:51:45 === Round  78 ===
 18:55:35 === Round  79 ===
 18:59:22 === Round  80 ===
+19:03:37 [TEST] Acc: 91.51% | Gap: 2.14% (F:92.34 vs M:90.20)
+19:03:37 [SAVE] Extracting & Saving distributions...
+19:03:37 === Round  81 ===
+19:07:26 === Round  82 ===
+19:11:20 === Round  83 ===
+19:15:11 === Round  84 ===
+19:19:00 === Round  85 ===
+19:23:13 [TEST] Acc: 91.18% | Gap: 1.96% (F:91.94 vs M:89.98)
+19:23:13 === Round  86 ===
+19:27:03 === Round  87 ===
+19:30:48 === Round  88 ===
+19:34:38 === Round  89 ===
+19:38:22 === Round  90 ===
+19:42:29 [TEST] Acc: 91.20% | Gap: 2.48% (F:92.16 vs M:89.68)
+19:42:29 === Round  91 ===
+19:46:13 === Round  92 ===
+19:50:00 === Round  93 ===
+19:53:45 === Round  94 ===
+19:57:30 === Round  95 ===
+20:01:39 [TEST] Acc: 91.66% | Gap: 1.65% (F:92.30 vs M:90.65)
+20:01:39 === Round  96 ===
+20:05:29 === Round  97 ===
+20:09:17 === Round  98 ===
+20:13:05 === Round  99 ===
+20:16:47 ✅ Training Finished.
+wandb: uploading output.log; uploading wandb-summary.json
+wandb: uploading summary, console lines 129-129
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▂▂▂▃▃▄▄▄▅▅▅▆▆▇▇▇██
+wandb: fairness/acc_female ▁▇██████████████████
+wandb:   fairness/acc_male ▁▇▇█████████████████
+wandb:        fairness/gap █▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       runtime_hours ▁▁▁▂▂▂▂▃▃▃▄▄▅▅▆▆▇▇██
+wandb:            test/acc ▁▇██████████████████
+wandb: 
+wandb: Run summary:
+wandb:               epoch 95
+wandb: fairness/acc_female 92.30016
+wandb:   fairness/acc_male 90.65457
+wandb:        fairness/gap 1.64559
+wandb:       runtime_hours 4.71424
+wandb:            test/acc 91.66416
+wandb: 
+wandb: 🚀 View run FedPhoenix_celeba_Beta0.3 at: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/glqsu7dq
+wandb: ⭐️ View project at: https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251216_151845-glqsu7dq/logs
+[WandbLogger] 运行结束。

@@ -20,7 +20,7 @@ env/
 
 # ===== Experiment outputs / logs =====
 # logs/
-# save/
+save/
 wandb/
 runs/
 outputs/
@@ -34,8 +34,8 @@ data/
 *.bin
 *.npz
 *.npy
-# *.pt
-# *.pth
+*.pt
+*.pth
 *.ckpt
 *.h5
 *.pkl

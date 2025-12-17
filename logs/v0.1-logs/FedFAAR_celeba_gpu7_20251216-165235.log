@@ -1,0 +1,186 @@
+=== Loading CelebA (Binary .pt Mode) ===
+ -> [Fast Loader] 正在从 ./data/celeba/celeba_fast.pt 加载数据...
+✅ 加载完成！耗时: 2.03 秒
+ -> [train] 分配图片: 162770 张
+ -> [test] 分配图片: 19962 张
+16:52:45 Model initialized: resnet18 (Classes: 2)
+wandb: Currently logged in as: 1553122091 (1553122091-a) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: creating run
+wandb: Tracking run with wandb version 0.19.11
+wandb: Run data is saved locally in /home/ubuntu/ljy/AAAFAAR/wandb/run-20251216_165246-dipqp52r
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run FedFAAR_celeba_Beta0.3
+wandb: ⭐️ View project at https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: 🚀 View run at https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/dipqp52r
+🚀 Wandb 初始化成功！Run: FedFAAR_celeba_Beta0.3
+wandb: WARNING The get_url method is deprecated and will be removed in a future release. Please use `run.url` instead.
+🔗 链接: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/dipqp52r
+16:52:48 🔥 开始训练: FedFAAR | Epochs: 100 | Clients: 100
+16:52:48 === Round   0 ===
+16:55:38 [TEST] Acc: 72.60% | Gap: 0.80% (F:72.30 vs M:73.09)
+16:55:38 [SAVE] Extracting & Saving distributions...
+16:55:39 === Round   1 ===
+16:58:13 === Round   2 ===
+17:00:50 === Round   3 ===
+17:03:26 === Round   4 ===
+17:06:11 === Round   5 ===
+17:09:13 [TEST] Acc: 88.12% | Gap: 2.84% (F:89.22 vs M:86.38)
+17:09:13 === Round   6 ===
+17:11:56 === Round   7 ===
+17:14:35 === Round   8 ===
+17:17:13 === Round   9 ===
+17:19:24 === Round  10 ===
+17:22:11 [TEST] Acc: 89.55% | Gap: 2.44% (F:90.49 vs M:88.05)
+17:22:11 === Round  11 ===
+17:24:42 === Round  12 ===
+17:27:15 === Round  13 ===
+17:29:48 === Round  14 ===
+17:32:21 === Round  15 ===
+17:35:13 [TEST] Acc: 90.17% | Gap: 2.77% (F:91.24 vs M:88.46)
+17:35:13 === Round  16 ===
+17:37:48 === Round  17 ===
+17:40:54 === Round  18 ===
+17:43:42 === Round  19 ===
+17:46:16 === Round  20 ===
+17:48:54 [FAAR] Diagnosing Bias (Round 20)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+17:49:12 [TEST] Acc: 76.04% | Gap: 0.21% (F:75.96 vs M:76.18)
+17:49:12 [SAVE] Extracting & Saving distributions...
+17:49:14 === Round  21 ===
+17:51:52 === Round  22 ===
+17:55:29 === Round  23 ===
+17:59:19 === Round  24 ===
+18:03:07 === Round  25 ===
+18:07:29 [TEST] Acc: 90.23% | Gap: 2.66% (F:91.26 vs M:88.59)
+18:07:29 === Round  26 ===
+18:11:19 === Round  27 ===
+18:15:11 === Round  28 ===
+18:18:59 === Round  29 ===
+18:22:51 === Round  30 ===
+18:26:38 [FAAR] Diagnosing Bias (Round 30)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+18:27:08 [TEST] Acc: 78.94% | Gap: 0.73% (F:78.66 vs M:79.39)
+18:27:08 === Round  31 ===
+18:30:59 === Round  32 ===
+18:34:40 === Round  33 ===
+18:38:11 === Round  34 ===
+18:41:43 === Round  35 ===
+18:45:40 [TEST] Acc: 90.57% | Gap: 2.72% (F:91.62 vs M:88.90)
+18:45:40 === Round  36 ===
+18:49:31 === Round  37 ===
+18:53:18 === Round  38 ===
+18:56:53 === Round  39 ===
+19:00:28 === Round  40 ===
+19:04:00 [FAAR] Diagnosing Bias (Round 40)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+19:04:28 [TEST] Acc: 75.78% | Gap: 1.45% (F:75.22 vs M:76.67)
+19:04:28 [SAVE] Extracting & Saving distributions...
+19:04:30 === Round  41 ===
+19:08:02 === Round  42 ===
+19:11:32 === Round  43 ===
+19:15:03 === Round  44 ===
+19:18:35 === Round  45 ===
+19:22:32 [TEST] Acc: 90.90% | Gap: 2.66% (F:91.92 vs M:89.27)
+19:22:32 === Round  46 ===
+19:26:01 === Round  47 ===
+19:29:37 === Round  48 ===
+19:33:10 === Round  49 ===
+19:36:45 === Round  50 ===
+19:40:23 [FAAR] Diagnosing Bias (Round 50)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+19:40:51 [TEST] Acc: 77.04% | Gap: 0.28% (F:76.93 vs M:77.21)
+19:40:51 === Round  51 ===
+19:44:24 === Round  52 ===
+19:47:59 === Round  53 ===
+19:51:35 === Round  54 ===
+19:55:08 === Round  55 ===
+19:59:06 [TEST] Acc: 91.09% | Gap: 2.28% (F:91.97 vs M:89.70)
+19:59:06 === Round  56 ===
+20:02:40 === Round  57 ===
+20:06:12 === Round  58 ===
+20:09:46 === Round  59 ===
+20:13:20 === Round  60 ===
+20:16:53 [FAAR] Diagnosing Bias (Round 60)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+20:17:15 [TEST] Acc: 86.95% | Gap: 1.73% (F:87.61 vs M:85.88)
+20:17:15 [SAVE] Extracting & Saving distributions...
+20:17:17 === Round  61 ===
+20:20:15 === Round  62 ===
+20:23:16 === Round  63 ===
+20:26:16 === Round  64 ===
+20:29:19 === Round  65 ===
+20:32:37 [TEST] Acc: 91.32% | Gap: 2.25% (F:92.19 vs M:89.94)
+20:32:37 === Round  66 ===
+20:35:36 === Round  67 ===
+20:38:38 === Round  68 ===
+20:41:37 === Round  69 ===
+20:44:34 === Round  70 ===
+20:47:29 [FAAR] Diagnosing Bias (Round 70)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+20:47:51 [TEST] Acc: 81.81% | Gap: 0.07% (F:81.83 vs M:81.76)
+20:47:51 === Round  71 ===
+20:50:50 === Round  72 ===
+20:53:48 === Round  73 ===
+20:56:47 === Round  74 ===
+20:59:47 === Round  75 ===
+21:03:04 [TEST] Acc: 91.53% | Gap: 2.44% (F:92.47 vs M:90.03)
+21:03:04 === Round  76 ===
+21:05:59 === Round  77 ===
+21:08:58 === Round  78 ===
+21:11:57 === Round  79 ===
+21:14:55 === Round  80 ===
+21:17:57 [FAAR] Diagnosing Bias (Round 80)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+21:18:19 [TEST] Acc: 72.74% | Gap: 5.58% (F:70.58 vs M:76.16)
+21:18:19 [SAVE] Extracting & Saving distributions...
+21:18:22 === Round  81 ===
+21:21:19 === Round  82 ===
+21:24:15 === Round  83 ===
+21:27:13 === Round  84 ===
+21:30:12 === Round  85 ===
+21:33:24 [TEST] Acc: 91.37% | Gap: 2.45% (F:92.32 vs M:89.86)
+21:33:24 === Round  86 ===
+21:35:50 === Round  87 ===
+21:38:21 === Round  88 ===
+21:40:46 === Round  89 ===
+21:43:10 === Round  90 ===
+21:45:38 [FAAR] Diagnosing Bias (Round 90)...
+   [FAAR] Reset Completed. Total Filters Reset: 140
+21:45:55 [TEST] Acc: 82.55% | Gap: 0.47% (F:82.37 vs M:82.84)
+21:45:55 === Round  91 ===
+21:48:22 === Round  92 ===
+21:50:52 === Round  93 ===
+21:53:17 === Round  94 ===
+21:55:41 === Round  95 ===
+21:58:22 [TEST] Acc: 91.54% | Gap: 2.25% (F:92.41 vs M:90.16)
+21:58:22 === Round  96 ===
+22:00:41 === Round  97 ===
+22:02:50 === Round  98 ===
+22:04:56 === Round  99 ===
+22:06:59 ✅ Training Finished.
+wandb: uploading wandb-summary.json; uploading output.log
+wandb: uploading summary, console lines 145-145
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▂▂▂▃▃▄▄▄▅▅▅▆▆▇▇▇██
+wandb: fairness/acc_female ▂▇▇█▃█▄█▂█▃█▆█▅█▁█▅█
+wandb:   fairness/acc_male ▁▆▇▇▂▇▄▇▂█▃█▆█▅█▂█▅█
+wandb:        fairness/gap ▂▅▄▄▁▄▂▄▃▄▁▄▃▄▁▄█▄▂▄
+wandb:       runtime_hours ▁▁▂▂▂▃▃▄▄▄▅▅▆▆▆▇▇▇██
+wandb:            test/acc ▁▇▇▇▂█▃█▂█▃█▆█▄█▁█▅█
+wandb: 
+wandb: Run summary:
+wandb:               epoch 95
+wandb: fairness/acc_female 92.41447
+wandb:   fairness/acc_male 90.16202
+wandb:        fairness/gap 2.25245
+wandb:       runtime_hours 5.09292
+wandb:            test/acc 91.54393
+wandb: 
+wandb: 🚀 View run FedFAAR_celeba_Beta0.3 at: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/dipqp52r
+wandb: ⭐️ View project at: https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251216_165246-dipqp52r/logs
+[WandbLogger] 运行结束。
