@@ -100,8 +100,10 @@ def args_parser():
     # ============================================================
     parser.add_argument('--resume', action='store_true', help="Resume training from checkpoint")
     parser.add_argument('--start_epoch', type=int, default=0, help="Start epoch for resuming (e.g., 21)")
-    # [新增] 允许直接指定文件路径
-    parser.add_argument('--checkpoint_path', type=str, default=None, help="Specific path to load checkpoint (e.g., ./save/FedAvg/model.pth)")
+    parser.add_argument('--checkpoint_path', type=str, default=None, help="Specific path to load checkpoint")
+    
+    # 🟢 [新增] 预划分数据路径
+    parser.add_argument('--pre_partitioned_path', type=str, default="", help='path to the .pt file with pre-partitioned data')
 
     parser.add_argument('--wandb_tags', type=str, default="", help="Comma-separated list of WandB tags")
     

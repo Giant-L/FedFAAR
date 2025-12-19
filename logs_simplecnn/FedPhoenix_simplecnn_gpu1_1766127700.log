@@ -1,0 +1,821 @@
+=== Loading CelebA (Binary .pt Mode) ===
+ -> [Fast Loader] 正在从 ./data/celeba/celeba_fast.pt 加载数据...
+✅ 加载完成！耗时: 0.77 秒
+ -> [train] 分配图片: 103959 张
+ -> [test] 分配图片: 19962 张
+15:01:46 📂 Loading pre-partitioned data from: /home/ubuntu/ljy/AAAFAAR/data/celeba/celeba_biased_20clients.pt
+15:01:46 ✅ Loaded 20 clients from .pt file.
+
+📊 =========================================================
+🕵️  [Data Inspection] Inspecting Biased Dataset Structure...
+    Format: Total | Male (Smile%) | Female (Smile%)
+---------------------------------------------------------
+Client  0 🔴 Min :  100 | Male:   5 (Smile:  20.0%) | Female:  95 (Smile:  80.0%)
+Client  1 🔴 Min :  100 | Male:   5 (Smile:  20.0%) | Female:  95 (Smile:  80.0%)
+Client  2 🔴 Min :  100 | Male:   5 (Smile:  20.0%) | Female:  95 (Smile:  80.0%)
+Client  3 🔴 Min :  100 | Male:   5 (Smile:  20.0%) | Female:  95 (Smile:  80.0%)
+Client  4 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client  5 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client  6 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client  7 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client  8 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client  9 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 10 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 11 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 12 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 13 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 14 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 15 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 16 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 17 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 18 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+Client 19 🔵 Maj :  100 | Male:  95 (Smile:  20.0%) | Female:   5 (Smile:  80.0%)
+---------------------------------------------------------
+✅ Global Stats:
+   Total Images used for Training: 2000
+   Total Clients: 20
+   Male Ratio: 77.0% | Female Ratio: 23.0%
+=========================================================
+
+15:01:46 Model initialized: simplecnn (Classes: 2)
+wandb: Currently logged in as: 321495417 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: creating run
+wandb: Tracking run with wandb version 0.19.11
+wandb: Run data is saved locally in /home/ubuntu/ljy/AAAFAAR/wandb/run-20251219_150147-boxg3znj
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5
+wandb: ⭐️ View project at https://wandb.ai/321495417/FedFAAR_Experiment
+wandb: 🚀 View run at https://wandb.ai/321495417/FedFAAR_Experiment/runs/boxg3znj
+🚀 Wandb 初始化成功！Run: FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5
+wandb: WARNING The get_url method is deprecated and will be removed in a future release. Please use `run.url` instead.
+🔗 链接: https://wandb.ai/321495417/FedFAAR_Experiment/runs/boxg3znj
+15:01:49 🔥 开始训练: FedPhoenix | Rounds: 0 -> 200
+15:01:49 === Round   0 ===
+15:01:49    [Scheduler] Round 0: Dynamic Reset Ratio = 0.05000
+15:01:56 [TEST] Round 0
+15:01:56    Acc     : 49.97% (49.97%)
+15:01:56    Loss    : 0.6951 (0.6951)
+15:01:56    Gap     : 16.18% (16.18%)
+15:01:56    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:01:56    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:01:56 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_0.pth
+15:01:56 === Round   1 ===
+15:01:56    [Scheduler] Round 1: Dynamic Reset Ratio = 0.05000
+15:01:59 === Round   2 ===
+15:01:59    [Scheduler] Round 2: Dynamic Reset Ratio = 0.04999
+15:02:03 === Round   3 ===
+15:02:03    [Scheduler] Round 3: Dynamic Reset Ratio = 0.04997
+15:02:07 === Round   4 ===
+15:02:07    [Scheduler] Round 4: Dynamic Reset Ratio = 0.04995
+15:02:10 === Round   5 ===
+15:02:10    [Scheduler] Round 5: Dynamic Reset Ratio = 0.04992
+15:02:14 [TEST] Round 5
+15:02:14    Acc     : 49.97% (49.97%)
+15:02:14    Loss    : 0.7100 (0.7026)
+15:02:14    Gap     : 16.18% (16.18%)
+15:02:14    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:02:14    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:02:14 === Round   6 ===
+15:02:14    [Scheduler] Round 6: Dynamic Reset Ratio = 0.04989
+15:02:18 === Round   7 ===
+15:02:18    [Scheduler] Round 7: Dynamic Reset Ratio = 0.04985
+15:02:21 === Round   8 ===
+15:02:21    [Scheduler] Round 8: Dynamic Reset Ratio = 0.04980
+15:02:25 === Round   9 ===
+15:02:25    [Scheduler] Round 9: Dynamic Reset Ratio = 0.04975
+15:02:28 === Round  10 ===
+15:02:28    [Scheduler] Round 10: Dynamic Reset Ratio = 0.04969
+15:02:33 [TEST] Round 10
+15:02:33    Acc     : 49.97% (49.97%)
+15:02:33    Loss    : 0.7295 (0.7115)
+15:02:33    Gap     : 16.18% (16.18%)
+15:02:33    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:02:33    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:02:33 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_10.pth
+15:02:33 === Round  11 ===
+15:02:33    [Scheduler] Round 11: Dynamic Reset Ratio = 0.04963
+15:02:36 === Round  12 ===
+15:02:36    [Scheduler] Round 12: Dynamic Reset Ratio = 0.04956
+15:02:40 === Round  13 ===
+15:02:40    [Scheduler] Round 13: Dynamic Reset Ratio = 0.04948
+15:02:43 === Round  14 ===
+15:02:43    [Scheduler] Round 14: Dynamic Reset Ratio = 0.04940
+15:02:47 === Round  15 ===
+15:02:47    [Scheduler] Round 15: Dynamic Reset Ratio = 0.04931
+15:02:51 [TEST] Round 15
+15:02:51    Acc     : 49.97% (49.97%)
+15:02:51    Loss    : 0.7091 (0.7109)
+15:02:51    Gap     : 16.18% (16.18%)
+15:02:51    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:02:51    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:02:51 === Round  16 ===
+15:02:51    [Scheduler] Round 16: Dynamic Reset Ratio = 0.04921
+15:02:55 === Round  17 ===
+15:02:55    [Scheduler] Round 17: Dynamic Reset Ratio = 0.04911
+15:02:59 === Round  18 ===
+15:02:59    [Scheduler] Round 18: Dynamic Reset Ratio = 0.04901
+15:03:02 === Round  19 ===
+15:03:02    [Scheduler] Round 19: Dynamic Reset Ratio = 0.04889
+15:03:06 === Round  20 ===
+15:03:06    [Scheduler] Round 20: Dynamic Reset Ratio = 0.04878
+15:03:10 [TEST] Round 20
+15:03:10    Acc     : 49.97% (49.97%)
+15:03:10    Loss    : 0.7203 (0.7128)
+15:03:10    Gap     : 16.18% (16.18%)
+15:03:10    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:03:10    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:03:10 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_20.pth
+15:03:10 === Round  21 ===
+15:03:10    [Scheduler] Round 21: Dynamic Reset Ratio = 0.04865
+15:03:14 === Round  22 ===
+15:03:14    [Scheduler] Round 22: Dynamic Reset Ratio = 0.04852
+15:03:17 === Round  23 ===
+15:03:17    [Scheduler] Round 23: Dynamic Reset Ratio = 0.04839
+15:03:21 === Round  24 ===
+15:03:21    [Scheduler] Round 24: Dynamic Reset Ratio = 0.04824
+15:03:24 === Round  25 ===
+15:03:24    [Scheduler] Round 25: Dynamic Reset Ratio = 0.04810
+15:03:29 [TEST] Round 25
+15:03:29    Acc     : 49.97% (49.97%)
+15:03:29    Loss    : 0.7256 (0.7189)
+15:03:29    Gap     : 16.18% (16.18%)
+15:03:29    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:03:29    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:03:29 === Round  26 ===
+15:03:29    [Scheduler] Round 26: Dynamic Reset Ratio = 0.04794
+15:03:33 === Round  27 ===
+15:03:33    [Scheduler] Round 27: Dynamic Reset Ratio = 0.04779
+15:03:36 === Round  28 ===
+15:03:36    [Scheduler] Round 28: Dynamic Reset Ratio = 0.04762
+15:03:40 === Round  29 ===
+15:03:40    [Scheduler] Round 29: Dynamic Reset Ratio = 0.04745
+15:03:43 === Round  30 ===
+15:03:43    [Scheduler] Round 30: Dynamic Reset Ratio = 0.04728
+15:03:48 [TEST] Round 30
+15:03:48    Acc     : 49.97% (49.97%)
+15:03:48    Loss    : 0.7453 (0.7259)
+15:03:48    Gap     : 16.18% (16.18%)
+15:03:48    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:03:48    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:03:48 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_30.pth
+15:03:48 === Round  31 ===
+15:03:48    [Scheduler] Round 31: Dynamic Reset Ratio = 0.04709
+15:03:51 === Round  32 ===
+15:03:51    [Scheduler] Round 32: Dynamic Reset Ratio = 0.04691
+15:03:55 === Round  33 ===
+15:03:55    [Scheduler] Round 33: Dynamic Reset Ratio = 0.04672
+15:03:58 === Round  34 ===
+15:03:58    [Scheduler] Round 34: Dynamic Reset Ratio = 0.04652
+15:04:02 === Round  35 ===
+15:04:02    [Scheduler] Round 35: Dynamic Reset Ratio = 0.04632
+15:04:06 [TEST] Round 35
+15:04:06    Acc     : 49.97% (49.97%)
+15:04:06    Loss    : 0.7613 (0.7323)
+15:04:06    Gap     : 16.18% (16.18%)
+15:04:06    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:04:06    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:04:06 === Round  36 ===
+15:04:06    [Scheduler] Round 36: Dynamic Reset Ratio = 0.04611
+15:04:10 === Round  37 ===
+15:04:10    [Scheduler] Round 37: Dynamic Reset Ratio = 0.04590
+15:04:13 === Round  38 ===
+15:04:13    [Scheduler] Round 38: Dynamic Reset Ratio = 0.04568
+15:04:17 === Round  39 ===
+15:04:17    [Scheduler] Round 39: Dynamic Reset Ratio = 0.04545
+15:04:21 === Round  40 ===
+15:04:21    [Scheduler] Round 40: Dynamic Reset Ratio = 0.04523
+15:04:25 [TEST] Round 40
+15:04:25    Acc     : 49.97% (49.97%)
+15:04:25    Loss    : 0.7612 (0.7427)
+15:04:25    Gap     : 16.18% (16.18%)
+15:04:25    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:04:25    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:04:25 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_40.pth
+15:04:25 === Round  41 ===
+15:04:25    [Scheduler] Round 41: Dynamic Reset Ratio = 0.04499
+15:04:29 === Round  42 ===
+15:04:29    [Scheduler] Round 42: Dynamic Reset Ratio = 0.04475
+15:04:32 === Round  43 ===
+15:04:32    [Scheduler] Round 43: Dynamic Reset Ratio = 0.04451
+15:04:36 === Round  44 ===
+15:04:36    [Scheduler] Round 44: Dynamic Reset Ratio = 0.04426
+15:04:39 === Round  45 ===
+15:04:39    [Scheduler] Round 45: Dynamic Reset Ratio = 0.04401
+15:04:44 [TEST] Round 45
+15:04:44    Acc     : 49.97% (49.97%)
+15:04:44    Loss    : 0.7485 (0.7484)
+15:04:44    Gap     : 16.18% (16.18%)
+15:04:44    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:04:44    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:04:44 === Round  46 ===
+15:04:44    [Scheduler] Round 46: Dynamic Reset Ratio = 0.04375
+15:04:48 === Round  47 ===
+15:04:48    [Scheduler] Round 47: Dynamic Reset Ratio = 0.04349
+15:04:51 === Round  48 ===
+15:04:51    [Scheduler] Round 48: Dynamic Reset Ratio = 0.04322
+15:04:55 === Round  49 ===
+15:04:55    [Scheduler] Round 49: Dynamic Reset Ratio = 0.04295
+15:04:58 === Round  50 ===
+15:04:58    [Scheduler] Round 50: Dynamic Reset Ratio = 0.04268
+15:05:03 [TEST] Round 50
+15:05:03    Acc     : 49.97% (49.97%)
+15:05:03    Loss    : 0.7767 (0.7586)
+15:05:03    Gap     : 16.18% (16.18%)
+15:05:03    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:05:03    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:05:03 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_50.pth
+15:05:03 === Round  51 ===
+15:05:03    [Scheduler] Round 51: Dynamic Reset Ratio = 0.04240
+15:05:06 === Round  52 ===
+15:05:06    [Scheduler] Round 52: Dynamic Reset Ratio = 0.04211
+15:05:10 === Round  53 ===
+15:05:10    [Scheduler] Round 53: Dynamic Reset Ratio = 0.04183
+15:05:14 === Round  54 ===
+15:05:14    [Scheduler] Round 54: Dynamic Reset Ratio = 0.04153
+15:05:17 === Round  55 ===
+15:05:17    [Scheduler] Round 55: Dynamic Reset Ratio = 0.04124
+15:05:22 [TEST] Round 55
+15:05:22    Acc     : 49.97% (49.97%)
+15:05:22    Loss    : 0.7561 (0.7608)
+15:05:22    Gap     : 16.18% (16.18%)
+15:05:22    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:05:22    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:05:22 === Round  56 ===
+15:05:22    [Scheduler] Round 56: Dynamic Reset Ratio = 0.04094
+15:05:25 === Round  57 ===
+15:05:25    [Scheduler] Round 57: Dynamic Reset Ratio = 0.04063
+15:05:29 === Round  58 ===
+15:05:29    [Scheduler] Round 58: Dynamic Reset Ratio = 0.04032
+15:05:32 === Round  59 ===
+15:05:32    [Scheduler] Round 59: Dynamic Reset Ratio = 0.04001
+15:05:35 === Round  60 ===
+15:05:35    [Scheduler] Round 60: Dynamic Reset Ratio = 0.03969
+15:05:40 [TEST] Round 60
+15:05:40    Acc     : 49.97% (49.97%)
+15:05:40    Loss    : 0.7834 (0.7652)
+15:05:40    Gap     : 16.18% (16.18%)
+15:05:40    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:05:40    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:05:40 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_60.pth
+15:05:40 === Round  61 ===
+15:05:40    [Scheduler] Round 61: Dynamic Reset Ratio = 0.03938
+15:05:44 === Round  62 ===
+15:05:44    [Scheduler] Round 62: Dynamic Reset Ratio = 0.03905
+15:05:47 === Round  63 ===
+15:05:47    [Scheduler] Round 63: Dynamic Reset Ratio = 0.03873
+15:05:51 === Round  64 ===
+15:05:51    [Scheduler] Round 64: Dynamic Reset Ratio = 0.03840
+15:05:54 === Round  65 ===
+15:05:54    [Scheduler] Round 65: Dynamic Reset Ratio = 0.03806
+15:05:59 [TEST] Round 65
+15:05:59    Acc     : 49.97% (49.97%)
+15:05:59    Loss    : 0.7852 (0.7700)
+15:05:59    Gap     : 16.18% (16.18%)
+15:05:59    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:05:59    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:05:59 === Round  66 ===
+15:05:59    [Scheduler] Round 66: Dynamic Reset Ratio = 0.03773
+15:06:02 === Round  67 ===
+15:06:02    [Scheduler] Round 67: Dynamic Reset Ratio = 0.03739
+15:06:06 === Round  68 ===
+15:06:06    [Scheduler] Round 68: Dynamic Reset Ratio = 0.03704
+15:06:10 === Round  69 ===
+15:06:10    [Scheduler] Round 69: Dynamic Reset Ratio = 0.03670
+15:06:13 === Round  70 ===
+15:06:13    [Scheduler] Round 70: Dynamic Reset Ratio = 0.03635
+15:06:18 [TEST] Round 70
+15:06:18    Acc     : 49.97% (49.97%)
+15:06:18    Loss    : 0.7737 (0.7750)
+15:06:18    Gap     : 16.18% (16.18%)
+15:06:18    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:06:18    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:06:18 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_70.pth
+15:06:18 === Round  71 ===
+15:06:18    [Scheduler] Round 71: Dynamic Reset Ratio = 0.03600
+15:06:21 === Round  72 ===
+15:06:21    [Scheduler] Round 72: Dynamic Reset Ratio = 0.03564
+15:06:25 === Round  73 ===
+15:06:25    [Scheduler] Round 73: Dynamic Reset Ratio = 0.03529
+15:06:28 === Round  74 ===
+15:06:28    [Scheduler] Round 74: Dynamic Reset Ratio = 0.03493
+15:06:32 === Round  75 ===
+15:06:32    [Scheduler] Round 75: Dynamic Reset Ratio = 0.03457
+15:06:36 [TEST] Round 75
+15:06:36    Acc     : 49.97% (49.97%)
+15:06:36    Loss    : 0.7587 (0.7714)
+15:06:36    Gap     : 16.18% (16.18%)
+15:06:36    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:06:36    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:06:36 === Round  76 ===
+15:06:36    [Scheduler] Round 76: Dynamic Reset Ratio = 0.03420
+15:06:40 === Round  77 ===
+15:06:40    [Scheduler] Round 77: Dynamic Reset Ratio = 0.03384
+15:06:44 === Round  78 ===
+15:06:44    [Scheduler] Round 78: Dynamic Reset Ratio = 0.03347
+15:06:47 === Round  79 ===
+15:06:47    [Scheduler] Round 79: Dynamic Reset Ratio = 0.03310
+15:06:50 === Round  80 ===
+15:06:50    [Scheduler] Round 80: Dynamic Reset Ratio = 0.03273
+15:06:55 [TEST] Round 80
+15:06:55    Acc     : 49.97% (49.97%)
+15:06:55    Loss    : 0.7357 (0.7673)
+15:06:55    Gap     : 16.18% (16.18%)
+15:06:55    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:06:55    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:06:55 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_80.pth
+15:06:55 === Round  81 ===
+15:06:55    [Scheduler] Round 81: Dynamic Reset Ratio = 0.03235
+15:06:58 === Round  82 ===
+15:06:58    [Scheduler] Round 82: Dynamic Reset Ratio = 0.03197
+15:07:02 === Round  83 ===
+15:07:02    [Scheduler] Round 83: Dynamic Reset Ratio = 0.03160
+15:07:05 === Round  84 ===
+15:07:05    [Scheduler] Round 84: Dynamic Reset Ratio = 0.03122
+15:07:09 === Round  85 ===
+15:07:09    [Scheduler] Round 85: Dynamic Reset Ratio = 0.03084
+15:07:14 [TEST] Round 85
+15:07:14    Acc     : 49.97% (49.97%)
+15:07:14    Loss    : 0.7319 (0.7570)
+15:07:14    Gap     : 16.18% (16.18%)
+15:07:14    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:07:14    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:07:14 === Round  86 ===
+15:07:14    [Scheduler] Round 86: Dynamic Reset Ratio = 0.03045
+15:07:17 === Round  87 ===
+15:07:17    [Scheduler] Round 87: Dynamic Reset Ratio = 0.03007
+15:07:21 === Round  88 ===
+15:07:21    [Scheduler] Round 88: Dynamic Reset Ratio = 0.02968
+15:07:24 === Round  89 ===
+15:07:24    [Scheduler] Round 89: Dynamic Reset Ratio = 0.02930
+15:07:28 === Round  90 ===
+15:07:28    [Scheduler] Round 90: Dynamic Reset Ratio = 0.02891
+15:07:32 [TEST] Round 90
+15:07:32    Acc     : 49.97% (49.97%)
+15:07:32    Loss    : 0.7409 (0.7482)
+15:07:32    Gap     : 16.18% (16.18%)
+15:07:32    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:07:32    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:07:32 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_90.pth
+15:07:32 === Round  91 ===
+15:07:32    [Scheduler] Round 91: Dynamic Reset Ratio = 0.02852
+15:07:36 === Round  92 ===
+15:07:36    [Scheduler] Round 92: Dynamic Reset Ratio = 0.02813
+15:07:39 === Round  93 ===
+15:07:39    [Scheduler] Round 93: Dynamic Reset Ratio = 0.02774
+15:07:43 === Round  94 ===
+15:07:43    [Scheduler] Round 94: Dynamic Reset Ratio = 0.02735
+15:07:47 === Round  95 ===
+15:07:47    [Scheduler] Round 95: Dynamic Reset Ratio = 0.02696
+15:07:51 [TEST] Round 95
+15:07:51    Acc     : 49.97% (49.97%)
+15:07:51    Loss    : 0.7611 (0.7456)
+15:07:51    Gap     : 16.18% (16.18%)
+15:07:51    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:07:51    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:07:51 === Round  96 ===
+15:07:51    [Scheduler] Round 96: Dynamic Reset Ratio = 0.02657
+15:07:55 === Round  97 ===
+15:07:55    [Scheduler] Round 97: Dynamic Reset Ratio = 0.02618
+15:07:59 === Round  98 ===
+15:07:59    [Scheduler] Round 98: Dynamic Reset Ratio = 0.02579
+15:08:02 === Round  99 ===
+15:08:02    [Scheduler] Round 99: Dynamic Reset Ratio = 0.02539
+15:08:06 === Round 100 ===
+15:08:06    [Scheduler] Round 100: Dynamic Reset Ratio = 0.02500
+15:08:10 [TEST] Round 100
+15:08:10    Acc     : 49.97% (49.97%)
+15:08:10    Loss    : 0.7360 (0.7411)
+15:08:10    Gap     : 16.18% (16.18%)
+15:08:10    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:08:10    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:08:10 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_100.pth
+15:08:10 === Round 101 ===
+15:08:10    [Scheduler] Round 101: Dynamic Reset Ratio = 0.02461
+15:08:14 === Round 102 ===
+15:08:14    [Scheduler] Round 102: Dynamic Reset Ratio = 0.02421
+15:08:17 === Round 103 ===
+15:08:17    [Scheduler] Round 103: Dynamic Reset Ratio = 0.02382
+15:08:21 === Round 104 ===
+15:08:21    [Scheduler] Round 104: Dynamic Reset Ratio = 0.02343
+15:08:24 === Round 105 ===
+15:08:24    [Scheduler] Round 105: Dynamic Reset Ratio = 0.02304
+15:08:29 [TEST] Round 105
+15:08:29    Acc     : 49.97% (49.97%)
+15:08:29    Loss    : 0.7552 (0.7450)
+15:08:29    Gap     : 16.18% (16.18%)
+15:08:29    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:08:29    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:08:29 === Round 106 ===
+15:08:29    [Scheduler] Round 106: Dynamic Reset Ratio = 0.02265
+15:08:33 === Round 107 ===
+15:08:33    [Scheduler] Round 107: Dynamic Reset Ratio = 0.02226
+15:08:36 === Round 108 ===
+15:08:36    [Scheduler] Round 108: Dynamic Reset Ratio = 0.02187
+15:08:40 === Round 109 ===
+15:08:40    [Scheduler] Round 109: Dynamic Reset Ratio = 0.02148
+15:08:43 === Round 110 ===
+15:08:43    [Scheduler] Round 110: Dynamic Reset Ratio = 0.02109
+15:08:48 [TEST] Round 110
+15:08:48    Acc     : 49.97% (49.97%)
+15:08:48    Loss    : 0.7523 (0.7491)
+15:08:48    Gap     : 16.18% (16.18%)
+15:08:48    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:08:48    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:08:48 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_110.pth
+15:08:48 === Round 111 ===
+15:08:48    [Scheduler] Round 111: Dynamic Reset Ratio = 0.02070
+15:08:51 === Round 112 ===
+15:08:51    [Scheduler] Round 112: Dynamic Reset Ratio = 0.02032
+15:08:55 === Round 113 ===
+15:08:55    [Scheduler] Round 113: Dynamic Reset Ratio = 0.01993
+15:08:58 === Round 114 ===
+15:08:58    [Scheduler] Round 114: Dynamic Reset Ratio = 0.01955
+15:09:02 === Round 115 ===
+15:09:02    [Scheduler] Round 115: Dynamic Reset Ratio = 0.01916
+15:09:07 [TEST] Round 115
+15:09:07    Acc     : 49.97% (49.97%)
+15:09:07    Loss    : 0.7806 (0.7570)
+15:09:07    Gap     : 16.18% (16.18%)
+15:09:07    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:09:07    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:09:07 === Round 116 ===
+15:09:07    [Scheduler] Round 116: Dynamic Reset Ratio = 0.01878
+15:09:10 === Round 117 ===
+15:09:10    [Scheduler] Round 117: Dynamic Reset Ratio = 0.01840
+15:09:14 === Round 118 ===
+15:09:14    [Scheduler] Round 118: Dynamic Reset Ratio = 0.01803
+15:09:18 === Round 119 ===
+15:09:18    [Scheduler] Round 119: Dynamic Reset Ratio = 0.01765
+15:09:21 === Round 120 ===
+15:09:21    [Scheduler] Round 120: Dynamic Reset Ratio = 0.01727
+15:09:26 [TEST] Round 120
+15:09:26    Acc     : 49.97% (49.97%)
+15:09:26    Loss    : 0.7544 (0.7557)
+15:09:26    Gap     : 16.18% (16.18%)
+15:09:26    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:09:26    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:09:26 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_120.pth
+15:09:26 === Round 121 ===
+15:09:26    [Scheduler] Round 121: Dynamic Reset Ratio = 0.01690
+15:09:30 === Round 122 ===
+15:09:30    [Scheduler] Round 122: Dynamic Reset Ratio = 0.01653
+15:09:33 === Round 123 ===
+15:09:33    [Scheduler] Round 123: Dynamic Reset Ratio = 0.01616
+15:09:36 === Round 124 ===
+15:09:36    [Scheduler] Round 124: Dynamic Reset Ratio = 0.01580
+15:09:40 === Round 125 ===
+15:09:40    [Scheduler] Round 125: Dynamic Reset Ratio = 0.01543
+15:09:45 [TEST] Round 125
+15:09:45    Acc     : 49.97% (49.97%)
+15:09:45    Loss    : 0.7545 (0.7594)
+15:09:45    Gap     : 16.18% (16.18%)
+15:09:45    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:09:45    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:09:45 === Round 126 ===
+15:09:45    [Scheduler] Round 126: Dynamic Reset Ratio = 0.01507
+15:09:48 === Round 127 ===
+15:09:48    [Scheduler] Round 127: Dynamic Reset Ratio = 0.01471
+15:09:52 === Round 128 ===
+15:09:52    [Scheduler] Round 128: Dynamic Reset Ratio = 0.01436
+15:09:55 === Round 129 ===
+15:09:55    [Scheduler] Round 129: Dynamic Reset Ratio = 0.01400
+15:09:59 === Round 130 ===
+15:09:59    [Scheduler] Round 130: Dynamic Reset Ratio = 0.01365
+15:10:04 [TEST] Round 130
+15:10:04    Acc     : 49.97% (49.97%)
+15:10:04    Loss    : 0.7693 (0.7622)
+15:10:04    Gap     : 16.18% (16.18%)
+15:10:04    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:10:04    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:10:04 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_130.pth
+15:10:04 === Round 131 ===
+15:10:04    [Scheduler] Round 131: Dynamic Reset Ratio = 0.01330
+15:10:07 === Round 132 ===
+15:10:07    [Scheduler] Round 132: Dynamic Reset Ratio = 0.01296
+15:10:10 === Round 133 ===
+15:10:10    [Scheduler] Round 133: Dynamic Reset Ratio = 0.01261
+15:10:14 === Round 134 ===
+15:10:14    [Scheduler] Round 134: Dynamic Reset Ratio = 0.01227
+15:10:17 === Round 135 ===
+15:10:17    [Scheduler] Round 135: Dynamic Reset Ratio = 0.01194
+15:10:22 [TEST] Round 135
+15:10:22    Acc     : 49.97% (49.97%)
+15:10:22    Loss    : 0.7890 (0.7696)
+15:10:22    Gap     : 16.18% (16.18%)
+15:10:22    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:10:22    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:10:22 === Round 136 ===
+15:10:22    [Scheduler] Round 136: Dynamic Reset Ratio = 0.01160
+15:10:25 === Round 137 ===
+15:10:25    [Scheduler] Round 137: Dynamic Reset Ratio = 0.01127
+15:10:29 === Round 138 ===
+15:10:29    [Scheduler] Round 138: Dynamic Reset Ratio = 0.01095
+15:10:33 === Round 139 ===
+15:10:33    [Scheduler] Round 139: Dynamic Reset Ratio = 0.01062
+15:10:36 === Round 140 ===
+15:10:36    [Scheduler] Round 140: Dynamic Reset Ratio = 0.01031
+15:10:41 [TEST] Round 140
+15:10:41    Acc     : 49.97% (49.97%)
+15:10:41    Loss    : 0.7330 (0.7600)
+15:10:41    Gap     : 16.18% (16.18%)
+15:10:41    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:10:41    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:10:41 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_140.pth
+15:10:41 === Round 141 ===
+15:10:41    [Scheduler] Round 141: Dynamic Reset Ratio = 0.00999
+15:10:44 === Round 142 ===
+15:10:44    [Scheduler] Round 142: Dynamic Reset Ratio = 0.00968
+15:10:48 === Round 143 ===
+15:10:48    [Scheduler] Round 143: Dynamic Reset Ratio = 0.00937
+15:10:51 === Round 144 ===
+15:10:51    [Scheduler] Round 144: Dynamic Reset Ratio = 0.00906
+15:10:55 === Round 145 ===
+15:10:55    [Scheduler] Round 145: Dynamic Reset Ratio = 0.00876
+15:10:59 [TEST] Round 145
+15:10:59    Acc     : 49.97% (49.97%)
+15:10:59    Loss    : 0.7373 (0.7566)
+15:10:59    Gap     : 16.18% (16.18%)
+15:10:59    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:10:59    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:10:59 === Round 146 ===
+15:10:59    [Scheduler] Round 146: Dynamic Reset Ratio = 0.00847
+15:11:03 === Round 147 ===
+15:11:03    [Scheduler] Round 147: Dynamic Reset Ratio = 0.00817
+15:11:07 === Round 148 ===
+15:11:07    [Scheduler] Round 148: Dynamic Reset Ratio = 0.00789
+15:11:10 === Round 149 ===
+15:11:10    [Scheduler] Round 149: Dynamic Reset Ratio = 0.00760
+15:11:14 === Round 150 ===
+15:11:14    [Scheduler] Round 150: Dynamic Reset Ratio = 0.00732
+15:11:18 [TEST] Round 150
+15:11:18    Acc     : 49.97% (49.97%)
+15:11:18    Loss    : 0.7301 (0.7517)
+15:11:18    Gap     : 16.18% (16.18%)
+15:11:18    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:11:18    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:11:18 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_150.pth
+15:11:18 === Round 151 ===
+15:11:18    [Scheduler] Round 151: Dynamic Reset Ratio = 0.00705
+15:11:22 === Round 152 ===
+15:11:22    [Scheduler] Round 152: Dynamic Reset Ratio = 0.00678
+15:11:26 === Round 153 ===
+15:11:26    [Scheduler] Round 153: Dynamic Reset Ratio = 0.00651
+15:11:29 === Round 154 ===
+15:11:29    [Scheduler] Round 154: Dynamic Reset Ratio = 0.00625
+15:11:33 === Round 155 ===
+15:11:33    [Scheduler] Round 155: Dynamic Reset Ratio = 0.00599
+15:11:38 [TEST] Round 155
+15:11:38    Acc     : 49.97% (49.97%)
+15:11:38    Loss    : 0.7267 (0.7432)
+15:11:38    Gap     : 16.18% (16.18%)
+15:11:38    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:11:38    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:11:38 === Round 156 ===
+15:11:38    [Scheduler] Round 156: Dynamic Reset Ratio = 0.00574
+15:11:41 === Round 157 ===
+15:11:41    [Scheduler] Round 157: Dynamic Reset Ratio = 0.00549
+15:11:45 === Round 158 ===
+15:11:45    [Scheduler] Round 158: Dynamic Reset Ratio = 0.00525
+15:11:48 === Round 159 ===
+15:11:48    [Scheduler] Round 159: Dynamic Reset Ratio = 0.00501
+15:11:52 === Round 160 ===
+15:11:52    [Scheduler] Round 160: Dynamic Reset Ratio = 0.00477
+15:11:57 [TEST] Round 160
+15:11:57    Acc     : 49.97% (49.97%)
+15:11:57    Loss    : 0.7542 (0.7363)
+15:11:57    Gap     : 16.18% (16.18%)
+15:11:57    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:11:57    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:11:57 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_160.pth
+15:11:57 === Round 161 ===
+15:11:57    [Scheduler] Round 161: Dynamic Reset Ratio = 0.00455
+15:12:00 === Round 162 ===
+15:12:00    [Scheduler] Round 162: Dynamic Reset Ratio = 0.00432
+15:12:04 === Round 163 ===
+15:12:04    [Scheduler] Round 163: Dynamic Reset Ratio = 0.00410
+15:12:07 === Round 164 ===
+15:12:07    [Scheduler] Round 164: Dynamic Reset Ratio = 0.00389
+15:12:11 === Round 165 ===
+15:12:11    [Scheduler] Round 165: Dynamic Reset Ratio = 0.00368
+15:12:16 [TEST] Round 165
+15:12:16    Acc     : 49.97% (49.97%)
+15:12:16    Loss    : 0.7239 (0.7344)
+15:12:16    Gap     : 16.18% (16.18%)
+15:12:16    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:12:16    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:12:16 === Round 166 ===
+15:12:16    [Scheduler] Round 166: Dynamic Reset Ratio = 0.00348
+15:12:19 === Round 167 ===
+15:12:19    [Scheduler] Round 167: Dynamic Reset Ratio = 0.00328
+15:12:23 === Round 168 ===
+15:12:23    [Scheduler] Round 168: Dynamic Reset Ratio = 0.00309
+15:12:26 === Round 169 ===
+15:12:26    [Scheduler] Round 169: Dynamic Reset Ratio = 0.00291
+15:12:30 === Round 170 ===
+15:12:30    [Scheduler] Round 170: Dynamic Reset Ratio = 0.00272
+15:12:35 [TEST] Round 170
+15:12:35    Acc     : 49.97% (49.97%)
+15:12:35    Loss    : 0.7679 (0.7406)
+15:12:35    Gap     : 16.18% (16.18%)
+15:12:35    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:12:35    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:12:35 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_170.pth
+15:12:35 === Round 171 ===
+15:12:35    [Scheduler] Round 171: Dynamic Reset Ratio = 0.00255
+15:12:38 === Round 172 ===
+15:12:38    [Scheduler] Round 172: Dynamic Reset Ratio = 0.00238
+15:12:42 === Round 173 ===
+15:12:42    [Scheduler] Round 173: Dynamic Reset Ratio = 0.00221
+15:12:45 === Round 174 ===
+15:12:45    [Scheduler] Round 174: Dynamic Reset Ratio = 0.00206
+15:12:49 === Round 175 ===
+15:12:49    [Scheduler] Round 175: Dynamic Reset Ratio = 0.00190
+15:12:53 [TEST] Round 175
+15:12:53    Acc     : 49.97% (49.97%)
+15:12:53    Loss    : 0.7803 (0.7506)
+15:12:53    Gap     : 16.18% (16.18%)
+15:12:53    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:12:53    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:12:53 === Round 176 ===
+15:12:53    [Scheduler] Round 176: Dynamic Reset Ratio = 0.00176
+15:12:57 === Round 177 ===
+15:12:57    [Scheduler] Round 177: Dynamic Reset Ratio = 0.00161
+15:13:00 === Round 178 ===
+15:13:00    [Scheduler] Round 178: Dynamic Reset Ratio = 0.00148
+15:13:04 === Round 179 ===
+15:13:04    [Scheduler] Round 179: Dynamic Reset Ratio = 0.00135
+15:13:08 === Round 180 ===
+15:13:08    [Scheduler] Round 180: Dynamic Reset Ratio = 0.00122
+15:13:12 [TEST] Round 180
+15:13:12    Acc     : 49.97% (49.97%)
+15:13:12    Loss    : 0.7432 (0.7539)
+15:13:12    Gap     : 16.18% (16.18%)
+15:13:12    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:13:12    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:13:12 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_180.pth
+15:13:12 === Round 181 ===
+15:13:12    [Scheduler] Round 181: Dynamic Reset Ratio = 0.00111
+15:13:16 === Round 182 ===
+15:13:16    [Scheduler] Round 182: Dynamic Reset Ratio = 0.00000
+15:13:19 === Round 183 ===
+15:13:19    [Scheduler] Round 183: Dynamic Reset Ratio = 0.00000
+15:13:23 === Round 184 ===
+15:13:23    [Scheduler] Round 184: Dynamic Reset Ratio = 0.00000
+15:13:26 === Round 185 ===
+15:13:26    [Scheduler] Round 185: Dynamic Reset Ratio = 0.00000
+15:13:31 [TEST] Round 185
+15:13:31    Acc     : 49.97% (49.97%)
+15:13:31    Loss    : 0.7563 (0.7543)
+15:13:31    Gap     : 16.18% (16.18%)
+15:13:31    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:13:31    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:13:31 === Round 186 ===
+15:13:31    [Scheduler] Round 186: Dynamic Reset Ratio = 0.00000
+15:13:35 === Round 187 ===
+15:13:35    [Scheduler] Round 187: Dynamic Reset Ratio = 0.00000
+15:13:38 === Round 188 ===
+15:13:38    [Scheduler] Round 188: Dynamic Reset Ratio = 0.00000
+15:13:42 === Round 189 ===
+15:13:42    [Scheduler] Round 189: Dynamic Reset Ratio = 0.00000
+15:13:45 === Round 190 ===
+15:13:45    [Scheduler] Round 190: Dynamic Reset Ratio = 0.00000
+15:13:50 [TEST] Round 190
+15:13:50    Acc     : 49.97% (49.97%)
+15:13:50    Loss    : 0.7211 (0.7538)
+15:13:50    Gap     : 16.18% (16.18%)
+15:13:50    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:13:50    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:13:50 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_190.pth
+15:13:50 === Round 191 ===
+15:13:50    [Scheduler] Round 191: Dynamic Reset Ratio = 0.00000
+15:13:54 === Round 192 ===
+15:13:54    [Scheduler] Round 192: Dynamic Reset Ratio = 0.00000
+15:13:57 === Round 193 ===
+15:13:57    [Scheduler] Round 193: Dynamic Reset Ratio = 0.00000
+15:14:00 === Round 194 ===
+15:14:00    [Scheduler] Round 194: Dynamic Reset Ratio = 0.00000
+15:14:04 === Round 195 ===
+15:14:04    [Scheduler] Round 195: Dynamic Reset Ratio = 0.00000
+15:14:09 [TEST] Round 195
+15:14:09    Acc     : 49.97% (49.97%)
+15:14:09    Loss    : 0.7411 (0.7484)
+15:14:09    Gap     : 16.18% (16.18%)
+15:14:09    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:14:09    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:14:09 === Round 196 ===
+15:14:09    [Scheduler] Round 196: Dynamic Reset Ratio = 0.00000
+15:14:12 === Round 197 ===
+15:14:12    [Scheduler] Round 197: Dynamic Reset Ratio = 0.00000
+15:14:16 === Round 198 ===
+15:14:16    [Scheduler] Round 198: Dynamic Reset Ratio = 0.00000
+15:14:19 === Round 199 ===
+15:14:19    [Scheduler] Round 199: Dynamic Reset Ratio = 0.00000
+15:14:24 [TEST] Round 199
+15:14:24    Acc     : 49.97% (49.97%)
+15:14:24    Loss    : 0.8308 (0.7585)
+15:14:24    Gap     : 16.18% (16.18%)
+15:14:24    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+15:14:24    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+15:14:24 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_199.pth
+15:14:24 ✅ Training Finished.
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml (+ 1 more)
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading requirements.txt; uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json

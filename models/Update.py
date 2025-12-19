@@ -23,7 +23,7 @@ class DatasetSplit(Dataset):
         return image, label
 
 class LocalUpdate_FedAvg(object):
-    def __init__(self, args, dataset=None, idxs=None, verbose=False, dataset_test=None):
+    def __init__(self, args, dataset=None, idxs=None, verbose=False, dataset_test=None, pre_dataset=None):
         self.args = args
         self.loss_func = nn.CrossEntropyLoss()
         self.verbose = verbose
@@ -37,7 +37,11 @@ class LocalUpdate_FedAvg(object):
         if self.args.num_workers > 0:
             loader_args['pin_memory'] = True
 
-        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), **loader_args)
+        # 🟢 [修改] 支持直接传入预划分的 dataset (TensorDataset)
+        if pre_dataset is not None:
+            self.ldr_train = DataLoader(pre_dataset, **loader_args)
+        else:
+            self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), **loader_args)
 
     def train(self, net):
         net.train()
@@ -54,14 +58,25 @@ class LocalUpdate_FedAvg(object):
         epoch_loss = []
         for iter in range(self.args.local_ep):
             batch_loss = []
-            for batch_idx, (images, labels) in enumerate(self.ldr_train):
+            
+            # 🟢 [修改] 训练循环适配不同的返回值
+            for batch_idx, batch_data in enumerate(self.ldr_train):
+                # 如果是 .pt 数据，batch_data 会包含 (images, labels, sensitives)
+                if len(batch_data) == 3:
+                    images, labels, sensitives = batch_data
+                    # 对于训练，我们暂时只需要 images 和 labels
+                elif len(batch_data) == 2:
+                    images, labels = batch_data
+                else:
+                    raise ValueError(f"Unexpected data format: len={len(batch_data)}")
+
                 images, labels = images.to(self.args.device), labels.to(self.args.device)
 
                 # ============================================================
                 # 【核心修复】 处理 CelebA 的多列标签 [Batch, 2]
                 # ============================================================
-                # 如果标签维度大于1 (例如 [N, 2])，说明包含了敏感属性
-                # 我们只取第 0 列作为训练目标 (Target Class)
+                # 只有当 labels 维度大于 1 且不是 1D Tensor 时才切片
+                # .pt 文件传进来的 labels 通常已经是 1D 的 Smiling 标签
                 if labels.dim() > 1 and labels.size(1) >= 2:
                     target_labels = labels[:, 0] # 取第一列：Smiling
                 else:
