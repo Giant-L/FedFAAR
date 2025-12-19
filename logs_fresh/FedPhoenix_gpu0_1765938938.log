@@ -702,3 +702,58 @@ wandb: WARNING The get_url method is deprecated and will be removed in a future 
 15:27:10    [Scheduler] Round 288: Dynamic Reset Ratio = 0.00000
 15:27:59 === Round 289 ===
 15:27:59    [Scheduler] Round 289: Dynamic Reset Ratio = 0.00000
+15:28:48 === Round 290 ===
+15:28:48    [Scheduler] Round 290: Dynamic Reset Ratio = 0.00000
+15:29:51 [TEST] Acc: 91.99% | Loss: 0.4126 | Gap: 1.82% (F:92.69 vs M:90.87)
+15:29:51 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_290.pth
+15:29:51 === Round 291 ===
+15:29:51    [Scheduler] Round 291: Dynamic Reset Ratio = 0.00000
+15:31:11 === Round 292 ===
+15:31:11    [Scheduler] Round 292: Dynamic Reset Ratio = 0.00000
+15:32:27 === Round 293 ===
+15:32:27    [Scheduler] Round 293: Dynamic Reset Ratio = 0.00000
+15:33:14 === Round 294 ===
+15:33:14    [Scheduler] Round 294: Dynamic Reset Ratio = 0.00000
+15:34:41 === Round 295 ===
+15:34:41    [Scheduler] Round 295: Dynamic Reset Ratio = 0.00000
+15:35:46 [TEST] Acc: 91.90% | Loss: 0.3882 | Gap: 2.01% (F:92.68 vs M:90.67)
+15:35:46 === Round 296 ===
+15:35:46    [Scheduler] Round 296: Dynamic Reset Ratio = 0.00000
+15:36:43 === Round 297 ===
+15:36:43    [Scheduler] Round 297: Dynamic Reset Ratio = 0.00000
+15:37:36 === Round 298 ===
+15:37:36    [Scheduler] Round 298: Dynamic Reset Ratio = 0.00000
+15:38:35 === Round 299 ===
+15:38:35    [Scheduler] Round 299: Dynamic Reset Ratio = 0.00000
+15:39:34 [TEST] Acc: 91.99% | Loss: 0.4305 | Gap: 1.75% (F:92.67 vs M:90.91)
+15:39:34 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_299.pth
+15:39:34 ✅ Training Finished.
+wandb: uploading output.log; uploading wandb-summary.json
+wandb: uploading history steps 60-60, summary, console lines 694-696
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇███
+wandb: fairness/acc_female ▁███████████████████████████████████████
+wandb:   fairness/acc_male ▁▃▅▃▇▇▆▇▇▇▇▇▇█▇█▇██▇████▇█▇███▇█▇▇▇▇████
+wandb:        fairness/gap █▃▂▃▁▂▂▂▂▂▂▁▂▂▂▂▁▁▂▁▁▁▁▂▂▂▂▂▁▂▂▂▁▂▂▁▁▁▁▁
+wandb:               round ▁▁▁▂▂▂▂▃▃▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇███
+wandb:       runtime_hours ▁▁▁▂▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▇▇▇▇▇████
+wandb:            test/acc ▁▇██████████████████████████████████████
+wandb:           test/loss ▂▃▂▄▂▁▂▂▂▁▃▃▂▃▃▃▃▁▂▃▃▂▂▂▃▁▂▂▂▂▂▂▃▃▄▃▄▄█▄
+wandb: 
+wandb: Run summary:
+wandb:               epoch 299
+wandb: fairness/acc_female 92.66759
+wandb:   fairness/acc_male 90.9138
+wandb:        fairness/gap 1.75379
+wandb:               round 299
+wandb:       runtime_hours 5.0628
+wandb:            test/acc 91.98978
+wandb:           test/loss 0.43049
+wandb: 
+wandb: 🚀 View run FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3 at: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/t5giugid
+wandb: ⭐️ View project at: https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251217_103546-t5giugid/logs
+[WandbLogger] 运行结束。

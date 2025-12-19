@@ -11,10 +11,14 @@ import sys
 """
 
 # 🟢 【指定算法】只跑 FedFAAR
-algorithms = ['FedPhoenix']
+algorithms = [
+            #   'FedPhoenix',
+              'FedFAAR',  
+            # 'FedAvg'
+                ]
 
 # 🟢 【指定 GPU】
-gpus = [0] 
+gpus = [2] 
 
 # --------------------------------------------------------------
 # 实验参数 (Attribute Dirichlet V3)

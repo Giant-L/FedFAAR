@@ -821,3 +821,97 @@ wandb: WARNING The get_url method is deprecated and will be removed in a future 
 15:26:47    [Scheduler] Round 273: Dynamic Reset Ratio = 0.00000
 15:27:48 === Round 274 ===
 15:27:48    [Scheduler] Round 274: Dynamic Reset Ratio = 0.00000
+15:28:46 === Round 275 ===
+15:28:46    [Scheduler] Round 275: Dynamic Reset Ratio = 0.00000
+15:30:05    [FAAR] Reset ratio decayed to 0. Intervention stopped for stability.
+15:30:08 [TEST] Acc: 91.94% | Loss: 0.4119 | Gap: 1.81% (F:92.64 vs M:90.84)
+15:30:08 === Round 276 ===
+15:30:08    [Scheduler] Round 276: Dynamic Reset Ratio = 0.00000
+15:31:11 === Round 277 ===
+15:31:11    [Scheduler] Round 277: Dynamic Reset Ratio = 0.00000
+15:32:01 === Round 278 ===
+15:32:01    [Scheduler] Round 278: Dynamic Reset Ratio = 0.00000
+15:32:49 === Round 279 ===
+15:32:49    [Scheduler] Round 279: Dynamic Reset Ratio = 0.00000
+15:33:34 === Round 280 ===
+15:33:34    [Scheduler] Round 280: Dynamic Reset Ratio = 0.00000
+15:34:57    [FAAR] Reset ratio decayed to 0. Intervention stopped for stability.
+15:35:01 [TEST] Acc: 91.80% | Loss: 0.3664 | Gap: 1.97% (F:92.56 vs M:90.59)
+15:35:01 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_280.pth
+15:35:01 === Round 281 ===
+15:35:01    [Scheduler] Round 281: Dynamic Reset Ratio = 0.00000
+15:36:24 === Round 282 ===
+15:36:24    [Scheduler] Round 282: Dynamic Reset Ratio = 0.00000
+15:37:40 === Round 283 ===
+15:37:40    [Scheduler] Round 283: Dynamic Reset Ratio = 0.00000
+15:38:32 === Round 284 ===
+15:38:32    [Scheduler] Round 284: Dynamic Reset Ratio = 0.00000
+15:39:21 === Round 285 ===
+15:39:21    [Scheduler] Round 285: Dynamic Reset Ratio = 0.00000
+15:40:15    [FAAR] Reset ratio decayed to 0. Intervention stopped for stability.
+15:40:19 [TEST] Acc: 91.76% | Loss: 0.3664 | Gap: 2.06% (F:92.56 vs M:90.50)
+15:40:19 === Round 286 ===
+15:40:19    [Scheduler] Round 286: Dynamic Reset Ratio = 0.00000
+15:41:30 === Round 287 ===
+15:41:30    [Scheduler] Round 287: Dynamic Reset Ratio = 0.00000
+15:42:25 === Round 288 ===
+15:42:25    [Scheduler] Round 288: Dynamic Reset Ratio = 0.00000
+15:43:15 === Round 289 ===
+15:43:15    [Scheduler] Round 289: Dynamic Reset Ratio = 0.00000
+15:44:06 === Round 290 ===
+15:44:06    [Scheduler] Round 290: Dynamic Reset Ratio = 0.00000
+15:45:06    [FAAR] Reset ratio decayed to 0. Intervention stopped for stability.
+15:45:10 [TEST] Acc: 91.54% | Loss: 0.3967 | Gap: 2.04% (F:92.33 vs M:90.29)
+15:45:10 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_290.pth
+15:45:10 === Round 291 ===
+15:45:10    [Scheduler] Round 291: Dynamic Reset Ratio = 0.00000
+15:46:30 === Round 292 ===
+15:46:30    [Scheduler] Round 292: Dynamic Reset Ratio = 0.00000
+15:47:46 === Round 293 ===
+15:47:46    [Scheduler] Round 293: Dynamic Reset Ratio = 0.00000
+15:48:35 === Round 294 ===
+15:48:35    [Scheduler] Round 294: Dynamic Reset Ratio = 0.00000
+15:49:59 === Round 295 ===
+15:49:59    [Scheduler] Round 295: Dynamic Reset Ratio = 0.00000
+15:50:58    [FAAR] Reset ratio decayed to 0. Intervention stopped for stability.
+15:51:01 [TEST] Acc: 91.80% | Loss: 0.4101 | Gap: 1.93% (F:92.55 vs M:90.62)
+15:51:01 === Round 296 ===
+15:51:01    [Scheduler] Round 296: Dynamic Reset Ratio = 0.00000
+15:52:00 === Round 297 ===
+15:52:00    [Scheduler] Round 297: Dynamic Reset Ratio = 0.00000
+15:52:52 === Round 298 ===
+15:52:52    [Scheduler] Round 298: Dynamic Reset Ratio = 0.00000
+15:53:48 === Round 299 ===
+15:53:48    [Scheduler] Round 299: Dynamic Reset Ratio = 0.00000
+15:54:45 [TEST] Acc: 91.69% | Loss: 0.4041 | Gap: 1.90% (F:92.42 vs M:90.52)
+15:54:45 💾 Checkpoint saved: ./save/FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_299.pth
+15:54:45 ✅ Training Finished.
+wandb: uploading output.log; uploading wandb-summary.json
+wandb: uploading history steps 60-60, summary, console lines 852-854
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇███
+wandb: fairness/acc_female ▁▇██████████████████████████████████████
+wandb:   fairness/acc_male ▁▇▇▇█████████████████████████▇██████████
+wandb:        fairness/gap █▃▃▂▄▂▁▂▂▂▂▂▂▂▂▂▂▁▁▁▂▁▂▁▂▂▂▂▂▁▁▁▁▁▁▂▁▁▁▁
+wandb:               round ▁▁▁▂▂▂▂▃▃▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:       runtime_hours ▁▁▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇▇███
+wandb:            test/acc ▁▇▇█████████████████████████████████████
+wandb:           test/loss ▅▅▃▅▅▁▃▄▁▁▅▅▃▁▇▅▂▅▄▃▅▇▄▂▄▄▄▅▂▄▅▇▆█▆▅█▆▆█
+wandb: 
+wandb: Run summary:
+wandb:               epoch 299
+wandb: fairness/acc_female 92.42263
+wandb:   fairness/acc_male 90.52495
+wandb:        fairness/gap 1.89768
+wandb:               round 299
+wandb:       runtime_hours 5.38901
+wandb:            test/acc 91.68921
+wandb:           test/loss 0.40408
+wandb: 
+wandb: 🚀 View run FedFAAR_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3 at: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/kdkqjqch
+wandb: ⭐️ View project at: https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251217_103123-kdkqjqch/logs
+[WandbLogger] 运行结束。

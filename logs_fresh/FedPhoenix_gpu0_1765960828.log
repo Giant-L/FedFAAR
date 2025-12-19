@@ -1,0 +1,747 @@
+-*=== Loading CelebA (Binary .pt Mode) ===
+ -> [Fast Loader] 正在从 ./data/celeba/celeba_fast.pt 加载数据...
+✅ 加载完成！耗时: 0.71 秒
+ -> [train] 分配图片: 103959 张
+ -> [test] 分配图片: 19962 张
+⚡ Generating Dirichlet Non-IID Partition based on SENSITIVE ATTRIBUTE (Beta=0.3)...
+✅ Partition Done. Min Client Size: 10
+   [Sample Stats] Ratio of Sensitive Attribute '1' (Male):
+   Client 0: 0.86 (Total: 198)
+   Client 1: 0.08 (Total: 652)
+   Client 2: 0.42 (Total: 182)
+   Client 3: 0.95 (Total: 115)
+   Client 4: 0.00 (Total: 2902)
+16:40:44 Model initialized: resnet18 (Classes: 2)
+wandb: Currently logged in as: 1553122091 (1553122091-a) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: creating run
+wandb: Tracking run with wandb version 0.19.11
+wandb: Run data is saved locally in /home/ubuntu/ljy/AAAFAAR/wandb/run-20251217_164045-bh4bjzb9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3
+wandb: ⭐️ View project at https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: 🚀 View run at https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/bh4bjzb9
+🚀 Wandb 初始化成功！Run: FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3
+wandb: WARNING The get_url method is deprecated and will be removed in a future release. Please use `run.url` instead.
+🔗 链接: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/bh4bjzb9
+16:40:47 🔥 开始训练: FedPhoenix | Rounds: 0 -> 300
+16:40:47 === Round   0 ===
+16:40:47    [Scheduler] Round 0: Dynamic Reset Ratio = 0.05000
+16:41:47 [TEST] Acc: 76.05% | Loss: 0.5803 | Gap: 8.36% (F:79.28 vs M:70.93)
+16:41:47 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_0.pth
+16:41:47 === Round   1 ===
+16:41:47    [Scheduler] Round 1: Dynamic Reset Ratio = 0.05000
+16:42:31 === Round   2 ===
+16:42:31    [Scheduler] Round 2: Dynamic Reset Ratio = 0.04999
+16:43:15 === Round   3 ===
+16:43:15    [Scheduler] Round 3: Dynamic Reset Ratio = 0.04999
+16:43:54 === Round   4 ===
+16:43:54    [Scheduler] Round 4: Dynamic Reset Ratio = 0.04998
+16:44:27 === Round   5 ===
+16:44:27    [Scheduler] Round 5: Dynamic Reset Ratio = 0.04997
+16:44:59 [TEST] Acc: 88.13% | Loss: 0.3219 | Gap: 4.04% (F:89.70 vs M:85.65)
+16:44:59 === Round   6 ===
+16:44:59    [Scheduler] Round 6: Dynamic Reset Ratio = 0.04995
+16:45:44 === Round   7 ===
+16:45:44    [Scheduler] Round 7: Dynamic Reset Ratio = 0.04993
+16:47:10 === Round   8 ===
+16:47:10    [Scheduler] Round 8: Dynamic Reset Ratio = 0.04991
+16:47:39 === Round   9 ===
+16:47:39    [Scheduler] Round 9: Dynamic Reset Ratio = 0.04989
+16:48:22 === Round  10 ===
+16:48:22    [Scheduler] Round 10: Dynamic Reset Ratio = 0.04986
+16:49:02 [TEST] Acc: 88.98% | Loss: 0.3451 | Gap: 4.74% (F:90.81 vs M:86.08)
+16:49:02 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_10.pth
+16:49:02 === Round  11 ===
+16:49:02    [Scheduler] Round 11: Dynamic Reset Ratio = 0.04983
+16:50:26 === Round  12 ===
+16:50:26    [Scheduler] Round 12: Dynamic Reset Ratio = 0.04980
+16:51:16 === Round  13 ===
+16:51:16    [Scheduler] Round 13: Dynamic Reset Ratio = 0.04977
+16:51:51 === Round  14 ===
+16:51:51    [Scheduler] Round 14: Dynamic Reset Ratio = 0.04973
+16:52:24 === Round  15 ===
+16:52:24    [Scheduler] Round 15: Dynamic Reset Ratio = 0.04969
+16:53:14 [TEST] Acc: 90.24% | Loss: 0.3168 | Gap: 3.57% (F:91.61 vs M:88.05)
+16:53:14 === Round  16 ===
+16:53:14    [Scheduler] Round 16: Dynamic Reset Ratio = 0.04965
+16:54:09 === Round  17 ===
+16:54:09    [Scheduler] Round 17: Dynamic Reset Ratio = 0.04960
+16:54:57 === Round  18 ===
+16:54:57    [Scheduler] Round 18: Dynamic Reset Ratio = 0.04956
+16:55:51 === Round  19 ===
+16:55:51    [Scheduler] Round 19: Dynamic Reset Ratio = 0.04951
+16:56:25 === Round  20 ===
+16:56:25    [Scheduler] Round 20: Dynamic Reset Ratio = 0.04945
+16:57:08 [TEST] Acc: 90.80% | Loss: 0.2969 | Gap: 3.66% (F:92.22 vs M:88.55)
+16:57:08 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_20.pth
+16:57:08 === Round  21 ===
+16:57:08    [Scheduler] Round 21: Dynamic Reset Ratio = 0.04940
+16:58:06 === Round  22 ===
+16:58:06    [Scheduler] Round 22: Dynamic Reset Ratio = 0.04934
+16:58:40 === Round  23 ===
+16:58:40    [Scheduler] Round 23: Dynamic Reset Ratio = 0.04928
+16:59:13 === Round  24 ===
+16:59:13    [Scheduler] Round 24: Dynamic Reset Ratio = 0.04921
+17:00:01 === Round  25 ===
+17:00:01    [Scheduler] Round 25: Dynamic Reset Ratio = 0.04915
+17:00:52 [TEST] Acc: 90.21% | Loss: 0.3310 | Gap: 3.05% (F:91.39 vs M:88.33)
+17:00:52 === Round  26 ===
+17:00:52    [Scheduler] Round 26: Dynamic Reset Ratio = 0.04908
+17:01:34 === Round  27 ===
+17:01:34    [Scheduler] Round 27: Dynamic Reset Ratio = 0.04901
+17:02:02 === Round  28 ===
+17:02:02    [Scheduler] Round 28: Dynamic Reset Ratio = 0.04893
+17:02:55 === Round  29 ===
+17:02:55    [Scheduler] Round 29: Dynamic Reset Ratio = 0.04886
+17:03:56 === Round  30 ===
+17:03:56    [Scheduler] Round 30: Dynamic Reset Ratio = 0.04878
+17:04:42 [TEST] Acc: 90.87% | Loss: 0.3084 | Gap: 3.78% (F:92.33 vs M:88.55)
+17:04:42 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_30.pth
+17:04:42 === Round  31 ===
+17:04:42    [Scheduler] Round 31: Dynamic Reset Ratio = 0.04869
+17:05:23 === Round  32 ===
+17:05:23    [Scheduler] Round 32: Dynamic Reset Ratio = 0.04861
+17:06:00 === Round  33 ===
+17:06:00    [Scheduler] Round 33: Dynamic Reset Ratio = 0.04852
+17:06:33 === Round  34 ===
+17:06:33    [Scheduler] Round 34: Dynamic Reset Ratio = 0.04843
+17:07:20 === Round  35 ===
+17:07:20    [Scheduler] Round 35: Dynamic Reset Ratio = 0.04834
+17:08:01 [TEST] Acc: 91.15% | Loss: 0.2846 | Gap: 3.91% (F:92.66 vs M:88.75)
+17:08:01 === Round  36 ===
+17:08:01    [Scheduler] Round 36: Dynamic Reset Ratio = 0.04824
+17:08:48 === Round  37 ===
+17:08:48    [Scheduler] Round 37: Dynamic Reset Ratio = 0.04815
+17:09:44 === Round  38 ===
+17:09:44    [Scheduler] Round 38: Dynamic Reset Ratio = 0.04805
+17:10:35 === Round  39 ===
+17:10:35    [Scheduler] Round 39: Dynamic Reset Ratio = 0.04794
+17:11:46 === Round  40 ===
+17:11:46    [Scheduler] Round 40: Dynamic Reset Ratio = 0.04784
+17:12:57 [TEST] Acc: 91.17% | Loss: 0.3470 | Gap: 3.10% (F:92.37 vs M:89.27)
+17:12:57 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_40.pth
+17:12:57 === Round  41 ===
+17:12:57    [Scheduler] Round 41: Dynamic Reset Ratio = 0.04773
+17:13:58 === Round  42 ===
+17:13:58    [Scheduler] Round 42: Dynamic Reset Ratio = 0.04762
+17:14:42 === Round  43 ===
+17:14:42    [Scheduler] Round 43: Dynamic Reset Ratio = 0.04751
+17:16:28 === Round  44 ===
+17:16:28    [Scheduler] Round 44: Dynamic Reset Ratio = 0.04739
+17:17:21 === Round  45 ===
+17:17:21    [Scheduler] Round 45: Dynamic Reset Ratio = 0.04728
+17:18:00 [TEST] Acc: 91.29% | Loss: 0.2906 | Gap: 3.28% (F:92.56 vs M:89.28)
+17:18:00 === Round  46 ===
+17:18:00    [Scheduler] Round 46: Dynamic Reset Ratio = 0.04716
+17:19:14 === Round  47 ===
+17:19:14    [Scheduler] Round 47: Dynamic Reset Ratio = 0.04703
+17:19:49 === Round  48 ===
+17:19:49    [Scheduler] Round 48: Dynamic Reset Ratio = 0.04691
+17:20:24 === Round  49 ===
+17:20:24    [Scheduler] Round 49: Dynamic Reset Ratio = 0.04678
+17:21:17 === Round  50 ===
+17:21:17    [Scheduler] Round 50: Dynamic Reset Ratio = 0.04665
+17:22:20 [TEST] Acc: 90.70% | Loss: 0.3481 | Gap: 3.24% (F:91.95 vs M:88.71)
+17:22:20 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_50.pth
+17:22:20 === Round  51 ===
+17:22:20    [Scheduler] Round 51: Dynamic Reset Ratio = 0.04652
+17:22:51 === Round  52 ===
+17:22:51    [Scheduler] Round 52: Dynamic Reset Ratio = 0.04638
+17:23:27 === Round  53 ===
+17:23:27    [Scheduler] Round 53: Dynamic Reset Ratio = 0.04625
+17:24:08 === Round  54 ===
+17:24:08    [Scheduler] Round 54: Dynamic Reset Ratio = 0.04611
+17:25:13 === Round  55 ===
+17:25:13    [Scheduler] Round 55: Dynamic Reset Ratio = 0.04597
+17:25:52 [TEST] Acc: 91.39% | Loss: 0.3062 | Gap: 2.53% (F:92.37 vs M:89.84)
+17:25:52 === Round  56 ===
+17:25:52    [Scheduler] Round 56: Dynamic Reset Ratio = 0.04582
+17:26:36 === Round  57 ===
+17:26:36    [Scheduler] Round 57: Dynamic Reset Ratio = 0.04568
+17:27:29 === Round  58 ===
+17:27:29    [Scheduler] Round 58: Dynamic Reset Ratio = 0.04553
+17:28:40 === Round  59 ===
+17:28:40    [Scheduler] Round 59: Dynamic Reset Ratio = 0.04538
+17:29:43 === Round  60 ===
+17:29:43    [Scheduler] Round 60: Dynamic Reset Ratio = 0.04523
+17:30:30 [TEST] Acc: 91.19% | Loss: 0.3350 | Gap: 3.09% (F:92.38 vs M:89.29)
+17:30:31 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_60.pth
+17:30:31 === Round  61 ===
+17:30:31    [Scheduler] Round 61: Dynamic Reset Ratio = 0.04507
+17:31:45 === Round  62 ===
+17:31:45    [Scheduler] Round 62: Dynamic Reset Ratio = 0.04491
+17:32:22 === Round  63 ===
+17:32:22    [Scheduler] Round 63: Dynamic Reset Ratio = 0.04475
+17:33:06 === Round  64 ===
+17:33:06    [Scheduler] Round 64: Dynamic Reset Ratio = 0.04459
+17:33:43 === Round  65 ===
+17:33:43    [Scheduler] Round 65: Dynamic Reset Ratio = 0.04443
+17:34:25 [TEST] Acc: 91.53% | Loss: 0.3153 | Gap: 3.33% (F:92.82 vs M:89.49)
+17:34:25 === Round  66 ===
+17:34:25    [Scheduler] Round 66: Dynamic Reset Ratio = 0.04426
+17:34:57 === Round  67 ===
+17:34:57    [Scheduler] Round 67: Dynamic Reset Ratio = 0.04409
+17:35:49 === Round  68 ===
+17:35:49    [Scheduler] Round 68: Dynamic Reset Ratio = 0.04392
+17:36:42 === Round  69 ===
+17:36:42    [Scheduler] Round 69: Dynamic Reset Ratio = 0.04375
+17:37:31 === Round  70 ===
+17:37:31    [Scheduler] Round 70: Dynamic Reset Ratio = 0.04358
+17:38:09 [TEST] Acc: 91.05% | Loss: 0.3284 | Gap: 2.92% (F:92.18 vs M:89.25)
+17:38:09 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_70.pth
+17:38:09 === Round  71 ===
+17:38:09    [Scheduler] Round 71: Dynamic Reset Ratio = 0.04340
+17:38:45 === Round  72 ===
+17:38:45    [Scheduler] Round 72: Dynamic Reset Ratio = 0.04322
+17:39:17 === Round  73 ===
+17:39:17    [Scheduler] Round 73: Dynamic Reset Ratio = 0.04304
+17:39:58 === Round  74 ===
+17:39:58    [Scheduler] Round 74: Dynamic Reset Ratio = 0.04286
+17:40:38 === Round  75 ===
+17:40:38    [Scheduler] Round 75: Dynamic Reset Ratio = 0.04268
+17:41:26 [TEST] Acc: 91.47% | Loss: 0.3054 | Gap: 3.00% (F:92.63 vs M:89.63)
+17:41:26 === Round  76 ===
+17:41:26    [Scheduler] Round 76: Dynamic Reset Ratio = 0.04249
+17:42:21 === Round  77 ===
+17:42:21    [Scheduler] Round 77: Dynamic Reset Ratio = 0.04230
+17:42:58 === Round  78 ===
+17:42:58    [Scheduler] Round 78: Dynamic Reset Ratio = 0.04211
+17:43:43 === Round  79 ===
+17:43:43    [Scheduler] Round 79: Dynamic Reset Ratio = 0.04192
+17:44:17 === Round  80 ===
+17:44:17    [Scheduler] Round 80: Dynamic Reset Ratio = 0.04173
+17:45:42 [TEST] Acc: 91.47% | Loss: 0.3494 | Gap: 3.08% (F:92.66 vs M:89.58)
+17:45:42 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_80.pth
+17:45:42 === Round  81 ===
+17:45:42    [Scheduler] Round 81: Dynamic Reset Ratio = 0.04153
+17:46:19 === Round  82 ===
+17:46:19    [Scheduler] Round 82: Dynamic Reset Ratio = 0.04134
+17:46:55 === Round  83 ===
+17:46:55    [Scheduler] Round 83: Dynamic Reset Ratio = 0.04114
+17:47:30 === Round  84 ===
+17:47:30    [Scheduler] Round 84: Dynamic Reset Ratio = 0.04094
+17:48:41 === Round  85 ===
+17:48:41    [Scheduler] Round 85: Dynamic Reset Ratio = 0.04073
+17:49:26 [TEST] Acc: 90.91% | Loss: 0.3150 | Gap: 3.12% (F:92.11 vs M:89.00)
+17:49:26 === Round  86 ===
+17:49:26    [Scheduler] Round 86: Dynamic Reset Ratio = 0.04053
+17:50:31 === Round  87 ===
+17:50:31    [Scheduler] Round 87: Dynamic Reset Ratio = 0.04032
+17:51:21 === Round  88 ===
+17:51:21    [Scheduler] Round 88: Dynamic Reset Ratio = 0.04011
+17:52:11 === Round  89 ===
+17:52:11    [Scheduler] Round 89: Dynamic Reset Ratio = 0.03991
+17:52:44 === Round  90 ===
+17:52:44    [Scheduler] Round 90: Dynamic Reset Ratio = 0.03969
+17:53:23 [TEST] Acc: 91.68% | Loss: 0.3132 | Gap: 3.04% (F:92.86 vs M:89.81)
+17:53:23 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_90.pth
+17:53:23 === Round  91 ===
+17:53:23    [Scheduler] Round 91: Dynamic Reset Ratio = 0.03948
+17:54:24 === Round  92 ===
+17:54:24    [Scheduler] Round 92: Dynamic Reset Ratio = 0.03927
+17:55:14 === Round  93 ===
+17:55:14    [Scheduler] Round 93: Dynamic Reset Ratio = 0.03905
+17:55:55 === Round  94 ===
+17:55:55    [Scheduler] Round 94: Dynamic Reset Ratio = 0.03883
+17:57:02 === Round  95 ===
+17:57:02    [Scheduler] Round 95: Dynamic Reset Ratio = 0.03862
+17:57:53 [TEST] Acc: 91.54% | Loss: 0.3611 | Gap: 3.13% (F:92.75 vs M:89.62)
+17:57:53 === Round  96 ===
+17:57:53    [Scheduler] Round 96: Dynamic Reset Ratio = 0.03840
+17:58:30 === Round  97 ===
+17:58:30    [Scheduler] Round 97: Dynamic Reset Ratio = 0.03817
+17:59:01 === Round  98 ===
+17:59:01    [Scheduler] Round 98: Dynamic Reset Ratio = 0.03795
+17:59:54 === Round  99 ===
+17:59:54    [Scheduler] Round 99: Dynamic Reset Ratio = 0.03773
+18:00:50 === Round 100 ===
+18:00:50    [Scheduler] Round 100: Dynamic Reset Ratio = 0.03750
+18:02:06 [TEST] Acc: 91.21% | Loss: 0.3734 | Gap: 3.56% (F:92.59 vs M:89.02)
+18:02:07 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_100.pth
+18:02:07 === Round 101 ===
+18:02:07    [Scheduler] Round 101: Dynamic Reset Ratio = 0.03727
+18:02:50 === Round 102 ===
+18:02:50    [Scheduler] Round 102: Dynamic Reset Ratio = 0.03704
+18:03:33 === Round 103 ===
+18:03:33    [Scheduler] Round 103: Dynamic Reset Ratio = 0.03681
+18:04:10 === Round 104 ===
+18:04:10    [Scheduler] Round 104: Dynamic Reset Ratio = 0.03658
+18:05:09 === Round 105 ===
+18:05:09    [Scheduler] Round 105: Dynamic Reset Ratio = 0.03635
+18:06:04 [TEST] Acc: 90.40% | Loss: 0.3626 | Gap: 3.31% (F:91.68 vs M:88.37)
+18:06:04 === Round 106 ===
+18:06:04    [Scheduler] Round 106: Dynamic Reset Ratio = 0.03612
+18:06:53 === Round 107 ===
+18:06:53    [Scheduler] Round 107: Dynamic Reset Ratio = 0.03588
+18:07:51 === Round 108 ===
+18:07:51    [Scheduler] Round 108: Dynamic Reset Ratio = 0.03564
+18:08:46 === Round 109 ===
+18:08:46    [Scheduler] Round 109: Dynamic Reset Ratio = 0.03541
+18:09:45 === Round 110 ===
+18:09:45    [Scheduler] Round 110: Dynamic Reset Ratio = 0.03517
+18:10:24 [TEST] Acc: 91.30% | Loss: 0.3182 | Gap: 3.47% (F:92.64 vs M:89.18)
+18:10:24 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_110.pth
+18:10:24 === Round 111 ===
+18:10:24    [Scheduler] Round 111: Dynamic Reset Ratio = 0.03493
+18:11:05 === Round 112 ===
+18:11:05    [Scheduler] Round 112: Dynamic Reset Ratio = 0.03469
+18:11:54 === Round 113 ===
+18:11:54    [Scheduler] Round 113: Dynamic Reset Ratio = 0.03445
+18:12:30 === Round 114 ===
+18:12:30    [Scheduler] Round 114: Dynamic Reset Ratio = 0.03420
+18:13:02 === Round 115 ===
+18:13:02    [Scheduler] Round 115: Dynamic Reset Ratio = 0.03396
+18:13:58 [TEST] Acc: 91.28% | Loss: 0.3741 | Gap: 3.03% (F:92.46 vs M:89.42)
+18:13:58 === Round 116 ===
+18:13:58    [Scheduler] Round 116: Dynamic Reset Ratio = 0.03371
+18:14:43 === Round 117 ===
+18:14:43    [Scheduler] Round 117: Dynamic Reset Ratio = 0.03347
+18:15:42 === Round 118 ===
+18:15:42    [Scheduler] Round 118: Dynamic Reset Ratio = 0.03322
+18:16:31 === Round 119 ===
+18:16:31    [Scheduler] Round 119: Dynamic Reset Ratio = 0.03297
+18:17:23 === Round 120 ===
+18:17:23    [Scheduler] Round 120: Dynamic Reset Ratio = 0.03273
+18:18:08 [TEST] Acc: 91.65% | Loss: 0.2954 | Gap: 2.66% (F:92.68 vs M:90.02)
+18:18:08 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_120.pth
+18:18:08 === Round 121 ===
+18:18:08    [Scheduler] Round 121: Dynamic Reset Ratio = 0.03248
+18:19:16 === Round 122 ===
+18:19:16    [Scheduler] Round 122: Dynamic Reset Ratio = 0.03223
+18:20:12 === Round 123 ===
+18:20:12    [Scheduler] Round 123: Dynamic Reset Ratio = 0.03197
+18:20:58 === Round 124 ===
+18:20:58    [Scheduler] Round 124: Dynamic Reset Ratio = 0.03172
+18:21:40 === Round 125 ===
+18:21:40    [Scheduler] Round 125: Dynamic Reset Ratio = 0.03147
+18:22:18 [TEST] Acc: 91.56% | Loss: 0.3157 | Gap: 2.64% (F:92.59 vs M:89.94)
+18:22:18 === Round 126 ===
+18:22:18    [Scheduler] Round 126: Dynamic Reset Ratio = 0.03122
+18:23:21 === Round 127 ===
+18:23:21    [Scheduler] Round 127: Dynamic Reset Ratio = 0.03096
+18:24:12 === Round 128 ===
+18:24:12    [Scheduler] Round 128: Dynamic Reset Ratio = 0.03071
+18:24:53 === Round 129 ===
+18:24:53    [Scheduler] Round 129: Dynamic Reset Ratio = 0.03045
+18:25:41 === Round 130 ===
+18:25:41    [Scheduler] Round 130: Dynamic Reset Ratio = 0.03020
+18:26:14 [TEST] Acc: 91.53% | Loss: 0.3264 | Gap: 2.74% (F:92.59 vs M:89.85)
+18:26:14 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_130.pth
+18:26:14 === Round 131 ===
+18:26:14    [Scheduler] Round 131: Dynamic Reset Ratio = 0.02994
+18:27:24 === Round 132 ===
+18:27:24    [Scheduler] Round 132: Dynamic Reset Ratio = 0.02968
+18:28:14 === Round 133 ===
+18:28:14    [Scheduler] Round 133: Dynamic Reset Ratio = 0.02943
+18:29:02 === Round 134 ===
+18:29:02    [Scheduler] Round 134: Dynamic Reset Ratio = 0.02917
+18:29:41 === Round 135 ===
+18:29:41    [Scheduler] Round 135: Dynamic Reset Ratio = 0.02891
+18:30:35 [TEST] Acc: 91.25% | Loss: 0.3534 | Gap: 3.28% (F:92.52 vs M:89.24)
+18:30:35 === Round 136 ===
+18:30:35    [Scheduler] Round 136: Dynamic Reset Ratio = 0.02865
+18:31:06 === Round 137 ===
+18:31:06    [Scheduler] Round 137: Dynamic Reset Ratio = 0.02839
+18:31:52 === Round 138 ===
+18:31:52    [Scheduler] Round 138: Dynamic Reset Ratio = 0.02813
+18:32:54 === Round 139 ===
+18:32:54    [Scheduler] Round 139: Dynamic Reset Ratio = 0.02787
+18:33:28 === Round 140 ===
+18:33:28    [Scheduler] Round 140: Dynamic Reset Ratio = 0.02761
+18:34:15 [TEST] Acc: 91.84% | Loss: 0.3069 | Gap: 2.76% (F:92.90 vs M:90.15)
+18:34:15 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_140.pth
+18:34:15 === Round 141 ===
+18:34:15    [Scheduler] Round 141: Dynamic Reset Ratio = 0.02735
+18:35:20 === Round 142 ===
+18:35:20    [Scheduler] Round 142: Dynamic Reset Ratio = 0.02709
+18:36:29 === Round 143 ===
+18:36:29    [Scheduler] Round 143: Dynamic Reset Ratio = 0.02683
+18:37:22 === Round 144 ===
+18:37:22    [Scheduler] Round 144: Dynamic Reset Ratio = 0.02657
+18:38:06 === Round 145 ===
+18:38:06    [Scheduler] Round 145: Dynamic Reset Ratio = 0.02631
+18:38:48 [TEST] Acc: 91.84% | Loss: 0.3039 | Gap: 2.95% (F:92.98 vs M:90.03)
+18:38:48 === Round 146 ===
+18:38:48    [Scheduler] Round 146: Dynamic Reset Ratio = 0.02605
+18:39:34 === Round 147 ===
+18:39:34    [Scheduler] Round 147: Dynamic Reset Ratio = 0.02579
+18:40:32 === Round 148 ===
+18:40:32    [Scheduler] Round 148: Dynamic Reset Ratio = 0.02552
+18:41:04 === Round 149 ===
+18:41:04    [Scheduler] Round 149: Dynamic Reset Ratio = 0.02526
+18:41:41 === Round 150 ===
+18:41:41    [Scheduler] Round 150: Dynamic Reset Ratio = 0.02500
+18:42:27 [TEST] Acc: 91.28% | Loss: 0.3229 | Gap: 3.33% (F:92.57 vs M:89.24)
+18:42:27 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_150.pth
+18:42:27 === Round 151 ===
+18:42:27    [Scheduler] Round 151: Dynamic Reset Ratio = 0.02474
+18:43:15 === Round 152 ===
+18:43:15    [Scheduler] Round 152: Dynamic Reset Ratio = 0.02448
+18:44:07 === Round 153 ===
+18:44:07    [Scheduler] Round 153: Dynamic Reset Ratio = 0.02421
+18:45:27 === Round 154 ===
+18:45:27    [Scheduler] Round 154: Dynamic Reset Ratio = 0.02395
+18:46:30 === Round 155 ===
+18:46:30    [Scheduler] Round 155: Dynamic Reset Ratio = 0.02369
+18:47:04 [TEST] Acc: 91.61% | Loss: 0.2756 | Gap: 2.68% (F:92.64 vs M:89.97)
+18:47:04 === Round 156 ===
+18:47:04    [Scheduler] Round 156: Dynamic Reset Ratio = 0.02343
+18:47:50 === Round 157 ===
+18:47:50    [Scheduler] Round 157: Dynamic Reset Ratio = 0.02317
+18:48:50 === Round 158 ===
+18:48:50    [Scheduler] Round 158: Dynamic Reset Ratio = 0.02291
+18:49:28 === Round 159 ===
+18:49:28    [Scheduler] Round 159: Dynamic Reset Ratio = 0.02265
+18:50:04 === Round 160 ===
+18:50:04    [Scheduler] Round 160: Dynamic Reset Ratio = 0.02239
+18:50:49 [TEST] Acc: 91.90% | Loss: 0.2929 | Gap: 2.94% (F:93.04 vs M:90.10)
+18:50:49 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_160.pth
+18:50:49 === Round 161 ===
+18:50:49    [Scheduler] Round 161: Dynamic Reset Ratio = 0.02213
+18:51:39 === Round 162 ===
+18:51:39    [Scheduler] Round 162: Dynamic Reset Ratio = 0.02187
+18:52:30 === Round 163 ===
+18:52:30    [Scheduler] Round 163: Dynamic Reset Ratio = 0.02161
+18:53:07 === Round 164 ===
+18:53:07    [Scheduler] Round 164: Dynamic Reset Ratio = 0.02135
+18:53:48 === Round 165 ===
+18:53:48    [Scheduler] Round 165: Dynamic Reset Ratio = 0.02109
+18:54:29 [TEST] Acc: 91.17% | Loss: 0.3322 | Gap: 2.81% (F:92.26 vs M:89.45)
+18:54:29 === Round 166 ===
+18:54:29    [Scheduler] Round 166: Dynamic Reset Ratio = 0.02083
+18:55:11 === Round 167 ===
+18:55:11    [Scheduler] Round 167: Dynamic Reset Ratio = 0.02057
+18:55:43 === Round 168 ===
+18:55:43    [Scheduler] Round 168: Dynamic Reset Ratio = 0.02032
+18:56:30 === Round 169 ===
+18:56:30    [Scheduler] Round 169: Dynamic Reset Ratio = 0.02006
+18:57:00 === Round 170 ===
+18:57:00    [Scheduler] Round 170: Dynamic Reset Ratio = 0.01980
+18:58:07 [TEST] Acc: 91.01% | Loss: 0.4139 | Gap: 2.79% (F:92.09 vs M:89.29)
+18:58:07 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_170.pth
+18:58:07 === Round 171 ===
+18:58:07    [Scheduler] Round 171: Dynamic Reset Ratio = 0.01955
+18:59:38 === Round 172 ===
+18:59:38    [Scheduler] Round 172: Dynamic Reset Ratio = 0.01929
+19:00:16 === Round 173 ===
+19:00:16    [Scheduler] Round 173: Dynamic Reset Ratio = 0.01904
+19:00:48 === Round 174 ===
+19:00:48    [Scheduler] Round 174: Dynamic Reset Ratio = 0.01878
+19:02:11 === Round 175 ===
+19:02:11    [Scheduler] Round 175: Dynamic Reset Ratio = 0.01853
+19:02:49 [TEST] Acc: 91.80% | Loss: 0.3078 | Gap: 2.86% (F:92.90 vs M:90.05)
+19:02:49 === Round 176 ===
+19:02:49    [Scheduler] Round 176: Dynamic Reset Ratio = 0.01828
+19:03:44 === Round 177 ===
+19:03:44    [Scheduler] Round 177: Dynamic Reset Ratio = 0.01803
+19:04:32 === Round 178 ===
+19:04:32    [Scheduler] Round 178: Dynamic Reset Ratio = 0.01777
+19:05:22 === Round 179 ===
+19:05:22    [Scheduler] Round 179: Dynamic Reset Ratio = 0.01752
+19:06:40 === Round 180 ===
+19:06:40    [Scheduler] Round 180: Dynamic Reset Ratio = 0.01727
+19:08:13 [TEST] Acc: 91.21% | Loss: 0.4409 | Gap: 2.73% (F:92.27 vs M:89.54)
+19:08:13 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_180.pth
+19:08:13 === Round 181 ===
+19:08:13    [Scheduler] Round 181: Dynamic Reset Ratio = 0.01703
+19:08:45 === Round 182 ===
+19:08:45    [Scheduler] Round 182: Dynamic Reset Ratio = 0.01678
+19:09:34 === Round 183 ===
+19:09:34    [Scheduler] Round 183: Dynamic Reset Ratio = 0.01653
+19:10:09 === Round 184 ===
+19:10:09    [Scheduler] Round 184: Dynamic Reset Ratio = 0.01629
+19:11:10 === Round 185 ===
+19:11:10    [Scheduler] Round 185: Dynamic Reset Ratio = 0.01604
+19:12:09 [TEST] Acc: 91.36% | Loss: 0.3497 | Gap: 3.33% (F:92.65 vs M:89.32)
+19:12:09 === Round 186 ===
+19:12:09    [Scheduler] Round 186: Dynamic Reset Ratio = 0.01580
+19:12:42 === Round 187 ===
+19:12:42    [Scheduler] Round 187: Dynamic Reset Ratio = 0.01555
+19:13:22 === Round 188 ===
+19:13:22    [Scheduler] Round 188: Dynamic Reset Ratio = 0.01531
+19:14:09 === Round 189 ===
+19:14:09    [Scheduler] Round 189: Dynamic Reset Ratio = 0.01507
+19:14:53 === Round 190 ===
+19:14:53    [Scheduler] Round 190: Dynamic Reset Ratio = 0.01483
+19:16:07 [TEST] Acc: 90.68% | Loss: 0.4396 | Gap: 2.90% (F:91.80 vs M:88.90)
+19:16:07 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_190.pth
+19:16:07 === Round 191 ===
+19:16:07    [Scheduler] Round 191: Dynamic Reset Ratio = 0.01459
+19:16:43 === Round 192 ===
+19:16:43    [Scheduler] Round 192: Dynamic Reset Ratio = 0.01436
+19:17:09 === Round 193 ===
+19:17:09    [Scheduler] Round 193: Dynamic Reset Ratio = 0.01412
+19:17:38 === Round 194 ===
+19:17:38    [Scheduler] Round 194: Dynamic Reset Ratio = 0.01388
+19:18:08 === Round 195 ===
+19:18:08    [Scheduler] Round 195: Dynamic Reset Ratio = 0.01365
+19:18:48 [TEST] Acc: 91.75% | Loss: 0.3039 | Gap: 2.08% (F:92.55 vs M:90.47)
+19:18:48 === Round 196 ===
+19:18:48    [Scheduler] Round 196: Dynamic Reset Ratio = 0.01342
+19:19:33 === Round 197 ===
+19:19:33    [Scheduler] Round 197: Dynamic Reset Ratio = 0.01319
+19:20:22 === Round 198 ===
+19:20:22    [Scheduler] Round 198: Dynamic Reset Ratio = 0.01296
+19:21:09 === Round 199 ===
+19:21:09    [Scheduler] Round 199: Dynamic Reset Ratio = 0.01273
+19:21:56 === Round 200 ===
+19:21:56    [Scheduler] Round 200: Dynamic Reset Ratio = 0.01250
+19:23:09 [TEST] Acc: 91.32% | Loss: 0.4174 | Gap: 2.69% (F:92.36 vs M:89.67)
+19:23:09 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_200.pth
+19:23:09 === Round 201 ===
+19:23:09    [Scheduler] Round 201: Dynamic Reset Ratio = 0.01227
+19:23:48 === Round 202 ===
+19:23:48    [Scheduler] Round 202: Dynamic Reset Ratio = 0.01205
+19:24:24 === Round 203 ===
+19:24:24    [Scheduler] Round 203: Dynamic Reset Ratio = 0.01183
+19:25:12 === Round 204 ===
+19:25:12    [Scheduler] Round 204: Dynamic Reset Ratio = 0.01160
+19:25:42 === Round 205 ===
+19:25:42    [Scheduler] Round 205: Dynamic Reset Ratio = 0.01138
+19:26:42 [TEST] Acc: 91.46% | Loss: 0.3727 | Gap: 2.48% (F:92.42 vs M:89.94)
+19:26:42 === Round 206 ===
+19:26:42    [Scheduler] Round 206: Dynamic Reset Ratio = 0.01117
+19:27:27 === Round 207 ===
+19:27:27    [Scheduler] Round 207: Dynamic Reset Ratio = 0.01095
+19:28:17 === Round 208 ===
+19:28:17    [Scheduler] Round 208: Dynamic Reset Ratio = 0.01073
+19:28:51 === Round 209 ===
+19:28:51    [Scheduler] Round 209: Dynamic Reset Ratio = 0.01052
+19:29:22 === Round 210 ===
+19:29:22    [Scheduler] Round 210: Dynamic Reset Ratio = 0.01031
+19:30:31 [TEST] Acc: 91.53% | Loss: 0.3666 | Gap: 2.71% (F:92.58 vs M:89.86)
+19:30:31 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_210.pth
+19:30:31 === Round 211 ===
+19:30:31    [Scheduler] Round 211: Dynamic Reset Ratio = 0.01009
+19:31:11 === Round 212 ===
+19:31:11    [Scheduler] Round 212: Dynamic Reset Ratio = 0.00989
+19:32:00 === Round 213 ===
+19:32:00    [Scheduler] Round 213: Dynamic Reset Ratio = 0.00968
+19:32:32 === Round 214 ===
+19:32:32    [Scheduler] Round 214: Dynamic Reset Ratio = 0.00947
+19:33:49 === Round 215 ===
+19:33:49    [Scheduler] Round 215: Dynamic Reset Ratio = 0.00927
+19:34:56 [TEST] Acc: 91.54% | Loss: 0.3799 | Gap: 2.13% (F:92.37 vs M:90.24)
+19:34:56 === Round 216 ===
+19:34:56    [Scheduler] Round 216: Dynamic Reset Ratio = 0.00906
+19:35:56 === Round 217 ===
+19:35:56    [Scheduler] Round 217: Dynamic Reset Ratio = 0.00886
+19:36:31 === Round 218 ===
+19:36:31    [Scheduler] Round 218: Dynamic Reset Ratio = 0.00866
+19:36:59 === Round 219 ===
+19:36:59    [Scheduler] Round 219: Dynamic Reset Ratio = 0.00847
+19:37:51 === Round 220 ===
+19:37:51    [Scheduler] Round 220: Dynamic Reset Ratio = 0.00827
+19:38:24 [TEST] Acc: 91.65% | Loss: 0.2835 | Gap: 2.71% (F:92.70 vs M:89.99)
+19:38:24 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_220.pth
+19:38:24 === Round 221 ===
+19:38:24    [Scheduler] Round 221: Dynamic Reset Ratio = 0.00808
+19:39:20 === Round 222 ===
+19:39:20    [Scheduler] Round 222: Dynamic Reset Ratio = 0.00789
+19:40:25 === Round 223 ===
+19:40:25    [Scheduler] Round 223: Dynamic Reset Ratio = 0.00770
+19:41:10 === Round 224 ===
+19:41:10    [Scheduler] Round 224: Dynamic Reset Ratio = 0.00751
+19:41:50 === Round 225 ===
+19:41:50    [Scheduler] Round 225: Dynamic Reset Ratio = 0.00732
+19:42:27 [TEST] Acc: 91.64% | Loss: 0.3078 | Gap: 2.49% (F:92.60 vs M:90.11)
+19:42:27 === Round 226 ===
+19:42:27    [Scheduler] Round 226: Dynamic Reset Ratio = 0.00714
+19:43:22 === Round 227 ===
+19:43:22    [Scheduler] Round 227: Dynamic Reset Ratio = 0.00696
+19:43:56 === Round 228 ===
+19:43:56    [Scheduler] Round 228: Dynamic Reset Ratio = 0.00678
+19:44:34 === Round 229 ===
+19:44:34    [Scheduler] Round 229: Dynamic Reset Ratio = 0.00660
+19:45:15 === Round 230 ===
+19:45:15    [Scheduler] Round 230: Dynamic Reset Ratio = 0.00642
+19:45:46 [TEST] Acc: 91.48% | Loss: 0.3101 | Gap: 2.15% (F:92.32 vs M:90.16)
+19:45:46 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_230.pth
+19:45:46 === Round 231 ===
+19:45:46    [Scheduler] Round 231: Dynamic Reset Ratio = 0.00625
+19:46:25 === Round 232 ===
+19:46:25    [Scheduler] Round 232: Dynamic Reset Ratio = 0.00608
+19:47:09 === Round 233 ===
+19:47:09    [Scheduler] Round 233: Dynamic Reset Ratio = 0.00591
+19:48:08 === Round 234 ===
+19:48:08    [Scheduler] Round 234: Dynamic Reset Ratio = 0.00574
+19:49:10 === Round 235 ===
+19:49:10    [Scheduler] Round 235: Dynamic Reset Ratio = 0.00557
+19:50:12 [TEST] Acc: 91.26% | Loss: 0.3774 | Gap: 2.56% (F:92.25 vs M:89.70)
+19:50:12 === Round 236 ===
+19:50:12    [Scheduler] Round 236: Dynamic Reset Ratio = 0.00541
+19:51:07 === Round 237 ===
+19:51:07    [Scheduler] Round 237: Dynamic Reset Ratio = 0.00525
+19:51:43 === Round 238 ===
+19:51:43    [Scheduler] Round 238: Dynamic Reset Ratio = 0.00509
+19:52:33 === Round 239 ===
+19:52:33    [Scheduler] Round 239: Dynamic Reset Ratio = 0.00493
+19:53:04 === Round 240 ===
+19:53:04    [Scheduler] Round 240: Dynamic Reset Ratio = 0.00477
+19:53:49 [TEST] Acc: 91.40% | Loss: 0.3428 | Gap: 2.59% (F:92.41 vs M:89.81)
+19:53:50 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_240.pth
+19:53:50 === Round 241 ===
+19:53:50    [Scheduler] Round 241: Dynamic Reset Ratio = 0.00462
+19:55:03 === Round 242 ===
+19:55:03    [Scheduler] Round 242: Dynamic Reset Ratio = 0.00447
+19:56:20 === Round 243 ===
+19:56:20    [Scheduler] Round 243: Dynamic Reset Ratio = 0.00432
+19:57:16 === Round 244 ===
+19:57:16    [Scheduler] Round 244: Dynamic Reset Ratio = 0.00418
+19:58:07 === Round 245 ===
+19:58:07    [Scheduler] Round 245: Dynamic Reset Ratio = 0.00403
+19:58:41 [TEST] Acc: 91.58% | Loss: 0.3187 | Gap: 2.54% (F:92.56 vs M:90.02)
+19:58:41 === Round 246 ===
+19:58:41    [Scheduler] Round 246: Dynamic Reset Ratio = 0.00389
+19:59:10 === Round 247 ===
+19:59:10    [Scheduler] Round 247: Dynamic Reset Ratio = 0.00375
+20:00:24 === Round 248 ===
+20:00:24    [Scheduler] Round 248: Dynamic Reset Ratio = 0.00362
+20:00:55 === Round 249 ===
+20:00:55    [Scheduler] Round 249: Dynamic Reset Ratio = 0.00348
+20:01:28 === Round 250 ===
+20:01:28    [Scheduler] Round 250: Dynamic Reset Ratio = 0.00335
+20:02:24 [TEST] Acc: 91.30% | Loss: 0.3961 | Gap: 2.87% (F:92.41 vs M:89.54)
+20:02:24 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_250.pth
+20:02:24 === Round 251 ===
+20:02:24    [Scheduler] Round 251: Dynamic Reset Ratio = 0.00322
+20:02:57 === Round 252 ===
+20:02:57    [Scheduler] Round 252: Dynamic Reset Ratio = 0.00309
+20:03:41 === Round 253 ===
+20:03:41    [Scheduler] Round 253: Dynamic Reset Ratio = 0.00297
+20:04:48 === Round 254 ===
+20:04:48    [Scheduler] Round 254: Dynamic Reset Ratio = 0.00284
+20:05:46 === Round 255 ===
+20:05:46    [Scheduler] Round 255: Dynamic Reset Ratio = 0.00272
+20:06:26 [TEST] Acc: 91.55% | Loss: 0.3180 | Gap: 2.35% (F:92.46 vs M:90.11)
+20:06:26 === Round 256 ===
+20:06:26    [Scheduler] Round 256: Dynamic Reset Ratio = 0.00261
+20:07:11 === Round 257 ===
+20:07:11    [Scheduler] Round 257: Dynamic Reset Ratio = 0.00249
+20:07:46 === Round 258 ===
+20:07:46    [Scheduler] Round 258: Dynamic Reset Ratio = 0.00238
+20:08:29 === Round 259 ===
+20:08:29    [Scheduler] Round 259: Dynamic Reset Ratio = 0.00227
+20:09:05 === Round 260 ===
+20:09:05    [Scheduler] Round 260: Dynamic Reset Ratio = 0.00216
+20:10:15 [TEST] Acc: 91.18% | Loss: 0.4222 | Gap: 2.73% (F:92.23 vs M:89.50)
+20:10:16 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_260.pth
+20:10:16 === Round 261 ===
+20:10:16    [Scheduler] Round 261: Dynamic Reset Ratio = 0.00206
+20:11:34 === Round 262 ===
+20:11:34    [Scheduler] Round 262: Dynamic Reset Ratio = 0.00195
+20:12:26 === Round 263 ===
+20:12:26    [Scheduler] Round 263: Dynamic Reset Ratio = 0.00185
+20:12:57 === Round 264 ===
+20:12:57    [Scheduler] Round 264: Dynamic Reset Ratio = 0.00176
+20:13:40 === Round 265 ===
+20:13:40    [Scheduler] Round 265: Dynamic Reset Ratio = 0.001620:14:27 [TEST] Acc: 91.30% | Loss: 0.3447 | Gap: 2.16% (F:92.14 vs M:89.98)
+20:14:27 === Round 266 ===
+20:14:27    [Scheduler] Round 266: Dynamic Reset Ratio = 0.00157
+20:15:01 === Round 267 ===
+20:15:01    [Scheduler] Round 267: Dynamic Reset Ratio = 0.00148
+20:15:43 === Round 268 ===
+20:15:43    [Scheduler] Round 268: Dynamic Reset Ratio = 0.00139
+20:16:26 === Round 269 ===
+20:16:26    [Scheduler] Round 269: Dynamic Reset Ratio = 0.00131
+20:17:07 === Round 270 ===
+20:17:07    [Scheduler] Round 270: Dynamic Reset Ratio = 0.00122
+20:17:49 [TEST] Acc: 91.46% | Loss: 0.3466 | Gap: 1.91% (F:92.20 vs M:90.29)
+20:17:49 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_270.pth
+20:17:49 === Round 271 ===
+20:17:49    [Scheduler] Round 271: Dynamic Reset Ratio = 0.00114
+20:18:29 === Round 272 ===
+20:18:29    [Scheduler] Round 272: Dynamic Reset Ratio = 0.00107
+20:19:03 === Round 273 ===
+20:19:03    [Scheduler] Round 273: Dynamic Reset Ratio = 0.00000
+20:19:56 === Round 274 ===
+20:19:56    [Scheduler] Round 274: Dynamic Reset Ratio = 0.00000
+20:21:09 === Round 275 ===
+20:21:09    [Scheduler] Round 275: Dynamic Reset Ratio = 0.00000
+20:21:47 [TEST] Acc: 91.55% | Loss: 0.3813 | Gap: 2.22% (F:92.41 vs M:90.19)
+20:21:47 === Round 276 ===
+20:21:47    [Scheduler] Round 276: Dynamic Reset Ratio = 0.00000
+20:22:32 === Round 277 ===
+20:22:32    [Scheduler] Round 277: Dynamic Reset Ratio = 0.00000
+20:23:35 === Round 278 ===
+20:23:35    [Scheduler] Round 278: Dynamic Reset Ratio = 0.00000
+20:24:33 === Round 279 ===
+20:24:33    [Scheduler] Round 279: Dynamic Reset Ratio = 0.00000
+20:25:15 === Round 280 ===
+20:25:15    [Scheduler] Round 280: Dynamic Reset Ratio = 0.00000
+20:26:21 [TEST] Acc: 91.23% | Loss: 0.4937 | Gap: 2.42% (F:92.17 vs M:89.75)
+20:26:21 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_280.pth
+20:26:21 === Round 281 ===
+20:26:21    [Scheduler] Round 281: Dynamic Reset Ratio = 0.00000
+20:26:53 === Round 282 ===
+20:26:53    [Scheduler] Round 282: Dynamic Reset Ratio = 0.00000
+20:27:35 === Round 283 ===
+20:27:35    [Scheduler] Round 283: Dynamic Reset Ratio = 0.00000
+20:28:15 === Round 284 ===
+20:28:15    [Scheduler] Round 284: Dynamic Reset Ratio = 0.00000
+20:28:57 === Round 285 ===
+20:28:57    [Scheduler] Round 285: Dynamic Reset Ratio = 0.00000
+20:29:39 [TEST] Acc: 91.31% | Loss: 0.4228 | Gap: 1.77% (F:92.00 vs M:90.23)
+20:29:39 === Round 286 ===
+20:29:39    [Scheduler] Round 286: Dynamic Reset Ratio = 0.00000
+20:30:34 === Round 287 ===
+20:30:34    [Scheduler] Round 287: Dynamic Reset Ratio = 0.00000
+20:31:42 === Round 288 ===
+20:31:42    [Scheduler] Round 288: Dynamic Reset Ratio = 0.00000
+20:33:03 === Round 289 ===
+20:33:03    [Scheduler] Round 289: Dynamic Reset Ratio = 0.00000
+20:33:54 === Round 290 ===
+20:33:54    [Scheduler] Round 290: Dynamic Reset Ratio = 0.00000
+20:34:39 [TEST] Acc: 91.25% | Loss: 0.4273 | Gap: 1.95% (F:92.01 vs M:90.06)
+20:34:39 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_290.pth
+20:34:39 === Round 291 ===
+20:34:39    [Scheduler] Round 291: Dynamic Reset Ratio = 0.00000
+20:35:15 === Round 292 ===
+20:35:15    [Scheduler] Round 292: Dynamic Reset Ratio = 0.00000
+20:35:54 === Round 293 ===
+20:35:54    [Scheduler] Round 293: Dynamic Reset Ratio = 0.00000
+20:36:53 === Round 294 ===
+20:36:53    [Scheduler] Round 294: Dynamic Reset Ratio = 0.00000
+20:38:15 === Round 295 ===
+20:38:15    [Scheduler] Round 295: Dynamic Reset Ratio = 0.00000
+20:39:03 [TEST] Acc: 91.33% | Loss: 0.4167 | Gap: 1.99% (F:92.10 vs M:90.11)
+20:39:03 === Round 296 ===
+20:39:03    [Scheduler] Round 296: Dynamic Reset Ratio = 0.00000
+20:39:57 === Round 297 ===
+20:39:57    [Scheduler] Round 297: Dynamic Reset Ratio = 0.00000
+20:40:32 === Round 298 ===
+20:40:32    [Scheduler] Round 298: Dynamic Reset Ratio = 0.00000
+20:41:08 === Round 299 ===
+20:41:08    [Scheduler] Round 299: Dynamic Reset Ratio = 0.00000
+20:41:41 [TEST] Acc: 91.56% | Loss: 0.4072 | Gap: 2.07% (F:92.36 vs M:90.29)
+20:41:41 💾 Checkpoint saved: ./save/FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3/model_round_299.pth
+20:41:41 ✅ Training Finished.
+wandb: uploading output.log; uploading wandb-summary.json
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb: fairness/acc_female ▁▅▃▇▆▅▆▆▇▅▇▅▇▇▇▇▇▇▆█▇█▆▅▆▆▆▆▇▆▆▆▆▆▆▅▆▅▅▆
+wandb:   fairness/acc_male ▁▆▆▇▇▇█▇███████▇████████████████████████
+wandb:        fairness/gap █▃▄▃▃▃▃▃▂▃▂▂▂▂▃▂▂▂▂▂▂▂▂▃▂▂▂▁▂▂▂▂▂▂▂▁▁▂▁▁
+wandb:               round ▁▁▁▁▂▂▂▂▃▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇████
+wandb:       runtime_hours ▁▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▆▇▇▇▇▇███
+wandb:            test/acc ▁▆▇▇████████████▇███████████████████████
+wandb:           test/loss █▂▂▂▁▂▁▂▃▂▁▃▂▃▃▃▁▂▃▂▂▄▂▅▃▃▃▃▂▂▂▄▂▄▂▃▆▄▄▄
+wandb: 
+wandb: Run summary:
+wandb:               epoch 299
+wandb: fairness/acc_female 92.35731
+wandb:   fairness/acc_male 90.29164
+wandb:        fairness/gap 2.06567
+wandb:               round 299
+wandb:       runtime_hours 4.01498
+wandb:            test/acc 91.55896
+wandb:           test/loss 0.40719
+wandb: 
+wandb: 🚀 View run FedPhoenix_AttrDirichlet_Beta0.3_FreshStart_celeba_Beta0.3 at: https://wandb.ai/1553122091-a/FedFAAR_Experiment/runs/bh4bjzb9
+wandb: ⭐️ View project at: https://wandb.ai/1553122091-a/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251217_164045-bh4bjzb9/logs
+[WandbLogger] 运行结束。
