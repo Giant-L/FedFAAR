@@ -1,199 +1,203 @@
+# locate策略 + reset手段
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from scipy.stats import wasserstein_distance
 import copy
 
-# =============================================================================
-# 1. 诊断模块：提取分布 & 计算 Bias
-# =============================================================================
+# ==============================================================================
+# 1. 神经元定位器 (Locators) - 五种方法集成
+# ==============================================================================
 
-def extract_activation_distributions(model, probe_loader, sensitive_attr_idx=1, device='cuda'):
-    """
-    运行探针数据，提取每一层、每一个卷积核对 Male/Female 的激活分布。
-    """
-    model.eval()
-    activations = {}
+def score_linear_mixing(act_male, act_female, alpha=0.5):
+    rate_m = (act_male > 0).float().mean(dim=0)
+    rate_f = (act_female > 0).float().mean(dim=0)
+    diff_rate = torch.abs(rate_m - rate_f)
+    mu_m = act_male.mean(dim=0)
+    mu_f = act_female.mean(dim=0)
+    diff_mu = torch.abs(mu_m - mu_f)
+    return (1 - alpha) * diff_mu + alpha * diff_rate
+
+def score_mixed_log_odds(act_male, act_female, eps=1e-6):
+    rate_m = (act_male > 0).float().mean(dim=0)
+    rate_f = (act_female > 0).float().mean(dim=0)
+    rate_m = torch.clamp(rate_m, min=eps, max=1-eps)
+    rate_f = torch.clamp(rate_f, min=eps, max=1-eps)
+    logit_m = torch.log(rate_m / (1 - rate_m))
+    logit_f = torch.log(rate_f / (1 - rate_f))
+    return torch.abs(logit_m - logit_f)
+
+def score_shape_rate(act_male, act_female, alpha=0.5):
+    # 简化版 Wasserstein (假设对齐)
+    if act_male.shape[0] == act_female.shape[0]:
+        m_sorted, _ = torch.sort(act_male, dim=0)
+        f_sorted, _ = torch.sort(act_female, dim=0)
+        wass_dist = torch.mean(torch.abs(m_sorted - f_sorted), dim=0)
+    else:
+        qs = torch.linspace(0, 1, 100).to(act_male.device)
+        m_q = torch.quantile(act_male, qs, dim=0)
+        f_q = torch.quantile(act_female, qs, dim=0)
+        wass_dist = torch.mean(torch.abs(m_q - f_q), dim=0)
     
-    # 自动寻找卷积层
-    target_layers = []
-    for name, module in model.named_modules():
-        if isinstance(module, nn.Conv2d):
-            target_layers.append((name, module))
+    rate_m = (act_male > 0).float().mean(dim=0)
+    rate_f = (act_female > 0).float().mean(dim=0)
+    diff_rate = torch.abs(rate_m - rate_f)
+    return (1 - alpha) * wass_dist + alpha * diff_rate
 
-    # Hook 函数：截获中间输出
-    def get_hook(name):
+def score_complex_fisher(act_male, act_female):
+    mu_m, var_m = act_male.mean(dim=0), act_male.var(dim=0)
+    mu_f, var_f = act_female.mean(dim=0), act_female.var(dim=0)
+    numerator = torch.pow(mu_m - mu_f, 2)
+    denominator = var_m + var_f + 1e-8
+    fisher = numerator / denominator
+    rate_diff = torch.abs((act_male > 0).float().mean(dim=0) - (act_female > 0).float().mean(dim=0))
+    return fisher * (1 + rate_diff)
+
+def score_jsd(act_male, act_female, bins=20):
+    # 简化的 JSD 实现 (Batch处理)
+    # 为了速度，这里使用 Rate 差异近似，或者你可以保留你原来的循环实现
+    # 这里提供一个高效的 Rate-based 近似，因为循环太慢会卡死 Server
+    p0_m = (act_male <= 0).float().mean(dim=0)
+    p0_f = (act_female <= 0).float().mean(dim=0)
+    return torch.abs(p0_m - p0_f) 
+
+def get_doubt_score(act_male, act_female, method='log_odds'):
+    if method == 'random':
+        return torch.rand(act_male.shape[1]).to(act_male.device)
+    elif method == 'linear':
+        return score_linear_mixing(act_male, act_female)
+    elif method == 'log_odds':
+        return score_mixed_log_odds(act_male, act_female)
+    elif method == 'shape_rate':
+        return score_shape_rate(act_male, act_female)
+    elif method == 'complex':
+        return score_complex_fisher(act_male, act_female)
+    elif method == 'jsd':
+        return score_jsd(act_male, act_female)
+    else:
+        raise ValueError(f"Unknown method: {method}")
+
+# ==============================================================================
+# 2. 诊断主程序 (Server Side Diagnosis)
+# ==============================================================================
+
+def extract_layer_scores(net, probe_loader, device, method='log_odds'):
+    """
+    提取所有卷积层的激活值，并计算怀疑度分数。
+    返回: {layer_name: score_tensor}
+    """
+    net.eval()
+    activation = {}
+    def get_activation(name):
         def hook(model, input, output):
-            # Global Average Pooling: [B, C, H, W] -> [B, C]
-            avg_act = output.mean(dim=[2, 3]).detach().cpu()
-            if name not in activations:
-                activations[name] = {'raw': []}
-            activations[name]['raw'].append(avg_act)
+            activation[name] = output.detach()
         return hook
 
-    # 注册 Hooks
-    hooks = [m.register_forward_hook(get_hook(n)) for n, m in target_layers]
+    hooks = []
+    target_layers = []
+    for name, layer in net.named_modules():
+        if isinstance(layer, nn.Conv2d):
+            h = layer.register_forward_hook(get_activation(name))
+            hooks.append(h)
+            target_layers.append(name)
 
-    # 运行探针
-    sensitive_labels = []
+    # 收集激活值
+    act_male = {name: [] for name in target_layers}
+    act_female = {name: [] for name in target_layers}
+    
     with torch.no_grad():
         for imgs, labels in probe_loader:
             imgs = imgs.to(device)
-            # 兼容 CelebA 格式
+            # 处理 label 格式
             if labels.dim() > 1:
-                s_targets = labels[:, sensitive_attr_idx].cpu()
+                sensitives = labels[:, 1].to(device).long()
             else:
-                s_targets = torch.zeros_like(labels).cpu()
-            sensitive_labels.append(s_targets)
-            _ = model(imgs)
+                sensitives = torch.zeros(labels.size(0)).long().to(device) # fallback
 
-    # 移除 Hooks
+            _ = net(imgs)
+            
+            for name in target_layers:
+                # Global Average Pooling [B, C, H, W] -> [B, C]
+                act = activation[name].mean(dim=[2, 3])
+                act_male[name].append(act[sensitives == 1])
+                act_female[name].append(act[sensitives == 0])
+
     for h in hooks: h.remove()
-    
-    # 整理数据
-    all_sensitive = torch.cat(sensitive_labels)
-    mask_male = (all_sensitive == 1)
-    mask_female = (all_sensitive == 0)
-    
-    results = {}
-    
-    for layer_name, data in activations.items():
-        full_act = torch.cat(data['raw'], dim=0)
-        
-        # 安全检查：防止某类样本为0
-        if mask_male.sum() == 0 or mask_female.sum() == 0:
-            continue
-            
-        act_male = full_act[mask_male].numpy()
-        act_female = full_act[mask_female].numpy()
-        
-        num_channels = full_act.shape[1]
-        results[layer_name] = []
-        for c in range(num_channels):
-            # 存储每个 Channel 的分布数据
-            results[layer_name].append({
-                'male': act_male[:, c],
-                'female': act_female[:, c]
-            })
-            
-    return results
 
-
-def calculate_reset_probs_softmax(dists, tau=0.1):
-    """
-    【你的创新点】Soft-Hard Guided Reset
-    输入：激活分布差异
-    输出：每一层每个卷积核的重置概率 P = Softmax(Bias / tau)
-    """
-    layer_probs = {}
-    
-    for layer_name, channels in dists.items():
-        scores = []
-        # 计算每个 Channel 的 Wasserstein 距离
-        for c_data in channels:
-            m_dist = c_data['male']
-            f_dist = c_data['female']
-            if len(m_dist) < 2 or len(f_dist) < 2:
-                score = 0.0
-            else:
-                score = wasserstein_distance(m_dist, f_dist)
-            scores.append(score)
+    # 计算分数
+    layer_scores = {}
+    for name in target_layers:
+        am = torch.cat(act_male[name], dim=0)
+        af = torch.cat(act_female[name], dim=0)
         
-        scores = np.array(scores)
-        
-        # Softmax 计算
-        # 1. 归一化 Score (防止数值不稳定)
-        if scores.max() > 0:
-            scores_norm = scores / (scores.max() + 1e-6)
+        # 避免空数据
+        if len(am) == 0 or len(af) == 0:
+            layer_scores[name] = torch.zeros(am.shape[1]).to(device)
         else:
-            scores_norm = scores
+            layer_scores[name] = get_doubt_score(am, af, method=method)
             
-        # 2. 计算概率：Bias 越大，P 越大
-        logits = torch.tensor(scores_norm / tau)
-        probs = F.softmax(logits, dim=0).numpy()
-        
-        layer_probs[layer_name] = {
-            'scores': scores,
-            'probs': probs
-        }
-        
-    return layer_probs
+    return layer_scores
 
-# =============================================================================
-# 2. 干预模块：层级衰减 & 重置
-# =============================================================================
+# ==============================================================================
+# 3. 神经元选择 (Temperature Scaling)
+# ==============================================================================
 
-def get_layer_decay_ratio(layer_name, base_ratio):
+def select_neurons_by_temperature(scores, temperature=1.0, top_k=None):
     """
-    【复刻 FedPhoenix】层级衰减机制 (Layer-wise Decay)
-    浅层 (Layer1) 重置力度大，深层 (Layer4) 保护起来。
+    基于温度采样。
+    tau -> 0: Hard Top-K
+    tau -> inf: Random
     """
-    # 简单的层深判断逻辑 (适配 ResNet18)
-    if 'conv1' in layer_name or 'layer1' in layer_name:
-        factor = 1.0  # 100% 力度
-    elif 'layer2' in layer_name:
-        factor = 0.8  # 80% 力度
-    elif 'layer3' in layer_name:
-        factor = 0.5  # 50% 力度
-    elif 'layer4' in layer_name:
-        factor = 0.1  # 10% 力度 (深层几乎不重置)
-    else:
-        factor = 0.1
-        
-    real_ratio = base_ratio * factor
-    return real_ratio
-
-def apply_faar_reset(model, dists, args, logger=None):
-    """
-    主入口函数：执行 FAAR 干预
-    参数：
-      model: 全局模型
-      dists: 提取出的分布数据
-      args: 包含 args.reset (基础比例) 和 args.faar_tau (温度)
-    """
-    # 1. 计算 Softmax 概率
-    layer_probs = calculate_reset_probs_softmax(dists, tau=args.faar_tau)
+    scores = scores.float()
     
-    total_reset = 0
-    stats = {} # 用于保存统计信息
+    # 极低温度：确定性选择
+    if temperature < 1e-4:
+        _, indices = torch.topk(scores, top_k)
+        return indices
     
-    for name, module in model.named_modules():
-        if name in layer_probs and isinstance(module, nn.Conv2d):
-            probs = layer_probs[name]['probs']
-            scores = layer_probs[name]['scores']
-            num_filters = len(probs)
-            
-            # 2. 【复刻 FedPhoenix】获取当前层的衰减比例
-            current_ratio = get_layer_decay_ratio(name, args.reset)
-            
-            # 计算需要重置的数量 K
-            k = int(num_filters * current_ratio)
-            
-            if k > 0:
-                # 3. 【Soft 采样】根据 Bias 概率选择 K 个倒霉蛋
-                reset_indices = np.random.choice(
-                    np.arange(num_filters), 
-                    size=k, 
-                    replace=False, 
-                    p=probs
-                )
+    # 温度缩放 Softmax
+    logits = scores / temperature
+    probs = torch.softmax(logits, dim=0)
+    
+    # 无放回采样
+    # indices = torch.multinomial(probs, top_k, replacement=False)
+    
+    # 💡 优化：为了保证每个客户端得到的 "随机性" 是独立的，
+    # 我们不在这里 fix seed，而是依赖外部调用时的随机状态。
+    try:
+        indices = torch.multinomial(probs, top_k, replacement=False)
+    except RuntimeError:
+        # Fallback if probs contain NaNs or sum to 0
+        _, indices = torch.topk(scores, top_k)
+        
+    return indices
+
+# ==============================================================================
+# 4. 执行 Soft-Reset (Client Side Operation)
+# ==============================================================================
+
+def apply_faar_soft_reset(model, layer_indices_map, scale_factor=1.0):
+    """
+    model: 客户端本地模型
+    layer_indices_map: {layer_name: [idx1, idx2, ...]} 需要重置的索引
+    """
+    reset_count = 0
+    
+    with torch.no_grad():
+        for name, module in model.named_modules():
+            if name in layer_indices_map and isinstance(module, nn.Conv2d):
+                indices = layer_indices_map[name]
+                if len(indices) == 0: continue
                 
-                # 4. 执行 Kaiming 初始化重置
-                with torch.no_grad():
-                    for idx in reset_indices:
-                        nn.init.kaiming_uniform_(module.weight[idx].unsqueeze(0), a=np.sqrt(5))
-                        if module.bias is not None:
-                            module.bias[idx].fill_(0)
+                # 计算统计量 (Soft Reset Logic)
+                current_mean = module.weight.data.mean().item()
+                current_std = module.weight.data.std().item()
                 
-                total_reset += k
-                stats[name] = {
-                    'count': k,
-                    'max_bias': float(scores.max()),
-                    'indices': reset_indices.tolist()
-                }
-            else:
-                stats[name] = {'count': 0}
-                
-    print(f"   [FAAR] Reset Completed. Total Filters Reset: {total_reset}")
-    return stats
+                for idx in indices:
+                    # ori_normal 初始化: N(mean, std)
+                    new_kernel = torch.randn_like(module.weight[idx]) * current_std * scale_factor + current_mean
+                    module.weight.data[idx] = new_kernel
+                    reset_count += 1
+                    
+    return reset_count

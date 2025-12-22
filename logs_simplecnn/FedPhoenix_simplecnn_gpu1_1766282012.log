@@ -1,0 +1,756 @@
+=== Loading CelebA (Binary .pt Mode) ===
+ -> [Fast Loader] 正在从 ./data/celeba/celeba_fast.pt 加载数据...
+✅ 加载完成！耗时: 0.70 秒
+ -> [train] 分配图片: 103959 张
+ -> [test] 分配图片: 19962 张
+09:53:38 📂 Loading pre-partitioned data from: /home/ubuntu/ljy/AAAFAAR/data/celeba/celeba_biased_20clients_1000img.pt
+09:53:39 ✅ Loaded 20 clients from .pt file.
+
+📊 =========================================================
+🕵️  [Data Inspection] Inspecting Biased Dataset Structure...
+    Format: Total | Male (Smile%) | Female (Smile%)
+---------------------------------------------------------
+Client  0 🔴 Min : 1000 | Male: 200 (Smile:  20.0%) | Female: 800 (Smile:  80.0%)
+Client  1 🔴 Min : 1000 | Male: 200 (Smile:  20.0%) | Female: 800 (Smile:  80.0%)
+Client  2 🔴 Min : 1000 | Male: 200 (Smile:  20.0%) | Female: 800 (Smile:  80.0%)
+Client  3 🔴 Min : 1000 | Male: 200 (Smile:  20.0%) | Female: 800 (Smile:  80.0%)
+Client  4 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client  5 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client  6 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client  7 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client  8 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client  9 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 10 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 11 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 12 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 13 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 14 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 15 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 16 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 17 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 18 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+Client 19 🔵 Maj : 1000 | Male: 800 (Smile:  20.0%) | Female: 200 (Smile:  80.0%)
+---------------------------------------------------------
+✅ Global Stats:
+   Total Images used for Training: 20000
+   Total Clients: 20
+   Male Ratio: 68.0% | Female Ratio: 32.0%
+=========================================================
+
+09:53:39 Model initialized: simplecnn (Classes: 2)
+wandb: Currently logged in as: 321495417 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: creating run
+wandb: Tracking run with wandb version 0.19.11
+wandb: Run data is saved locally in /home/ubuntu/ljy/AAAFAAR/wandb/run-20251221_095340-mg95wgri
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5
+wandb: ⭐️ View project at https://wandb.ai/321495417/FedFAAR_Experiment
+wandb: 🚀 View run at https://wandb.ai/321495417/FedFAAR_Experiment/runs/mg95wgri
+🚀 Wandb 初始化成功！Run: FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5
+wandb: WARNING The get_url method is deprecated and will be removed in a future release. Please use `run.url` instead.
+🔗 链接: https://wandb.ai/321495417/FedFAAR_Experiment/runs/mg95wgri
+09:53:42 🔥 开始训练: FedPhoenix | Rounds: 0 -> 200
+09:53:42 === Round   0 ===
+09:53:42    [Scheduler] Round 0: Dynamic Reset Ratio = 0.05000
+09:53:58 [TEST] Round 0
+09:53:58    Acc     : 49.97% (49.97%)
+09:53:58    Loss    : 0.7302 (0.7302)
+09:53:58    Gap     : 16.18% (16.18%)
+09:53:58    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+09:53:58    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+09:53:58 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_0.pth
+09:53:58 === Round   1 ===
+09:53:58    [Scheduler] Round 1: Dynamic Reset Ratio = 0.05000
+09:54:07 === Round   2 ===
+09:54:07    [Scheduler] Round 2: Dynamic Reset Ratio = 0.04999
+09:54:16 === Round   3 ===
+09:54:16    [Scheduler] Round 3: Dynamic Reset Ratio = 0.04997
+09:54:24 === Round   4 ===
+09:54:24    [Scheduler] Round 4: Dynamic Reset Ratio = 0.04995
+09:54:34 === Round   5 ===
+09:54:34    [Scheduler] Round 5: Dynamic Reset Ratio = 0.04992
+09:54:43 [TEST] Round 5
+09:54:43    Acc     : 49.97% (49.97%)
+09:54:43    Loss    : 0.7160 (0.7231)
+09:54:43    Gap     : 16.18% (16.18%)
+09:54:43    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+09:54:43    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+09:54:43 === Round   6 ===
+09:54:43    [Scheduler] Round 6: Dynamic Reset Ratio = 0.04989
+09:54:51 === Round   7 ===
+09:54:51    [Scheduler] Round 7: Dynamic Reset Ratio = 0.04985
+09:55:01 === Round   8 ===
+09:55:01    [Scheduler] Round 8: Dynamic Reset Ratio = 0.04980
+09:55:10 === Round   9 ===
+09:55:10    [Scheduler] Round 9: Dynamic Reset Ratio = 0.04975
+09:55:18 === Round  10 ===
+09:55:18    [Scheduler] Round 10: Dynamic Reset Ratio = 0.04969
+09:55:28 [TEST] Round 10
+09:55:28    Acc     : 49.97% (49.97%)
+09:55:28    Loss    : 0.7467 (0.7310)
+09:55:28    Gap     : 16.18% (16.18%)
+09:55:28    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+09:55:28    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+09:55:28 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_10.pth
+09:55:28 === Round  11 ===
+09:55:28    [Scheduler] Round 11: Dynamic Reset Ratio = 0.04963
+09:55:36 === Round  12 ===
+09:55:36    [Scheduler] Round 12: Dynamic Reset Ratio = 0.04956
+09:55:45 === Round  13 ===
+09:55:45    [Scheduler] Round 13: Dynamic Reset Ratio = 0.04948
+09:55:53 === Round  14 ===
+09:55:53    [Scheduler] Round 14: Dynamic Reset Ratio = 0.04940
+09:56:02 === Round  15 ===
+09:56:02    [Scheduler] Round 15: Dynamic Reset Ratio = 0.04931
+09:56:13 [TEST] Round 15
+09:56:13    Acc     : 50.00% (49.98%)
+09:56:13    Loss    : 0.6967 (0.7224)
+09:56:13    Gap     : 13.68% (15.55%)
+09:56:13    Group   : F=44.7% M=58.4% (Worst: 44.7%)
+09:56:13    🔥Hard  : Male+Smile=8.5% | Female+NoSmile=82.2%
+09:56:13 === Round  16 ===
+09:56:13    [Scheduler] Round 16: Dynamic Reset Ratio = 0.04921
+09:56:23 === Round  17 ===
+09:56:23    [Scheduler] Round 17: Dynamic Reset Ratio = 0.04911
+09:56:32 === Round  18 ===
+09:56:32    [Scheduler] Round 18: Dynamic Reset Ratio = 0.04901
+09:56:42 === Round  19 ===
+09:56:42    [Scheduler] Round 19: Dynamic Reset Ratio = 0.04889
+09:56:51 === Round  20 ===
+09:56:51    [Scheduler] Round 20: Dynamic Reset Ratio = 0.04878
+09:57:00 [TEST] Round 20
+09:57:00    Acc     : 49.97% (49.98%)
+09:57:00    Loss    : 0.7485 (0.7276)
+09:57:00    Gap     : 16.18% (15.68%)
+09:57:00    Group   : F=43.7% M=59.9% (Worst: 43.7%)
+09:57:00    🔥Hard  : Male+Smile=0.0% | Female+NoSmile=100.0%
+09:57:00 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_20.pth
+09:57:00 === Round  21 ===
+09:57:00    [Scheduler] Round 21: Dynamic Reset Ratio = 0.04865
+09:57:09 === Round  22 ===
+09:57:09    [Scheduler] Round 22: Dynamic Reset Ratio = 0.04852
+09:57:18 === Round  23 ===
+09:57:18    [Scheduler] Round 23: Dynamic Reset Ratio = 0.04839
+09:57:27 === Round  24 ===
+09:57:27    [Scheduler] Round 24: Dynamic Reset Ratio = 0.04824
+09:57:35 === Round  25 ===
+09:57:35    [Scheduler] Round 25: Dynamic Reset Ratio = 0.04810
+09:57:44 [TEST] Round 25
+09:57:44    Acc     : 50.57% (50.10%)
+09:57:44    Loss    : 0.7214 (0.7259)
+09:57:44    Gap     : 14.93% (15.43%)
+09:57:44    Group   : F=44.8% M=59.7% (Worst: 44.8%)
+09:57:44    🔥Hard  : Male+Smile=0.8% | Female+NoSmile=95.4%
+09:57:44 === Round  26 ===
+09:57:44    [Scheduler] Round 26: Dynamic Reset Ratio = 0.04794
+09:57:53 === Round  27 ===
+09:57:53    [Scheduler] Round 27: Dynamic Reset Ratio = 0.04779
+09:58:02 === Round  28 ===
+09:58:02    [Scheduler] Round 28: Dynamic Reset Ratio = 0.04762
+09:58:10 === Round  29 ===
+09:58:10    [Scheduler] Round 29: Dynamic Reset Ratio = 0.04745
+09:58:19 === Round  30 ===
+09:58:19    [Scheduler] Round 30: Dynamic Reset Ratio = 0.04728
+09:58:29 [TEST] Round 30
+09:58:29    Acc     : 51.09% (50.32%)
+09:58:29    Loss    : 0.7198 (0.7266)
+09:58:29    Gap     : 13.32% (14.86%)
+09:58:29    Group   : F=45.9% M=59.3% (Worst: 45.9%)
+09:58:29    🔥Hard  : Male+Smile=2.2% | Female+NoSmile=89.5%
+09:58:29 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_30.pth
+09:58:29 === Round  31 ===
+09:58:29    [Scheduler] Round 31: Dynamic Reset Ratio = 0.04709
+09:58:38 === Round  32 ===
+09:58:38    [Scheduler] Round 32: Dynamic Reset Ratio = 0.04691
+09:58:47 === Round  33 ===
+09:58:47    [Scheduler] Round 33: Dynamic Reset Ratio = 0.04672
+09:58:55 === Round  34 ===
+09:58:55    [Scheduler] Round 34: Dynamic Reset Ratio = 0.04652
+09:59:03 === Round  35 ===
+09:59:03    [Scheduler] Round 35: Dynamic Reset Ratio = 0.04632
+09:59:13 [TEST] Round 35
+09:59:13    Acc     : 50.66% (50.46%)
+09:59:13    Loss    : 0.7668 (0.7306)
+09:59:13    Gap     : 14.79% (14.58%)
+09:59:13    Group   : F=44.9% M=59.7% (Worst: 44.9%)
+09:59:13    🔥Hard  : Male+Smile=0.5% | Female+NoSmile=97.0%
+09:59:13 === Round  36 ===
+09:59:13    [Scheduler] Round 36: Dynamic Reset Ratio = 0.04611
+09:59:21 === Round  37 ===
+09:59:21    [Scheduler] Round 37: Dynamic Reset Ratio = 0.04590
+09:59:30 === Round  38 ===
+09:59:30    [Scheduler] Round 38: Dynamic Reset Ratio = 0.04568
+09:59:40 === Round  39 ===
+09:59:40    [Scheduler] Round 39: Dynamic Reset Ratio = 0.04545
+09:59:50 === Round  40 ===
+09:59:50    [Scheduler] Round 40: Dynamic Reset Ratio = 0.04523
+10:00:00 [TEST] Round 40
+10:00:00    Acc     : 50.93% (50.64%)
+10:00:00    Loss    : 0.7601 (0.7433)
+10:00:00    Gap     : 14.02% (14.65%)
+10:00:00    Group   : F=45.5% M=59.5% (Worst: 45.5%)
+10:00:00    🔥Hard  : Male+Smile=1.1% | Female+NoSmile=94.5%
+10:00:00 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_40.pth
+10:00:00 === Round  41 ===
+10:00:00    [Scheduler] Round 41: Dynamic Reset Ratio = 0.04499
+10:00:09 === Round  42 ===
+10:00:09    [Scheduler] Round 42: Dynamic Reset Ratio = 0.04475
+10:00:18 === Round  43 ===
+10:00:18    [Scheduler] Round 43: Dynamic Reset Ratio = 0.04451
+10:00:26 === Round  44 ===
+10:00:26    [Scheduler] Round 44: Dynamic Reset Ratio = 0.04426
+10:00:34 === Round  45 ===
+10:00:34    [Scheduler] Round 45: Dynamic Reset Ratio = 0.04401
+10:00:44 [TEST] Round 45
+10:00:44    Acc     : 51.46% (50.94%)
+10:00:44    Loss    : 0.7737 (0.7484)
+10:00:44    Gap     : 13.11% (14.04%)
+10:00:44    Group   : F=46.4% M=59.5% (Worst: 46.4%)
+10:00:44    🔥Hard  : Male+Smile=1.5% | Female+NoSmile=94.2%
+10:00:44 === Round  46 ===
+10:00:44    [Scheduler] Round 46: Dynamic Reset Ratio = 0.04375
+10:00:54 === Round  47 ===
+10:00:54    [Scheduler] Round 47: Dynamic Reset Ratio = 0.04349
+10:01:04 === Round  48 ===
+10:01:04    [Scheduler] Round 48: Dynamic Reset Ratio = 0.04322
+10:01:15 === Round  49 ===
+10:01:15    [Scheduler] Round 49: Dynamic Reset Ratio = 0.04295
+10:01:25 === Round  50 ===
+10:01:25    [Scheduler] Round 50: Dynamic Reset Ratio = 0.04268
+10:01:36 [TEST] Round 50
+10:01:36    Acc     : 50.50% (50.93%)
+10:01:36    Loss    : 0.8975 (0.7836)
+10:01:36    Gap     : 15.17% (14.08%)
+10:01:36    Group   : F=44.6% M=59.8% (Worst: 44.6%)
+10:01:36    🔥Hard  : Male+Smile=0.1% | Female+NoSmile=98.9%
+10:01:37 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_50.pth
+10:01:37 === Round  51 ===
+10:01:37    [Scheduler] Round 51: Dynamic Reset Ratio = 0.04240
+10:01:47 === Round  52 ===
+10:01:47    [Scheduler] Round 52: Dynamic Reset Ratio = 0.04211
+10:01:57 === Round  53 ===
+10:01:57    [Scheduler] Round 53: Dynamic Reset Ratio = 0.04183
+10:02:07 === Round  54 ===
+10:02:07    [Scheduler] Round 54: Dynamic Reset Ratio = 0.04153
+10:02:17 === Round  55 ===
+10:02:17    [Scheduler] Round 55: Dynamic Reset Ratio = 0.04124
+10:02:29 [TEST] Round 55
+10:02:29    Acc     : 55.80% (51.87%)
+10:02:29    Loss    : 0.8514 (0.8099)
+10:02:29    Gap     : 8.56% (13.13%)
+10:02:29    Group   : F=52.5% M=61.0% (Worst: 52.5%)
+10:02:29    🔥Hard  : Male+Smile=4.8% | Female+NoSmile=95.8%
+10:02:29 === Round  56 ===
+10:02:29    [Scheduler] Round 56: Dynamic Reset Ratio = 0.04094
+10:02:39 === Round  57 ===
+10:02:39    [Scheduler] Round 57: Dynamic Reset Ratio = 0.04063
+10:02:49 === Round  58 ===
+10:02:49    [Scheduler] Round 58: Dynamic Reset Ratio = 0.04032
+10:02:59 === Round  59 ===
+10:02:59    [Scheduler] Round 59: Dynamic Reset Ratio = 0.04001
+10:03:09 === Round  60 ===
+10:03:09    [Scheduler] Round 60: Dynamic Reset Ratio = 0.03969
+10:03:21 [TEST] Round 60
+10:03:21    Acc     : 60.93% (53.92%)
+10:03:21    Loss    : 0.8458 (0.8257)
+10:03:21    Gap     : 3.83% (10.94%)
+10:03:21    Group   : F=59.5% M=63.3% (Worst: 59.5%)
+10:03:21    🔥Hard  : Male+Smile=10.5% | Female+NoSmile=95.9%
+10:03:21 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_60.pth
+10:03:21 === Round  61 ===
+10:03:21    [Scheduler] Round 61: Dynamic Reset Ratio = 0.03938
+10:03:31 === Round  62 ===
+10:03:31    [Scheduler] Round 62: Dynamic Reset Ratio = 0.03905
+10:03:41 === Round  63 ===
+10:03:41    [Scheduler] Round 63: Dynamic Reset Ratio = 0.03873
+10:03:51 === Round  64 ===
+10:03:51    [Scheduler] Round 64: Dynamic Reset Ratio = 0.03840
+10:04:01 === Round  65 ===
+10:04:01    [Scheduler] Round 65: Dynamic Reset Ratio = 0.03806
+10:04:13 [TEST] Round 65
+10:04:13    Acc     : 66.68% (57.07%)
+10:04:13    Loss    : 0.7331 (0.8203)
+10:04:13    Gap     : 0.21% (8.18%)
+10:04:13    Group   : F=66.6% M=66.8% (Worst: 66.6%)
+10:04:13    🔥Hard  : Male+Smile=19.9% | Female+NoSmile=96.4%
+10:04:13 === Round  66 ===
+10:04:13    [Scheduler] Round 66: Dynamic Reset Ratio = 0.03773
+10:04:23 === Round  67 ===
+10:04:23    [Scheduler] Round 67: Dynamic Reset Ratio = 0.03739
+10:04:33 === Round  68 ===
+10:04:33    [Scheduler] Round 68: Dynamic Reset Ratio = 0.03704
+10:04:43 === Round  69 ===
+10:04:43    [Scheduler] Round 69: Dynamic Reset Ratio = 0.03670
+10:04:53 === Round  70 ===
+10:04:53    [Scheduler] Round 70: Dynamic Reset Ratio = 0.03635
+10:05:05 [TEST] Round 70
+10:05:05    Acc     : 73.27% (61.43%)
+10:05:05    Loss    : 0.5929 (0.7842)
+10:05:05    Gap     : 2.68% (6.09%)
+10:05:05    Group   : F=74.3% M=71.6% (Worst: 71.6%)
+10:05:05    🔥Hard  : Male+Smile=35.2% | Female+NoSmile=92.3%
+10:05:05 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_70.pth
+10:05:05 === Round  71 ===
+10:05:05    [Scheduler] Round 71: Dynamic Reset Ratio = 0.03600
+10:05:15 === Round  72 ===
+10:05:15    [Scheduler] Round 72: Dynamic Reset Ratio = 0.03564
+10:05:25 === Round  73 ===
+10:05:25    [Scheduler] Round 73: Dynamic Reset Ratio = 0.03529
+10:05:35 === Round  74 ===
+10:05:35    [Scheduler] Round 74: Dynamic Reset Ratio = 0.03493
+10:05:46 === Round  75 ===
+10:05:46    [Scheduler] Round 75: Dynamic Reset Ratio = 0.03457
+10:05:57 [TEST] Round 75
+10:05:57    Acc     : 75.91% (66.52%)
+10:05:57    Loss    : 0.5457 (0.7138)
+10:05:57    Gap     : 3.11% (3.68%)
+10:05:57    Group   : F=77.1% M=74.0% (Worst: 74.0%)
+10:05:57    🔥Hard  : Male+Smile=42.3% | Female+NoSmile=91.4%
+10:05:57 === Round  76 ===
+10:05:57    [Scheduler] Round 76: Dynamic Reset Ratio = 0.03420
+10:06:08 === Round  77 ===
+10:06:08    [Scheduler] Round 77: Dynamic Reset Ratio = 0.03384
+10:06:18 === Round  78 ===
+10:06:18    [Scheduler] Round 78: Dynamic Reset Ratio = 0.03347
+10:06:28 === Round  79 ===
+10:06:28    [Scheduler] Round 79: Dynamic Reset Ratio = 0.03310
+10:06:38 === Round  80 ===
+10:06:38    [Scheduler] Round 80: Dynamic Reset Ratio = 0.03273
+10:06:50 [TEST] Round 80
+10:06:50    Acc     : 79.26% (71.21%)
+10:06:50    Loss    : 0.4841 (0.6403)
+10:06:50    Gap     : 3.44% (2.65%)
+10:06:50    Group   : F=80.6% M=77.1% (Worst: 77.1%)
+10:06:50    🔥Hard  : Male+Smile=51.6% | Female+NoSmile=89.1%
+10:06:50 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_80.pth
+10:06:50 === Round  81 ===
+10:06:50    [Scheduler] Round 81: Dynamic Reset Ratio = 0.03235
+10:07:00 === Round  82 ===
+10:07:00    [Scheduler] Round 82: Dynamic Reset Ratio = 0.03197
+10:07:10 === Round  83 ===
+10:07:10    [Scheduler] Round 83: Dynamic Reset Ratio = 0.03160
+10:07:20 === Round  84 ===
+10:07:20    [Scheduler] Round 84: Dynamic Reset Ratio = 0.03122
+10:07:30 === Round  85 ===
+10:07:30    [Scheduler] Round 85: Dynamic Reset Ratio = 0.03084
+10:07:42 [TEST] Round 85
+10:07:42    Acc     : 80.77% (75.18%)
+10:07:42    Loss    : 0.4648 (0.5642)
+10:07:42    Gap     : 3.49% (2.59%)
+10:07:42    Group   : F=82.1% M=78.6% (Worst: 78.6%)
+10:07:42    🔥Hard  : Male+Smile=53.3% | Female+NoSmile=89.5%
+10:07:42 === Round  86 ===
+10:07:42    [Scheduler] Round 86: Dynamic Reset Ratio = 0.03045
+10:07:52 === Round  87 ===
+10:07:52    [Scheduler] Round 87: Dynamic Reset Ratio = 0.03007
+10:08:02 === Round  88 ===
+10:08:02    [Scheduler] Round 88: Dynamic Reset Ratio = 0.02968
+10:08:13 === Round  89 ===
+10:08:13    [Scheduler] Round 89: Dynamic Reset Ratio = 0.02930
+10:08:23 === Round  90 ===
+10:08:23    [Scheduler] Round 90: Dynamic Reset Ratio = 0.02891
+10:08:34 [TEST] Round 90
+10:08:34    Acc     : 82.68% (78.38%)
+10:08:34    Loss    : 0.4165 (0.5008)
+10:08:34    Gap     : 2.63% (3.07%)
+10:08:34    Group   : F=83.7% M=81.1% (Worst: 81.1%)
+10:08:34    🔥Hard  : Male+Smile=66.5% | Female+NoSmile=81.6%
+10:08:34 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_90.pth
+10:08:34 === Round  91 ===
+10:08:34    [Scheduler] Round 91: Dynamic Reset Ratio = 0.02852
+10:08:45 === Round  92 ===
+10:08:45    [Scheduler] Round 92: Dynamic Reset Ratio = 0.02813
+10:08:55 === Round  93 ===
+10:08:55    [Scheduler] Round 93: Dynamic Reset Ratio = 0.02774
+10:09:05 === Round  94 ===
+10:09:05    [Scheduler] Round 94: Dynamic Reset Ratio = 0.02735
+10:09:15 === Round  95 ===
+10:09:15    [Scheduler] Round 95: Dynamic Reset Ratio = 0.02696
+10:09:27 [TEST] Round 95
+10:09:27    Acc     : 83.17% (80.36%)
+10:09:27    Loss    : 0.4358 (0.4694)
+10:09:27    Gap     : 3.09% (3.15%)
+10:09:27    Group   : F=84.4% M=81.3% (Worst: 81.3%)
+10:09:27    🔥Hard  : Male+Smile=63.9% | Female+NoSmile=85.8%
+10:09:27 === Round  96 ===
+10:09:27    [Scheduler] Round 96: Dynamic Reset Ratio = 0.02657
+10:09:37 === Round  97 ===
+10:09:37    [Scheduler] Round 97: Dynamic Reset Ratio = 0.02618
+10:09:47 === Round  98 ===
+10:09:47    [Scheduler] Round 98: Dynamic Reset Ratio = 0.02579
+10:09:58 === Round  99 ===
+10:09:58    [Scheduler] Round 99: Dynamic Reset Ratio = 0.02539
+10:10:08 === Round 100 ===
+10:10:08    [Scheduler] Round 100: Dynamic Reset Ratio = 0.02500
+10:10:19 [TEST] Round 100
+10:10:19    Acc     : 83.05% (81.79%)
+10:10:19    Loss    : 0.4095 (0.4422)
+10:10:19    Gap     : 2.69% (3.07%)
+10:10:19    Group   : F=84.1% M=81.4% (Worst: 81.4%)
+10:10:19    🔥Hard  : Male+Smile=66.7% | Female+NoSmile=80.0%
+10:10:19 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_100.pth
+10:10:19 === Round 101 ===
+10:10:19    [Scheduler] Round 101: Dynamic Reset Ratio = 0.02461
+10:10:29 === Round 102 ===
+10:10:29    [Scheduler] Round 102: Dynamic Reset Ratio = 0.02421
+10:10:39 === Round 103 ===
+10:10:39    [Scheduler] Round 103: Dynamic Reset Ratio = 0.02382
+10:10:50 === Round 104 ===
+10:10:50    [Scheduler] Round 104: Dynamic Reset Ratio = 0.02343
+10:11:00 === Round 105 ===
+10:11:00    [Scheduler] Round 105: Dynamic Reset Ratio = 0.02304
+10:11:12 [TEST] Round 105
+10:11:12    Acc     : 83.47% (82.63%)
+10:11:12    Loss    : 0.4588 (0.4371)
+10:11:12    Gap     : 4.50% (3.28%)
+10:11:12    Group   : F=85.2% M=80.7% (Worst: 80.7%)
+10:11:12    🔥Hard  : Male+Smile=57.1% | Female+NoSmile=88.3%
+10:11:12 === Round 106 ===
+10:11:12    [Scheduler] Round 106: Dynamic Reset Ratio = 0.02265
+10:11:21 === Round 107 ===
+10:11:21    [Scheduler] Round 107: Dynamic Reset Ratio = 0.02226
+10:11:31 === Round 108 ===
+10:11:31    [Scheduler] Round 108: Dynamic Reset Ratio = 0.02187
+10:11:42 === Round 109 ===
+10:11:42    [Scheduler] Round 109: Dynamic Reset Ratio = 0.02148
+10:11:52 === Round 110 ===
+10:11:52    [Scheduler] Round 110: Dynamic Reset Ratio = 0.02109
+10:12:03 [TEST] Round 110
+10:12:03    Acc     : 84.39% (83.35%)
+10:12:03    Loss    : 0.4196 (0.4281)
+10:12:03    Gap     : 3.25% (3.23%)
+10:12:03    Group   : F=85.6% M=82.4% (Worst: 82.4%)
+10:12:03    🔥Hard  : Male+Smile=68.0% | Female+NoSmile=82.4%
+10:12:03 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_110.pth
+10:12:03 === Round 111 ===
+10:12:03    [Scheduler] Round 111: Dynamic Reset Ratio = 0.02070
+10:12:14 === Round 112 ===
+10:12:14    [Scheduler] Round 112: Dynamic Reset Ratio = 0.02032
+10:12:24 === Round 113 ===
+10:12:24    [Scheduler] Round 113: Dynamic Reset Ratio = 0.01993
+10:12:34 === Round 114 ===
+10:12:34    [Scheduler] Round 114: Dynamic Reset Ratio = 0.01955
+10:12:44 === Round 115 ===
+10:12:44    [Scheduler] Round 115: Dynamic Reset Ratio = 0.01916
+10:12:56 [TEST] Round 115
+10:12:56    Acc     : 84.20% (83.66%)
+10:12:56    Loss    : 0.4426 (0.4333)
+10:12:56    Gap     : 3.68% (3.44%)
+10:12:56    Group   : F=85.6% M=81.9% (Worst: 81.9%)
+10:12:56    🔥Hard  : Male+Smile=64.6% | Female+NoSmile=85.7%
+10:12:56 === Round 116 ===
+10:12:56    [Scheduler] Round 116: Dynamic Reset Ratio = 0.01878
+10:13:06 === Round 117 ===
+10:13:06    [Scheduler] Round 117: Dynamic Reset Ratio = 0.01840
+10:13:16 === Round 118 ===
+10:13:16    [Scheduler] Round 118: Dynamic Reset Ratio = 0.01803
+10:13:26 === Round 119 ===
+10:13:26    [Scheduler] Round 119: Dynamic Reset Ratio = 0.01765
+10:13:36 === Round 120 ===
+10:13:36    [Scheduler] Round 120: Dynamic Reset Ratio = 0.01727
+10:13:48 [TEST] Round 120
+10:13:48    Acc     : 84.50% (83.92%)
+10:13:48    Loss    : 0.4573 (0.4376)
+10:13:48    Gap     : 3.84% (3.59%)
+10:13:48    Group   : F=86.0% M=82.1% (Worst: 82.1%)
+10:13:48    🔥Hard  : Male+Smile=65.2% | Female+NoSmile=85.4%
+10:13:48 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_120.pth
+10:13:48 === Round 121 ===
+10:13:48    [Scheduler] Round 121: Dynamic Reset Ratio = 0.01690
+10:13:58 === Round 122 ===
+10:13:58    [Scheduler] Round 122: Dynamic Reset Ratio = 0.01653
+10:14:08 === Round 123 ===
+10:14:08    [Scheduler] Round 123: Dynamic Reset Ratio = 0.01616
+10:14:18 === Round 124 ===
+10:14:18    [Scheduler] Round 124: Dynamic Reset Ratio = 0.01580
+10:14:28 === Round 125 ===
+10:14:28    [Scheduler] Round 125: Dynamic Reset Ratio = 0.01543
+10:14:40 [TEST] Round 125
+10:14:40    Acc     : 84.70% (84.25%)
+10:14:40    Loss    : 0.4660 (0.4489)
+10:14:40    Gap     : 3.54% (3.76%)
+10:14:40    Group   : F=86.1% M=82.5% (Worst: 82.5%)
+10:14:40    🔥Hard  : Male+Smile=67.5% | Female+NoSmile=83.4%
+10:14:40 === Round 126 ===
+10:14:40    [Scheduler] Round 126: Dynamic Reset Ratio = 0.01507
+10:14:50 === Round 127 ===
+10:14:50    [Scheduler] Round 127: Dynamic Reset Ratio = 0.01471
+10:15:00 === Round 128 ===
+10:15:00    [Scheduler] Round 128: Dynamic Reset Ratio = 0.01436
+10:15:11 === Round 129 ===
+10:15:11    [Scheduler] Round 129: Dynamic Reset Ratio = 0.01400
+10:15:21 === Round 130 ===
+10:15:21    [Scheduler] Round 130: Dynamic Reset Ratio = 0.01365
+10:15:33 [TEST] Round 130
+10:15:33    Acc     : 84.07% (84.37%)
+10:15:33    Loss    : 0.5633 (0.4698)
+10:15:33    Gap     : 4.12% (3.69%)
+10:15:33    Group   : F=85.7% M=81.5% (Worst: 81.5%)
+10:15:33    🔥Hard  : Male+Smile=60.1% | Female+NoSmile=90.1%
+10:15:33 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_130.pth
+10:15:33 === Round 131 ===
+10:15:33    [Scheduler] Round 131: Dynamic Reset Ratio = 0.01330
+10:15:43 === Round 132 ===
+10:15:43    [Scheduler] Round 132: Dynamic Reset Ratio = 0.01296
+10:15:53 === Round 133 ===
+10:15:53    [Scheduler] Round 133: Dynamic Reset Ratio = 0.01261
+10:16:03 === Round 134 ===
+10:16:03    [Scheduler] Round 134: Dynamic Reset Ratio = 0.01227
+10:16:13 === Round 135 ===
+10:16:13    [Scheduler] Round 135: Dynamic Reset Ratio = 0.01194
+10:16:25 [TEST] Round 135
+10:16:25    Acc     : 84.96% (84.49%)
+10:16:25    Loss    : 0.5475 (0.4953)
+10:16:25    Gap     : 4.13% (3.86%)
+10:16:25    Group   : F=86.6% M=82.4% (Worst: 82.4%)
+10:16:25    🔥Hard  : Male+Smile=63.6% | Female+NoSmile=89.6%
+10:16:25 === Round 136 ===
+10:16:25    [Scheduler] Round 136: Dynamic Reset Ratio = 0.01160
+10:16:35 === Round 137 ===
+10:16:35    [Scheduler] Round 137: Dynamic Reset Ratio = 0.01127
+10:16:45 === Round 138 ===
+10:16:45    [Scheduler] Round 138: Dynamic Reset Ratio = 0.01095
+10:16:56 === Round 139 ===
+10:16:56    [Scheduler] Round 139: Dynamic Reset Ratio = 0.01062
+10:17:06 === Round 140 ===
+10:17:06    [Scheduler] Round 140: Dynamic Reset Ratio = 0.01031
+10:17:17 [TEST] Round 140
+10:17:17    Acc     : 85.47% (84.74%)
+10:17:17    Loss    : 0.4784 (0.5025)
+10:17:17    Gap     : 3.48% (3.82%)
+10:17:17    Group   : F=86.8% M=83.3% (Worst: 83.3%)
+10:17:17    🔥Hard  : Male+Smile=68.7% | Female+NoSmile=86.6%
+10:17:17 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_140.pth
+10:17:17 === Round 141 ===
+10:17:17    [Scheduler] Round 141: Dynamic Reset Ratio = 0.00999
+10:17:28 === Round 142 ===
+10:17:28    [Scheduler] Round 142: Dynamic Reset Ratio = 0.00968
+10:17:38 === Round 143 ===
+10:17:38    [Scheduler] Round 143: Dynamic Reset Ratio = 0.00937
+10:17:48 === Round 144 ===
+10:17:48    [Scheduler] Round 144: Dynamic Reset Ratio = 0.00906
+10:17:58 === Round 145 ===
+10:17:58    [Scheduler] Round 145: Dynamic Reset Ratio = 0.00876
+10:18:10 [TEST] Round 145
+10:18:10    Acc     : 84.65% (84.77%)
+10:18:10    Loss    : 0.5282 (0.5167)
+10:18:10    Gap     : 3.71% (3.80%)
+10:18:10    Group   : F=86.1% M=82.4% (Worst: 82.4%)
+10:18:10    🔥Hard  : Male+Smile=71.3% | Female+NoSmile=82.3%
+10:18:10 === Round 146 ===
+10:18:10    [Scheduler] Round 146: Dynamic Reset Ratio = 0.00847
+10:18:20 === Round 147 ===
+10:18:20    [Scheduler] Round 147: Dynamic Reset Ratio = 0.00817
+10:18:30 === Round 148 ===
+10:18:30    [Scheduler] Round 148: Dynamic Reset Ratio = 0.00789
+10:18:41 === Round 149 ===
+10:18:41    [Scheduler] Round 149: Dynamic Reset Ratio = 0.00760
+10:18:51 === Round 150 ===
+10:18:51    [Scheduler] Round 150: Dynamic Reset Ratio = 0.00732
+10:19:03 [TEST] Round 150
+10:19:03    Acc     : 84.79% (84.79%)
+10:19:03    Loss    : 0.5776 (0.5390)
+10:19:03    Gap     : 4.34% (3.95%)
+10:19:03    Group   : F=86.5% M=82.1% (Worst: 82.1%)
+10:19:03    🔥Hard  : Male+Smile=63.3% | Female+NoSmile=89.5%
+10:19:03 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_150.pth
+10:19:03 === Round 151 ===
+10:19:03    [Scheduler] Round 151: Dynamic Reset Ratio = 0.00705
+10:19:13 === Round 152 ===
+10:19:13    [Scheduler] Round 152: Dynamic Reset Ratio = 0.00678
+10:19:23 === Round 153 ===
+10:19:23    [Scheduler] Round 153: Dynamic Reset Ratio = 0.00651
+10:19:33 === Round 154 ===
+10:19:33    [Scheduler] Round 154: Dynamic Reset Ratio = 0.00625
+10:19:43 === Round 155 ===
+10:19:43    [Scheduler] Round 155: Dynamic Reset Ratio = 0.00599
+10:19:55 [TEST] Round 155
+10:19:55    Acc     : 85.04% (84.98%)
+10:19:55    Loss    : 0.5473 (0.5358)
+10:19:55    Gap     : 4.03% (3.94%)
+10:19:55    Group   : F=86.6% M=82.6% (Worst: 82.6%)
+10:19:55    🔥Hard  : Male+Smile=65.1% | Female+NoSmile=88.4%
+10:19:55 === Round 156 ===
+10:19:55    [Scheduler] Round 156: Dynamic Reset Ratio = 0.00574
+10:20:05 === Round 157 ===
+10:20:05    [Scheduler] Round 157: Dynamic Reset Ratio = 0.00549
+10:20:16 === Round 158 ===
+10:20:16    [Scheduler] Round 158: Dynamic Reset Ratio = 0.00525
+10:20:26 === Round 159 ===
+10:20:26    [Scheduler] Round 159: Dynamic Reset Ratio = 0.00501
+10:20:36 === Round 160 ===
+10:20:36    [Scheduler] Round 160: Dynamic Reset Ratio = 0.00477
+10:20:48 [TEST] Round 160
+10:20:48    Acc     : 84.87% (84.96%)
+10:20:48    Loss    : 0.6054 (0.5474)
+10:20:48    Gap     : 4.20% (3.95%)
+10:20:48    Group   : F=86.5% M=82.3% (Worst: 82.3%)
+10:20:48    🔥Hard  : Male+Smile=65.9% | Female+NoSmile=86.5%
+10:20:48 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_160.pth
+10:20:48 === Round 161 ===
+10:20:48    [Scheduler] Round 161: Dynamic Reset Ratio = 0.00455
+10:20:58 === Round 162 ===
+10:20:58    [Scheduler] Round 162: Dynamic Reset Ratio = 0.00432
+10:21:08 === Round 163 ===
+10:21:08    [Scheduler] Round 163: Dynamic Reset Ratio = 0.00410
+10:21:19 === Round 164 ===
+10:21:19    [Scheduler] Round 164: Dynamic Reset Ratio = 0.00389
+10:21:29 === Round 165 ===
+10:21:29    [Scheduler] Round 165: Dynamic Reset Ratio = 0.00368
+10:21:41 [TEST] Round 165
+10:21:41    Acc     : 84.79% (84.83%)
+10:21:41    Loss    : 0.6513 (0.5819)
+10:21:41    Gap     : 4.23% (4.10%)
+10:21:41    Group   : F=86.4% M=82.2% (Worst: 82.2%)
+10:21:41    🔥Hard  : Male+Smile=63.6% | Female+NoSmile=89.3%
+10:21:41 === Round 166 ===
+10:21:41    [Scheduler] Round 166: Dynamic Reset Ratio = 0.00348
+10:21:51 === Round 167 ===
+10:21:51    [Scheduler] Round 167: Dynamic Reset Ratio = 0.00328
+10:22:02 === Round 168 ===
+10:22:02    [Scheduler] Round 168: Dynamic Reset Ratio = 0.00309
+10:22:12 === Round 169 ===
+10:22:12    [Scheduler] Round 169: Dynamic Reset Ratio = 0.00291
+10:22:22 === Round 170 ===
+10:22:22    [Scheduler] Round 170: Dynamic Reset Ratio = 0.00272
+10:22:34 [TEST] Round 170
+10:22:34    Acc     : 84.48% (84.79%)
+10:22:34    Loss    : 0.5992 (0.5962)
+10:22:34    Gap     : 4.13% (4.19%)
+10:22:34    Group   : F=86.1% M=81.9% (Worst: 81.9%)
+10:22:34    🔥Hard  : Male+Smile=66.0% | Female+NoSmile=84.8%
+10:22:34 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_170.pth
+10:22:34 === Round 171 ===
+10:22:34    [Scheduler] Round 171: Dynamic Reset Ratio = 0.00255
+10:22:44 === Round 172 ===
+10:22:44    [Scheduler] Round 172: Dynamic Reset Ratio = 0.00238
+10:22:54 === Round 173 ===
+10:22:54    [Scheduler] Round 173: Dynamic Reset Ratio = 0.00221
+10:23:04 === Round 174 ===
+10:23:04    [Scheduler] Round 174: Dynamic Reset Ratio = 0.00206
+10:23:14 === Round 175 ===
+10:23:14    [Scheduler] Round 175: Dynamic Reset Ratio = 0.00190
+10:23:26 [TEST] Round 175
+10:23:26    Acc     : 83.96% (84.63%)
+10:23:26    Loss    : 0.6547 (0.6116)
+10:23:26    Gap     : 3.56% (4.03%)
+10:23:26    Group   : F=85.3% M=81.8% (Worst: 81.8%)
+10:23:26    🔥Hard  : Male+Smile=63.0% | Female+NoSmile=86.7%
+10:23:26 === Round 176 ===
+10:23:26    [Scheduler] Round 176: Dynamic Reset Ratio = 0.00176
+10:23:37 === Round 177 ===
+10:23:37    [Scheduler] Round 177: Dynamic Reset Ratio = 0.00161
+10:23:47 === Round 178 ===
+10:23:47    [Scheduler] Round 178: Dynamic Reset Ratio = 0.00148
+10:23:57 === Round 179 ===
+10:23:57    [Scheduler] Round 179: Dynamic Reset Ratio = 0.00135
+10:24:07 === Round 180 ===
+10:24:07    [Scheduler] Round 180: Dynamic Reset Ratio = 0.00122
+10:24:19 [TEST] Round 180
+10:24:19    Acc     : 85.17% (84.65%)
+10:24:19    Loss    : 0.6245 (0.6270)
+10:24:19    Gap     : 4.20% (4.06%)
+10:24:19    Group   : F=86.8% M=82.6% (Worst: 82.6%)
+10:24:19    🔥Hard  : Male+Smile=68.1% | Female+NoSmile=86.2%
+10:24:19 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_180.pth
+10:24:19 === Round 181 ===
+10:24:19    [Scheduler] Round 181: Dynamic Reset Ratio = 0.00111
+10:24:29 === Round 182 ===
+10:24:29    [Scheduler] Round 182: Dynamic Reset Ratio = 0.00000
+10:24:39 === Round 183 ===
+10:24:39    [Scheduler] Round 183: Dynamic Reset Ratio = 0.00000
+10:24:49 === Round 184 ===
+10:24:49    [Scheduler] Round 184: Dynamic Reset Ratio = 0.00000
+10:25:00 === Round 185 ===
+10:25:00    [Scheduler] Round 185: Dynamic Reset Ratio = 0.00000
+10:25:11 [TEST] Round 185
+10:25:11    Acc     : 84.47% (84.57%)
+10:25:11    Loss    : 0.6845 (0.6428)
+10:25:11    Gap     : 4.13% (4.05%)
+10:25:11    Group   : F=86.1% M=81.9% (Worst: 81.9%)
+10:25:11    🔥Hard  : Male+Smile=64.8% | Female+NoSmile=86.5%
+10:25:11 === Round 186 ===
+10:25:11    [Scheduler] Round 186: Dynamic Reset Ratio = 0.00000
+10:25:21 === Round 187 ===
+10:25:21    [Scheduler] Round 187: Dynamic Reset Ratio = 0.00000
+10:25:32 === Round 188 ===
+10:25:32    [Scheduler] Round 188: Dynamic Reset Ratio = 0.00000
+10:25:42 === Round 189 ===
+10:25:42    [Scheduler] Round 189: Dynamic Reset Ratio = 0.00000
+10:25:52 === Round 190 ===
+10:25:52    [Scheduler] Round 190: Dynamic Reset Ratio = 0.00000
+10:26:04 [TEST] Round 190
+10:26:04    Acc     : 84.62% (84.54%)
+10:26:04    Loss    : 0.6650 (0.6456)
+10:26:04    Gap     : 4.33% (4.07%)
+10:26:04    Group   : F=86.3% M=82.0% (Worst: 82.0%)
+10:26:04    🔥Hard  : Male+Smile=65.2% | Female+NoSmile=86.9%
+10:26:04 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_190.pth
+10:26:04 === Round 191 ===
+10:26:04    [Scheduler] Round 191: Dynamic Reset Ratio = 0.00000
+10:26:14 === Round 192 ===
+10:26:14    [Scheduler] Round 192: Dynamic Reset Ratio = 0.00000
+10:26:25 === Round 193 ===
+10:26:25    [Scheduler] Round 193: Dynamic Reset Ratio = 0.00000
+10:26:35 === Round 194 ===
+10:26:35    [Scheduler] Round 194: Dynamic Reset Ratio = 0.00000
+10:26:45 === Round 195 ===
+10:26:45    [Scheduler] Round 195: Dynamic Reset Ratio = 0.00000
+10:26:57 [TEST] Round 195
+10:26:57    Acc     : 84.23% (84.49%)
+10:26:57    Loss    : 0.7469 (0.6751)
+10:26:57    Gap     : 3.98% (4.04%)
+10:26:57    Group   : F=85.8% M=81.8% (Worst: 81.8%)
+10:26:57    🔥Hard  : Male+Smile=63.4% | Female+NoSmile=86.8%
+10:26:57 === Round 196 ===
+10:26:57    [Scheduler] Round 196: Dynamic Reset Ratio = 0.00000
+10:27:07 === Round 197 ===
+10:27:07    [Scheduler] Round 197: Dynamic Reset Ratio = 0.00000
+10:27:17 === Round 198 ===
+10:27:17    [Scheduler] Round 198: Dynamic Reset Ratio = 0.00000
+10:27:27 === Round 199 ===
+10:27:27    [Scheduler] Round 199: Dynamic Reset Ratio = 0.00000
+10:27:39 [TEST] Round 199
+10:27:39    Acc     : 84.11% (84.52%)
+10:27:39    Loss    : 0.6941 (0.6830)
+10:27:39    Gap     : 3.79% (4.09%)
+10:27:39    Group   : F=85.6% M=81.8% (Worst: 81.8%)
+10:27:39    🔥Hard  : Male+Smile=63.3% | Female+NoSmile=87.4%
+10:27:39 💾 Checkpoint saved: ./save/FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5/model_round_199.pth
+10:27:39 ✅ Training Finished.
+wandb: uploading output.log; uploading wandb-summary.json
+wandb: uploading history steps 40-40, summary, console lines 664-671
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:                   epoch ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:     fairness/acc_female ▁▁▁▁▁▁▁▁▁▁▁▂▄▅▆▆▇▇▇█████████████████████
+wandb:       fairness/acc_male ▁▁▁▁▁▁▁▁▁▁▁▂▂▃▅▅▆▇▇▇▇▇████▇█████████████
+wandb: fairness/acc_male_smile ▁▁▁▂▁▁▁▁▁▁▁▁▂▃▄▅▆▆█▇█▇█▇▇█▇▇██▇▇▇▇▇▇█▇▇▇
+wandb:      fairness/acc_worst ▁▁▁▁▁▁▁▁▁▁▁▃▄▅▆▆▇▇██████████████████████
+wandb:            fairness/gap ███▇█▇▇▇▇▇█▅▃▁▂▂▂▂▂▂▂▃▂▃▃▂▃▃▂▃▃▃▃▃▃▂▃▃▃▃
+wandb:                   round ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:           runtime_hours ▁▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇██
+wandb:                test/acc ▁▁▁▁▁▁▁▁▁▁▁▂▃▄▆▆▇▇▇█████████████████████
+wandb:           test/acc_avg5 ▁▁▁▁▁▁▁▁▁▁▁▁▂▂▃▄▅▆▇▇▇███████████████████
+wandb:               test/loss ▆▅▆▅▆▅▅▆▆▆█▇▇▆▄▃▂▂▁▁▁▂▁▁▂▂▃▃▂▃▃▃▄▄▄▅▄▅▅▅
+wandb: 
+wandb: Run summary:
+wandb:                   epoch 199
+wandb:     fairness/acc_female 85.58014
+wandb:       fairness/acc_male 81.78872
+wandb: fairness/acc_male_smile 63.3161
+wandb:      fairness/acc_worst 81.78872
+wandb:            fairness/gap 3.79142
+wandb:                   round 199
+wandb:           runtime_hours 0.56584
+wandb:                test/acc 84.11482
+wandb:           test/acc_avg5 84.51959
+wandb:               test/loss 0.69413
+wandb: 
+wandb: 🚀 View run FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5 at: https://wandb.ai/321495417/FedFAAR_Experiment/runs/mg95wgri
+wandb: ⭐️ View project at: https://wandb.ai/321495417/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251221_095340-mg95wgri/logs
+[WandbLogger] 运行结束。

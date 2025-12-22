@@ -82,8 +82,90 @@
 * 数据集问题
 
 
+## Conference 12.19周五下午
+
+* 成功locate问题，即M_S和M_NS的不公平性
 
 
+## 12.21周天上午工作总结：
+我必须要系统性的和你说明一下我的思路和目前的工作内容进展：
+
+1. 研究问题：我们研究的是联邦公平性问题，定位的是，使用celeba数据集 在20个client每个client有1000个数据 1-4client有200male 20%smile  800female 80%smile 5-20client有800male 20%smile 200female 80%smile的场景下，虽然fedavg最后可以收敛 且male和female整体的accgap在1-3%左右但是male组里面的male_smile_acc只有67%左右，这和male_nonsmile_acc相比形成了极大的不公平。
+
+2. 实现背景：我的baseline是fedavg和Fedphoenix，后者是师兄的一篇A会。Fedphoenix中 每一轮client学习之前都会随机选取5%的神经元 执行soft-reset操作，结果是最后的鲁棒性和泛化性不错。我基于Fedphoenix来扩展思路，研究公平性。
+
+3. 假设：在问题1中，我假设”偏见“在神经元中是稀疏分布的。即可以通过定位+修复的方式减少这种偏见。
+
+假设：我的五种计算神经元可疑度的方法（在你的记忆里）可以把真正的偏见神经元囊括到。
+
+假设：经过一段时间的学习，整体的可疑度应该是缓慢下降的，对应的直接指标就是hard组(male+smile)对应的acc从66%回升上去。我需要证明可疑度和male_acc_gap应该是正相关的。
+
+4. 算法思路：
+
+phase1 预测期 维持fedavg的思路
+
+phase2 间歇性手术期 每个n轮执行一次核心算法faar
+
+faar：
+
+probe：在server段维护一个绝对公平的数据集，在这里数据在AAAFAAR/probe_balanced_2000.pt，维护4个小子组，每个500份。
+
+Diagnose：对于某个神经元 计算其怀疑度的时候，把探针数据集中的数据全部输入一遍，得到男 女的激活值分布图P和Q 使用这两份数据分布和前面的五种locate函数来计算可疑度。于是可以得到每一个神经元基于probe的可疑度。
+
+Treatment：由前面的可疑度对所有神经元做一个概率分布，可疑度高的被选中的几率高，再加一个温度机制保证可控，即可以退化成随机选择。对于选中的神经元，执行soft-reset操作（计算神经元所在的层的均值和方差，根据N(x,sigma)来软重置）或者执行手术操作，即对所在的神经元，目标是男女差异，执行loss上升的反学习，实现微小opreation。
+
+和Fedphoenix的区别在于，treatment是在server端进行的，且是间隔n轮执行一次。
+
+
+
+Gemini反思:
+Server端手术的效果能否传递到 Client？ (Server 改好了，发给 Client 训练几轮，Client 本地的数据偏见太重，会不会瞬间把手术效果“洗回去”？即 Catastrophic Forgetting of Fairness)。
+
+Masking (Reset) vs Operation (Unlearning) 的抉择？ (就像之前的实验，Reset 可能导致功能崩盘，Unlearning 参数太难调)。
+
+Doubt Score 与 Acc 的相关性无法对齐？ (理论上怀疑度下降，Hard Acc 应该上升，但实际实验数据可能是一团乱麻，或者出现 Simpson 悖论)。
+
+
+我现在在做实验验证前面的一个重要假设1：
+
+偏见神经元是稀疏分布的，因此我才有机会locate+treatment去改变这种偏见。
+
+我的实验2是这样的：我加载了一个fedavg在前面提到的client数据分布上，训练199轮（收敛）的ckpt，和celeba的test集合。调用五种locate方法和hard-mask（选中直接清空）机制来判断这假设是否成立。
+
+如果mask掉之后male_gap下降 、M_S_acc上升且整体的global_acc下降幅度不大 那么就说明我定位到了偏见神经元存在、我的locate函数之一可以定位到偏见神经元、且这种偏见会导致我想要解决的公平性问题。
+
+
+你提出的三个困难点非常值得思考，我们可以后续来研究。
+
+我现在在做实验验证前面的一个重要假设1：
+
+偏见神经元是稀疏分布的，因此我才有机会locate+treatment去改变这种偏见。
+
+我的实验2是这样的：我加载了一个fedavg在前面提到的client数据分布上，训练199轮（收敛）的ckpt，和celeba的test集合。调用五种locate方法和hard-mask（选中直接清空）机制来判断这假设是否成立。
+
+我是这样想的：如果mask掉之后male_gap下降 、M_S_acc上升且整体的global_acc下降幅度不大 那么就说明我定位到了偏见神经元存在、我的locate函数之一可以定位到偏见神经元、且这种偏见会导致我想要解决的公平性问题。
+
+但是我做了两个理论上应该是相同的实验hypothesis02.py和hypothesis02_stable.py 里面我只是做了一些输出位置的调整 但是输出的结果完全不一样：
+
+在同样处理conv3 mask比例是30% 方法是log_ood的时候，02输出的是：
+
+✂️ [Mask] Pruned 19 neurons in conv3
+
+log_odds     | 30%    | 19     | 80.05    | 2.40     | 71.01    |  +4.56%
+
+02_stable输出的是：
+
+✂️ [Mask] Pruned 19 neurons in conv3
+
+log_odds   | 80.07    | 3.24     | 55.69 (-10.76%) | 93.08    | 74.55    | 90.04    | 78.08
+
+
+
+前者让M_S_acc涨了 这是我想要的，但是涨的幅度不够。
+
+后者M_S_acc居然跌了这么多，理论上两个应该是一样的才对！
+
+这是我的02代码：
 
 ## dataset
 

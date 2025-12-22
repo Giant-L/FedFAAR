@@ -1,0 +1,117 @@
+# 第一次实验 五种方法 剪枝比例是 5% 3% 和 1% 结果如下：
+📊 --- Baseline Performance (Before Surgery) ---
+Original Model       | Glb: 84.07% | Gap:  2.94% | M_Smile: 66.45% (Hard) | M_NoSmile: 92.86% | F_NoSmile: 83.43%
+------------------------------------------------------------------------------------------------------------------------
+
+🔍 Diagnosing Neurons using Probe Data (Layer: conv4)...
+   Collected Activations: Male=torch.Size([1000, 64]), Female=torch.Size([1000, 64])
+
+🧪 Testing Method: [ LINEAR ]
+✂️ [Mask] Pruned 3 neurons in conv4
+linear@5%            | Glb: 83.92% | Gap:  3.12% | M_Smile: 66.39% (Hard) | M_NoSmile: 92.47% | F_NoSmile: 82.48%
+✂️ [Mask] Pruned 1 neurons in conv4
+linear@3%            | Glb: 83.85% | Gap:  2.90% | M_Smile: 66.13% (Hard) | M_NoSmile: 92.75% | F_NoSmile: 82.56%
+✂️ [Mask] Pruned 1 neurons in conv4
+linear@1%            | Glb: 83.85% | Gap:  2.90% | M_Smile: 66.13% (Hard) | M_NoSmile: 92.75% | F_NoSmile: 82.56%
+
+🧪 Testing Method: [ LOG_ODDS ]
+✂️ [Mask] Pruned 3 neurons in conv4
+log_odds@5%          | Glb: 84.15% | Gap:  3.35% | M_Smile: 66.42% (Hard) | M_NoSmile: 92.60% | F_NoSmile: 83.83%
+✂️ [Mask] Pruned 1 neurons in conv4
+log_odds@3%          | Glb: 84.26% | Gap:  2.87% | M_Smile: 67.29% (Hard) | M_NoSmile: 92.69% | F_NoSmile: 83.55%
+✂️ [Mask] Pruned 1 neurons in conv4
+log_odds@1%          | Glb: 84.26% | Gap:  2.87% | M_Smile: 67.29% (Hard) | M_NoSmile: 92.69% | F_NoSmile: 83.55%
+
+🧪 Testing Method: [ SHAPE_RATE ]
+✂️ [Mask] Pruned 3 neurons in conv4
+shape_rate@5%        | Glb: 83.92% | Gap:  3.12% | M_Smile: 66.39% (Hard) | M_NoSmile: 92.47% | F_NoSmile: 82.48%
+✂️ [Mask] Pruned 1 neurons in conv4
+shape_rate@3%        | Glb: 83.85% | Gap:  2.90% | M_Smile: 66.13% (Hard) | M_NoSmile: 92.75% | F_NoSmile: 82.56%
+✂️ [Mask] Pruned 1 neurons in conv4
+shape_rate@1%        | Glb: 83.85% | Gap:  2.90% | M_Smile: 66.13% (Hard) | M_NoSmile: 92.75% | F_NoSmile: 82.56%
+
+🧪 Testing Method: [ COMPLEX ]
+✂️ [Mask] Pruned 3 neurons in conv4
+complex@5%           | Glb: 84.35% | Gap:  3.49% | M_Smile: 66.81% (Hard) | M_NoSmile: 92.51% | F_NoSmile: 83.79%
+✂️ [Mask] Pruned 1 neurons in conv4
+complex@3%           | Glb: 84.18% | Gap:  3.31% | M_Smile: 66.26% (Hard) | M_NoSmile: 92.79% | F_NoSmile: 83.55%
+✂️ [Mask] Pruned 1 neurons in conv4
+complex@1%           | Glb: 84.18% | Gap:  3.31% | M_Smile: 66.26% (Hard) | M_NoSmile: 92.79% | F_NoSmile: 83.55%
+
+🧪 Testing Method: [ JSD ]
+✂️ [Mask] Pruned 3 neurons in conv4
+jsd@5%               | Glb: 84.02% | Gap:  2.86% | M_Smile: 67.39% (Hard) | M_NoSmile: 92.23% | F_NoSmile: 82.22%
+✂️ [Mask] Pruned 1 neurons in conv4
+jsd@3%               | Glb: 84.03% | Gap:  3.06% | M_Smile: 66.68% (Hard) | M_NoSmile: 92.51% | F_NoSmile: 83.06%
+✂️ [Mask] Pruned 1 neurons in conv4
+jsd@1%               | Glb: 84.03% | Gap:  3.06% | M_Smile: 66.68% (Hard) | M_NoSmile: 92.51% | F_NoSmile: 83.06%
+
+🏆 === Best Results Summary ===
+🔥 Best Hard Acc improvement: jsd (Top 5%) -> Hard Acc: 67.39% (Base: 66.45%)
+⚖️ Best Gap reduction      : jsd (Top 5%) -> Gap: 2.86% (Base: 2.94%)
+
+
+# 第二次实验 五种方法 剪枝比例是 10% 20% 30% 和 50% 结果如下：
+📊 --- Baseline Performance (Before Surgery) ---
+Original Model       | Glb: 84.07% | Gap:  2.94% | M_Smile: 66.45% (Hard) | M_NoSmile: 92.86% | F_NoSmile: 83.43%
+------------------------------------------------------------------------------------------------------------------------
+
+🔍 Diagnosing Neurons using Probe Data (Layer: conv4)...
+   Collected Activations: Male=torch.Size([1000, 64]), Female=torch.Size([1000, 64])
+
+🧪 Testing Method: [ LINEAR ]
+✂️ [Mask] Pruned 6 neurons in conv4
+linear@10%           | Glb: 83.57% | Gap:  3.35% | M_Smile: 63.90% (Hard) | M_NoSmile: 93.31% | F_NoSmile: 83.83%
+✂️ [Mask] Pruned 12 neurons in conv4
+linear@20%           | Glb: 82.80% | Gap:  3.24% | M_Smile: 60.99% (Hard) | M_NoSmile: 94.09% | F_NoSmile: 85.67%
+✂️ [Mask] Pruned 19 neurons in conv4
+linear@30%           | Glb: 82.86% | Gap:  3.06% | M_Smile: 62.61% (Hard) | M_NoSmile: 93.29% | F_NoSmile: 84.03%
+✂️ [Mask] Pruned 32 neurons in conv4
+linear@50%           | Glb: 82.26% | Gap:  1.78% | M_Smile: 68.10% (Hard) | M_NoSmile: 89.92% | F_NoSmile: 77.77%
+
+🧪 Testing Method: [ LOG_ODDS ]
+✂️ [Mask] Pruned 6 neurons in conv4
+log_odds@10%         | Glb: 83.90% | Gap:  3.53% | M_Smile: 64.45% (Hard) | M_NoSmile: 93.31% | F_NoSmile: 84.25%
+✂️ [Mask] Pruned 12 neurons in conv4
+log_odds@20%         | Glb: 82.72% | Gap:  3.59% | M_Smile: 63.32% (Hard) | M_NoSmile: 92.04% | F_NoSmile: 82.46%
+✂️ [Mask] Pruned 19 neurons in conv4
+log_odds@30%         | Glb: 81.39% | Gap:  4.26% | M_Smile: 56.50% (Hard) | M_NoSmile: 93.70% | F_NoSmile: 86.94%
+✂️ [Mask] Pruned 32 neurons in conv4
+log_odds@50%         | Glb: 79.04% | Gap:  4.26% | M_Smile: 51.65% (Hard) | M_NoSmile: 93.01% | F_NoSmile: 83.04%
+
+🧪 Testing Method: [ SHAPE_RATE ]
+✂️ [Mask] Pruned 6 neurons in conv4
+shape_rate@10%       | Glb: 83.24% | Gap:  3.13% | M_Smile: 63.35% (Hard) | M_NoSmile: 93.36% | F_NoSmile: 84.35%
+✂️ [Mask] Pruned 12 neurons in conv4
+shape_rate@20%       | Glb: 82.96% | Gap:  3.38% | M_Smile: 61.60% (Hard) | M_NoSmile: 93.79% | F_NoSmile: 85.71%
+✂️ [Mask] Pruned 19 neurons in conv4
+shape_rate@30%       | Glb: 82.76% | Gap:  3.08% | M_Smile: 61.96% (Hard) | M_NoSmile: 93.53% | F_NoSmile: 83.88%
+✂️ [Mask] Pruned 32 neurons in conv4
+shape_rate@50%       | Glb: 82.31% | Gap:  1.97% | M_Smile: 66.03% (Hard) | M_NoSmile: 91.19% | F_NoSmile: 79.01%
+
+🧪 Testing Method: [ COMPLEX ]
+✂️ [Mask] Pruned 6 neurons in conv4
+complex@10%          | Glb: 84.22% | Gap:  3.74% | M_Smile: 65.74% (Hard) | M_NoSmile: 92.75% | F_NoSmile: 84.83%
+✂️ [Mask] Pruned 12 neurons in conv4
+complex@20%          | Glb: 83.82% | Gap:  3.37% | M_Smile: 67.10% (Hard) | M_NoSmile: 91.56% | F_NoSmile: 82.93%
+✂️ [Mask] Pruned 19 neurons in conv4
+complex@30%          | Glb: 83.77% | Gap:  2.57% | M_Smile: 69.91% (Hard) | M_NoSmile: 90.41% | F_NoSmile: 80.41%
+✂️ [Mask] Pruned 32 neurons in conv4
+complex@50%          | Glb: 81.03% | Gap:  2.10% | M_Smile: 62.18% (Hard) | M_NoSmile: 91.50% | F_NoSmile: 77.66%
+
+🧪 Testing Method: [ JSD ]
+✂️ [Mask] Pruned 6 neurons in conv4
+jsd@10%              | Glb: 83.53% | Gap:  2.34% | M_Smile: 68.46% (Hard) | M_NoSmile: 91.24% | F_NoSmile: 80.41%
+✂️ [Mask] Pruned 12 neurons in conv4
+jsd@20%              | Glb: 81.68% | Gap:  2.60% | M_Smile: 61.93% (Hard) | M_NoSmile: 92.23% | F_NoSmile: 85.00%
+✂️ [Mask] Pruned 19 neurons in conv4
+jsd@30%              | Glb: 79.49% | Gap:  2.71% | M_Smile: 57.53% (Hard) | M_NoSmile: 91.41% | F_NoSmile: 86.27%
+✂️ [Mask] Pruned 32 neurons in conv4
+jsd@50%              | Glb: 70.47% | Gap:  0.46% | M_Smile: 35.49% (Hard) | M_NoSmile: 93.42% | F_NoSmile: 89.04%
+
+🏆 === Best Results Summary ===
+🔥 Best Hard Acc improvement: complex (Top 30%) -> Hard Acc: 69.91% (Base: 66.45%)
+⚖️ Best Gap reduction      : jsd (Top 50%) -> Gap: 0.46% (Base: 2.94%)
+
+
+# 第三次实验 五种方法 

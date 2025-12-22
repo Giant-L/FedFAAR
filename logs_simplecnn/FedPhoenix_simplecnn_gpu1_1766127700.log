@@ -819,3 +819,105 @@ wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
 wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
 wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
 wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading config.yaml; uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading wandb-metadata.json; uploading data
+wandb: uploading wandb-metadata.json
+wandb: uploading data
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:                   epoch ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:     fairness/acc_female ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       fairness/acc_male ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: fairness/acc_male_smile ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:      fairness/acc_worst ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:            fairness/gap ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                   round ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:           runtime_hours ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:                test/acc ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           test/acc_avg5 ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:               test/loss ▁▂▃▂▂▃▄▄▄▄▅▄▆▆▅▄▃▃▃▄▃▄▄▅▄▄▅▆▃▃▃▃▄▂▅▅▃▄▂█
+wandb: 
+wandb: Run summary:
+wandb:                   epoch 199
+wandb:     fairness/acc_female 43.71683
+wandb:       fairness/acc_male 59.89631
+wandb: fairness/acc_male_smile 0
+wandb:      fairness/acc_worst 43.71683
+wandb:            fairness/gap 16.17948
+wandb:                   round 199
+wandb:           runtime_hours 0.20961
+wandb:                test/acc 49.96994
+wandb:           test/acc_avg5 49.96994
+wandb:               test/loss 0.83076
+wandb: 
+wandb: 🚀 View run FedPhoenix_SimpleCNN_Biased20_celeba_Beta0.5 at: https://wandb.ai/321495417/FedFAAR_Experiment/runs/boxg3znj
+wandb: ⭐️ View project at: https://wandb.ai/321495417/FedFAAR_Experiment
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251219_150147-boxg3znj/logs
+[WandbLogger] 运行结束。

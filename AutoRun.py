@@ -12,14 +12,14 @@ import sys
 
 # 🟢 【指定算法】
 algorithms = [
-            #   'FedAvg',   # 建议先跑 FedAvg 作为 Baseline，看看 Gap 有多大
+              'FedAvg',   # 建议先跑 FedAvg 作为 Baseline，看看 Gap 有多大
             #   'FedFAAR',  
-            'FedPhoenix'
+            # 'FedPhoenix'
 
             ]
 
 # 🟢 【指定 GPU】
-gpus = [1] 
+gpus = [4] 
 
 # --------------------------------------------------------------
 # 实验参数
@@ -63,9 +63,11 @@ faar_reset_periods = [5]
 
 # 🟢 5. 指定你的 .pt 文件路径
 # 这是200 800 * 1-4； 800 200 * 5-20
-# PT_PATH = "/home/ubuntu/ljy/AAAFAAR/data/celeba/celeba_biased_20clients.pt"
+PT_PATH = "/home/ubuntu/ljy/AAAFAAR/data/celeba/celeba_biased_20clients_1000img.pt"
+
+# 这是废物数据集，训练出来的model只会瞎猜
 # 这是20 80 * 1-4； 80 20 * 5-20
-PT_PATH = "/home/ubuntu/ljy/AAAFAAR/data/celeba/celeba_biased_20clients.pt"
+# PT_PATH = "/home/ubuntu/ljy/AAAFAAR/data/celeba/celeba_biased_20clients.pt"
 
 
 # ==============================================================================

@@ -200,15 +200,25 @@ def test_fairness(model, dataset, args):
     corrects = {0: {0: 0, 1: 0}, 1: {0: 0, 1: 0}}
     
     with torch.no_grad():
-        for imgs, labels in loader:
-            imgs = imgs.to(args.device)
+        # 🟢🟢🟢 【修复点开始】 🟢🟢🟢
+        for batch in loader:
+            imgs = batch[0].to(args.device)
             
-            if labels.dim() > 1:
-                targets = labels[:, 0].to(args.device).long()
-                sensitives = labels[:, 1].to(args.device).long()
+            # 处理 (img, label, sensitive) 三元组
+            if len(batch) == 3:
+                targets = batch[1].to(args.device).long()
+                sensitives = batch[2].to(args.device).long()
+            
+            # 处理 (img, label) 但 label 可能包含 sensitive 的情况 (旧逻辑兼容)
             else:
-                targets = labels.to(args.device).long()
-                sensitives = torch.zeros_like(targets) 
+                labels = batch[1].to(args.device)
+                if labels.dim() > 1:
+                    targets = labels[:, 0].long()
+                    sensitives = labels[:, 1].long()
+                else:
+                    targets = labels.long()
+                    sensitives = torch.zeros_like(targets)
+        # 🟢🟢🟢 【修复点结束】 🟢🟢🟢
 
             outputs = model(imgs)
             if isinstance(outputs, dict): outputs = outputs['output']
@@ -232,16 +242,17 @@ def test_fairness(model, dataset, args):
     avg_loss = test_loss / (total + 1e-6)
     acc_global = 100.0 * correct / (total + 1e-6)
     
+    acc_male_smile   = 100.0 * corrects[1][1] / (counts[1][1] + 1e-6)
+    acc_male_nosmile = 100.0 * corrects[1][0] / (counts[1][0] + 1e-6)
+    acc_female_smile = 100.0 * corrects[0][1] / (counts[0][1] + 1e-6)
+    acc_female_nosmile = 100.0 * corrects[0][0] / (counts[0][0] + 1e-6)
+    
     total_f = counts[0][0] + counts[0][1]
     total_m = counts[1][0] + counts[1][1]
     acc_female = 100.0 * (corrects[0][0] + corrects[0][1]) / (total_f + 1e-6)
     acc_male   = 100.0 * (corrects[1][0] + corrects[1][1]) / (total_m + 1e-6)
     
     gap = abs(acc_female - acc_male)
-    
-    acc_male_smile = 100.0 * corrects[1][1] / (counts[1][1] + 1e-6)
-    acc_female_nosmile = 100.0 * corrects[0][0] / (counts[0][0] + 1e-6)
-    
     acc_worst = min(acc_female, acc_male)
 
     return {
@@ -251,10 +262,76 @@ def test_fairness(model, dataset, args):
         'acc_f': acc_female,
         'acc_m': acc_male,
         'acc_male_smile': acc_male_smile,
+        'acc_male_nosmile': acc_male_nosmile,
+        'acc_female_smile': acc_female_smile,
         'acc_female_nosmile': acc_female_nosmile,
-        'acc_worst': acc_worst
+        'acc_worst_group': acc_worst
     }
 
+def get_worst_client_acc(model, client_datasets, dict_users, dataset_train, args):
+    """
+    遍历所有 Client，计算其在 Global Model 上的 Acc。
+    兼容 (img, label) 和 (img, label, sensitive) 两种数据格式
+    """
+    model.eval()
+    
+    # 存储每个 Client 的 Acc: {client_id: accuracy}
+    results = {}
+    
+    if client_datasets is not None:
+        client_ids = list(client_datasets.keys())
+    else:
+        client_ids = list(dict_users.keys())
+        
+    with torch.no_grad():
+        for cid in client_ids:
+            if client_datasets is not None:
+                c_dataset = client_datasets[cid]
+                ldr = DataLoader(c_dataset, batch_size=args.bs, shuffle=False)
+            else:
+                idxs = dict_users[cid]
+                c_dataset = Subset(dataset_train, idxs)
+                ldr = DataLoader(c_dataset, batch_size=args.bs, shuffle=False)
+            
+            correct = 0
+            total = 0
+            
+            # 🟢🟢🟢 【修复点开始】 🟢🟢🟢
+            for batch in ldr:
+                # 自动判断数据包含几个元素
+                imgs = batch[0].to(args.device)
+                
+                # 如果是 (img, label, sensitive)
+                if len(batch) == 3:
+                    targets = batch[1].to(args.device).long()
+                    # batch[2] 是 sensitive，计算总 Acc 时暂时不需要
+                # 如果是 (img, label)
+                else:
+                    targets = batch[1].to(args.device).long()
+                
+                # 兼容 label 维度 (有些数据集 label 是 [batch, 1])
+                if targets.dim() > 1:
+                    targets = targets.view(-1)
+            # 🟢🟢🟢 【修复点结束】 🟢🟢🟢
+                    
+                outputs = model(imgs)
+                if isinstance(outputs, dict): outputs = outputs['output']
+                
+                _, predicted = torch.max(outputs.data, 1)
+                total += targets.size(0)
+                correct += (predicted == targets).sum().item()
+            
+            acc = 100.0 * correct / (total + 1e-6)
+            results[cid] = acc
+            
+    worst_cid = min(results, key=results.get)
+    best_cid = max(results, key=results.get)
+    
+    worst_acc = results[worst_cid]
+    best_acc = results[best_cid]
+    avg_client_acc = sum(results.values()) / len(results)
+    
+    return (worst_acc, worst_cid), (best_acc, best_cid), avg_client_acc, results
 
 # ==============================================================================
 # FAAR 高级诊断函数 (基于 Wasserstein 距离)
@@ -441,36 +518,52 @@ def run_training(args, net_glob, train_data_source, dataset_test, dict_users, lo
         
         if iter % 5 == 0 or iter == args.epochs - 1: 
             if args.dataset == 'celeba':
+                # 1. 全局测试
                 res = test_fairness(net_glob, dataset_test, args)
                 
-                # 🟢🟢🟢 【修复】现在 ma_logger 已经定义了 🟢🟢🟢
+                # 2. 客户端性能测试 (获取 Best & Worst ID)
+                (worst_acc, worst_cid), (best_acc, best_cid), avg_c_acc, _ = get_worst_client_acc(
+                    net_glob, 
+                    client_datasets if use_pre_partition else None, 
+                    dict_users, 
+                    dataset_train, 
+                    args
+                )
+                
+                # 更新 logger
                 ma_logger.update(res)
-                avg_res = ma_logger.get_averages()
                 
                 log_print(f"[TEST] Round {iter}")
-                log_print(f"   Acc     : {res['acc']:.2f}% ({avg_res['acc']:.2f}%)")
-                log_print(f"   Loss    : {res['loss']:.4f} ({avg_res['loss']:.4f})")
-                log_print(f"   Gap     : {res['gap']:.2f}% ({avg_res['gap']:.2f}%)")
-                log_print(f"   Group   : F={res['acc_f']:.1f}% M={res['acc_m']:.1f}% (Worst: {res['acc_worst']:.1f}%)")
-                log_print(f"   🔥Hard  : Male+Smile={res['acc_male_smile']:.1f}% | Female+NoSmile={res['acc_female_nosmile']:.1f}%")
+                log_print(f"   🌍 Global: Acc={res['acc']:.2f}% | Loss={res['loss']:.4f}")
+                
+                # --- 🔥 修改后的打印：显示 ID ---
+                log_print(f"   📉 Client: Avg={avg_c_acc:.2f}%")
+                log_print(f"      💀 Worst: Client {worst_cid} = {worst_acc:.2f}%")
+                log_print(f"      🏆 Best : Client {best_cid} = {best_acc:.2f}%")
+                
+                log_print(f"   👥 Group Analysis:")
+                log_print(f"      👨 Male  : Smile={res['acc_male_smile']:.1f}%  | NoSmile={res['acc_male_nosmile']:.1f}%")
+                log_print(f"      👩 Female: Smile={res['acc_female_smile']:.1f}%  | NoSmile={res['acc_female_nosmile']:.1f}%")
+                
+                log_print(f"   ⚖️  Gaps   : Gender Gap={res['gap']:.2f}%")
                 
                 if logger:
                     logger.log_metric({
                         "test/acc": res['acc'],
                         "test/loss": res['loss'],
-                        "test/acc_avg5": avg_res['acc'], 
                         "fairness/gap": res['gap'],
-                        "fairness/acc_female": res['acc_f'],
-                        "fairness/acc_male": res['acc_m'],
-                        "fairness/acc_male_smile": res['acc_male_smile'],
-                        "fairness/acc_worst": res['acc_worst'],
+                        
+                        "subgroup/male_smile": res['acc_male_smile'],
+                        "subgroup/male_nosmile": res['acc_male_nosmile'],
+                        "subgroup/female_smile": res['acc_female_smile'],
+                        "subgroup/female_nosmile": res['acc_female_nosmile'],
+                        
+                        "client/worst_acc": worst_acc,
+                        "client/best_acc": best_acc,
+                        "client/avg_acc": avg_c_acc,
+                        
                         "round": iter
                     }, epoch=iter)
-            else:
-                acc_test, loss_test = test_img(net_glob, dataset_test, args)
-                log_print(f"[TEST] Acc: {acc_test:.2f}% | Loss: {loss_test:.2f}")
-                if logger:
-                    logger.log_train(loss_test, acc_test, epoch=iter)
 
         if iter % 10 == 0 or iter == args.epochs - 1:
             ckpt_path = f"{save_dir}/model_round_{iter}.pth"
