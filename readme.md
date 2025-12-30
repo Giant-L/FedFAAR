@@ -167,6 +167,23 @@ log_odds   | 80.07    | 3.24     | 55.69 (-10.76%) | 93.08    | 74.55    | 90.04
 
 这是我的02代码：
 
+
+
+## 12.22 conference
+经过开会讨论之后 我们有了不同的思路，可以试一试去发展：
+
+我们的公平性问题需要去解决的事对于笑的情况下 男女的差异 以及不笑的情况下，男女的差异。
+
+这就是说，我们想要消除的公平性问题是M_S & F_S 以及 M_NS & F_NS
+
+1. 我们之前的在server端维护的probe数据集就因此有一些使用上的区别。现在要求：
+
+把probe中的M_S F_S输入神经元，得到两个分布P Q，根据我们的locate函数计算出这个神经元的可疑度W。 同时，再把probe中的M_NS和F_NS输入神经元，得到两个分布P' Q'。根据我们的locate函数计算出对应的可疑度W' 最终取W和W'的最大值作为我们最终定位该神经元的可疑度W_0
+
+2. 在server端，我们根据可疑度生成一个针对所有神经元soft-reset的概率分布，并设置tau温度稍微大一些，加入一定的随机扰动（贴合Fedphoenix）。但是server端从不使用soft-reset之后的model。我们想要的soft-reset只会发生在，在下一轮联邦学习的时候，比如有n个client，则serve根据model的可疑度概率分布reset n个model的模型传递给n个client。我对温度tau的要求就是，至少要保证这n个客户端接收到的model是互不相同的。之前设置为tau=1 不管reset多少次 效果都等于topK的硬选择。这对我们model的损伤很大。因为我们知道，纯粹的随机reset对model是有正向促进作用的。
+
+
+
 ## dataset
 
 1. [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
